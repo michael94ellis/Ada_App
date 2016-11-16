@@ -10,7 +10,7 @@ RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U computer%b		computer.adb		7fae1a3e NE OO PK
+U computer%b		computer.adb		03f5760c NE OO PK
 W ada%s			ada.ads			ada.ali
 W ada.numerics%s	a-numeri.ads		a-numeri.ali
 W ada.numerics.discrete_random%s
@@ -36,7 +36,7 @@ D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
 D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
 D computer.ads		20161115012422 0c0f743a computer%s
 D computer.adb		20161115012422 3cd2aa29 computer%b
-D gameboard.ads		20161116144828 3e9699c2 gameboard%s
+D gameboard.ads		20161116210950 42cdf5f0 gameboard%s
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092926 5421119b interfaces.c%s
 D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
@@ -100,19 +100,19 @@ X 12 computer.adb
 12a7 comPieces(integer) 23m13 27r25
 13i7 j{integer} 19m7 23r23
 13i9 location{integer} 38m16 47m19 51m19 56m19 59m19
-14r7 pieceGen{13|56R14} 27m7 30r10 32r13 32r38 32r64 33r12 33r38 33r64 34r12
+14r7 pieceGen{13|50R14} 27m7 30r10 32r13 32r38 32r64 33r12 33r38 33r64 34r12
 . 36r22 38r34 41r16 41r41 41r67 42r15 42r41 42r67 43r15 43r41 43r67 45r25
 . 47r37 49r28 51r37 55r25 56r37 58r28 59r37
 21i11 i{integer} 22r19 22r46 23r35
 X 13 gameboard.ads
-4K9*GameBoard 12|2w6 2r21 13|72e14
-56R14*Spot 12|14r17 13|64e19
-59i17*pieceValue{integer} 12|22r22 22r49 30r19
-61i17*location{integer} 12|23r38 32r22 32r47 32r73 33r21 33r47 33r73 34r21
+4K9*GameBoard 12|2w6 2r21 13|67e14
+50R14*Spot 12|14r17 13|58e19
+53i17*pieceValue{integer} 12|22r22 22r49 30r19
+55i17*location{integer} 12|23r38 32r22 32r47 32r73 33r21 33r47 33r73 34r21
 . 36r31 36r45 38r43 38r57 41r25 41r50 41r76 42r24 42r50 42r76 43r24 43r50
 . 43r76 45r34 45r48 47r46 47r60 49r37 49r51 51r46 51r60 55r34 55r48 56r46
 . 56r60 58r37 58r51 59r46 59r60
-66a9*board(56R14) 12|22r13 22r40 23r29 27r19 36r16 38r28 45r19 47r31 49r22
+60a9*board(50R14) 12|22r13 22r40 23r29 27r19 36r16 38r28 45r19 47r31 49r22
 . 51r31 55r19 56r31 58r22 59r31
 X 14 interfac.ads
 74M9*Unsigned_32

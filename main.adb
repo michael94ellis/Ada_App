@@ -14,7 +14,16 @@ procedure main is
 	playerScore, computerScore	: Integer 		:= 0;      -- Scores are 0 by default, Score of 12 wins
 	spotIndex1, spotIndex2		: Integer		:= 0;
 	firstClick, secondClick		: Point_Type;
-	
+	procedure nextTurn is
+	begin
+		if playerTurn = 1 then
+			Set_Text(WhosMoveLabel,"Turn: Player 1!");
+			playerTurn := 2;
+		elsif playerTurn = 2 then
+			Set_Text(WhosMoveLabel,"Turn: Player 2!");
+			playerTurn := 1;
+		end if;
+	end nextTurn;
 begin
    --Loop through frame
 	while Valid(AppFrame) loop
@@ -43,6 +52,7 @@ begin
 
 		while gameOver = False loop
 		--	if playerTurn = 1 then
+			
 				case Next_Command is
 					when 'C' => -- this will happen anytime that checkerboard image is clicked
 						-- initiaize these indexs
@@ -62,8 +72,6 @@ begin
 									spotIndex1 := spotIndex1 + 8;
 								end if;
 							end loop;
-							
-								put(Integer'Image(spotIndex1));
 							-- Validation of location choice
 							if spotIndex1 / 8 mod 2 = 1 and spotIndex1 mod 2 = 0 then
 								if spotIndex1 mod 8 /= 0 then
@@ -93,7 +101,6 @@ begin
 									end loop; --spotIndex1 now holds the array index of the piece to move	
 								when others => null;
 							end case;
-								put(Integer'Image(spotIndex2));
 							-- validation of location choice
 							if (spotIndex2 / 8) mod 2 = 1 and spotIndex2 mod 2 = 0 then
 								if spotIndex2 mod 8 /= 0 then
@@ -115,32 +122,32 @@ begin
 							spotIndex2 := spotIndex2 / 2; -- even row
 						end if;
 						put(Integer'Image(spotIndex1));
-							
 						put(Integer'Image(spotIndex2));
 	-----------------------------------------------------------------------------------------------------------------------------------------
 						if board(spotIndex1).pieceValue /= 0 AND board(spotIndex2).pieceValue = 0 then
-						--	if isValidMove(spotIndex1, spotIndex2, 1) = True then 
-								--make the move
-								if isValidMove(spotIndex1,spotIndex2, playerTurn) = True then
-									movePiece(spotIndex1, spotIndex2);
+							--make the move
+							if isValidMove(spotIndex1,spotIndex2, playerTurn) = True then
+								movePiece(spotIndex1, spotIndex2);
+								nextTurn; -- changes playerTurn to 1 if 2, and 2 if 1
+							--end if;
+							--if isValidJump(spotIndex1,spotIndex2,playerTurn) = True then
+							else
+								isValidJump(spotIndex1,spotIndex2,playerTurn);
+								nextTurn;
+							end if;
+							Put_Line("----------");
+							for i in 1..32 loop
+								put(board(i).pieceValue);
+								if i mod 4 = 0 then
+									New_Line;
 								end if;
-								Put_Line("----------");
-							--	put(Integer'Image(spotIndex1));
-								for i in 1..32 loop
-									put(Integer'Image(board(i).pieceValue));
-									if i mod 4 = 0 then
-										new_line;
-									end if;
-								
-								end loop;
-						--	end if;
+							end loop;
 						else
 							put("Invalid Input");
 						end if;
 						
 	-----------------------------------------------------------------------------------------------------------------------------------------
-						
-						
+					
 					when 'E' =>
 						gameOver := True;
 						timeKeeper.stop;
@@ -158,14 +165,7 @@ begin
 			-- computer turn to do stuff
 			--null;
 			--end if;
-			-- Change turns
-			if playerTurn = 1 then
-				Set_Text(WhosMoveLabel,"It's your Turn!");
-				playerTurn := 1;
-			elsif playerTurn = 2 then
-				Set_Text(WhosMoveLabel,"Computer's Turn!");
-				playerTurn := 1;
-			end if;
+
 			-- Check for end game conditions
 			if playerScore = 12 then
 				Put_Line("Player Wins!");

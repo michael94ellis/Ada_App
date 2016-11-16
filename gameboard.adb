@@ -99,10 +99,10 @@ package body GameBoard is
 		drawPiece(index2);
 	end movePiece;
 	
+	
 	task body Timer is
 		min,sec: Integer := 0;
 	begin -- this begins running at run time on a separate thread for each instance of this task type
-
 		accept start;
 			loop
 				select -- Select statement is just magic somehow for entry points
@@ -130,23 +130,345 @@ package body GameBoard is
 			board(newKing).pieceValue := 4;
 		end if;
 	end makeKing;
-
-	function isValidMove(spot1, spot2, player: in Integer) return Boolean is
-		--Function variables
-		isValid: Boolean; --Value that is returned at the end of the function to tell the prgm is the attempted move is valid
+	
+	procedure isValidJump(spot1, spot2, player: in Integer) is
+		isValid: Boolean := False;
+		indexErase: Integer := 0;
 	begin
-		if player = 1 then
-			if spot1 + 4 = spot2 OR spot1 + 5 = spot2 then
-				isValid := True;
-			else
-				isValid := False;
+		
+		if player = 1 then		
+			if board(spot1).pieceValue = 1 or board(spot1).pieceValue = 2 then
+				case spot1 mod 4 is
+					when 1 => 						
+						if spot1 / 4 mod 2 = 1 then
+							--5,13,21,29
+							if spot1 + 9 = spot2 then
+								if board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+4;
+								end if;
+							end if;
+						else
+							--1,9,17,25
+							if spot1 + 9 = spot2 then
+								if board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+5;
+								end if;
+							end if;
+						end if;
+					when 2 => 
+						if spot1 / 4 mod 2 = 1 then
+							--6,14,22,30
+							if spot1 + 9 = spot2 then
+								-- jump left
+								if board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+4;
+								end if;
+							elsif spot1 + 7 = spot2 then
+								-- jump right
+								if board(spot1+3).pieceValue = 3 or board(spot1+3).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+3;
+								end if;
+							end if;
+						else
+							--2,10,18,26
+							if spot1 + 9 = spot2 then
+								-- jump left
+								if board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+4;
+								end if;
+							elsif spot1 + 7 = spot2 then
+								-- jump right
+								if board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+4;
+								end if;
+							end if;
+						end if;
+					when 3 => 
+						if spot1 / 4 mod 2 = 1 then
+							--7,15,23,31
+							if spot1 + 9 = spot2 then
+								if board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+4;
+								end if;
+							elsif spot1 + 7 = spot2 then
+								if board(spot1+3).pieceValue = 3 or board(spot1+3).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+3;
+								end if;
+							end if;
+						else
+							--3,11,19,27
+							if spot1 + 9 = spot2 then
+								if board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+5;
+								end if;
+							elsif spot1 + 7 = spot2 then
+								if board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+4;
+								end if;
+							end if;
+						end if;
+					when 0 => 
+						if spot1 / 4 mod 2 = 1 then
+							--4,12,20,28
+							if spot1 + 7 = spot2 then
+								if board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+4;
+								end if;
+							end if;
+						else
+							--8,16,24,32
+							if spot1 + 7 = spot2 then
+								if board(spot1+3).pieceValue = 3 or board(spot1+3).pieceValue = 4 then
+									isValid := True;
+									indexErase := spot1+3;
+								end if;
+							end if;
+						end if;
+					when others => null;
+				end case;
+			end if;
+		elsif player = 2 then
+			if board(spot1).pieceValue = 3 or board(spot1).pieceValue = 4 then
+				case spot1 mod 4 is
+					when 0 => 
+						if spot1 / 4 mod 2 = 1 then
+							--8,16,24,32
+							if spot1 - 9 = spot2 then
+								if board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-5;
+								end if;
+							end if;
+						else
+							--4,12,20,28
+							if spot1 - 9 = spot2 then
+								if board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-5;
+								end if;
+							end if;
+						end if;
+					when 1 => 
+						
+						if spot1 / 4 mod 2 = 1 then
+							--5,13,21,29
+							if spot1 - 7 = spot2 then
+								if board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-4;
+								end if;
+							end if;
+						else
+							--1,9,17,25
+							if spot1 - 7 = spot2 then
+								if board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-4;
+								end if;
+							end if;
+						end if;
+					when 2 => 
+						if spot1 / 4 mod 2 = 1 then
+							--6,14,22,30
+							if spot1 - 9 = spot2 then
+								if board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-5;
+								end if;
+							elsif spot1 - 7 = spot2 then
+								if board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-4;
+								end if;
+							end if;
+						else
+							--2,10,18,26
+							if spot1 - 9 = spot2 then
+								if board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-4;
+								end if;
+							elsif spot1 - 7 = spot2 then
+								if board(spot1-3).pieceValue = 1 or board(spot1-3).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-3;
+								end if;
+							end if;
+						end if;
+					when 3 => 
+						if spot1 / 4 mod 2 = 1 then
+							--7,15,23,31
+							if spot1 - 9 = spot2 then
+								if board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-5;
+								end if;
+							elsif spot1 - 7 = spot2 then
+								if board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-4;
+								end if;
+							end if;
+						else
+							--3,11,19,27
+							if spot1 - 9 = spot2 then
+								if board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-4;
+								end if;
+							elsif spot1 - 7 = spot2 then
+								if board(spot1-3).pieceValue = 1 or board(spot1-3).pieceValue = 2 then
+									isValid := True;
+									indexErase := spot1-3;
+								end if;
+							end if;
+						end if;
+					when others => null;
+				end case;
 			end if;
 		end if;
-		if player = 2 then
-			if spot1 - 4 = spot2 OR spot1 - 5 = spot2 then
-				isValid := True;
-			else
-				isValid := False;
+		if isValid then
+			board(spot2).pieceValue := board(spot1).pieceValue;
+			board(spot1).pieceValue := 0;
+			board(indexErase).pieceValue := 0;
+			erasePiece(spot1);
+			erasePiece(indexErase);
+			drawPiece(spot2);
+		end if;
+	end isValidJump;
+	
+	
+	function isValidMove(spot1, spot2, player: in Integer) return Boolean is
+		--Function variables
+		isValid: Boolean := False; --Value that is returned at the end of the function to tell the prgm is the attempted move is valid
+	begin
+		if player = 1 then		
+			if board(spot1).pieceValue = 1 or board(spot1).pieceValue = 2 then
+				case spot1 mod 4 is
+					when 1 => 
+					-- 1,5,9,13,17..
+						if spot1 / 4 mod 2 = 1 then
+							--5,13,21,29
+							if spot1 + 4 = spot2 then
+								-- does not check if there is a piece there
+								isValid := True;
+							end if;
+						else
+							--1,9,17,25
+							if spot1 + 4 = spot2 or spot1 + 5 = spot2 then
+								isValid := True;
+							end if;
+						end if;
+					when 2 => 
+						if spot1 / 4 mod 2 = 1 then
+							--6,14,22,30
+							if spot1 + 3 = spot2 or spot1 + 4 = spot2 then
+								-- does not check if there is a piece there
+								isValid := True;
+							end if;
+						else
+							--2,10,18,26
+							if spot1 + 4 = spot2 or spot1 + 5 = spot2 then
+								isValid := True;
+							end if;
+						end if;
+					when 3 => 
+						if spot1 / 4 mod 2 = 1 then
+							--7,15,23,31
+							if spot1 + 3 = spot2 or spot1 + 4 = spot2 then
+								-- does not check if there is a piece there
+								isValid := True;
+							end if;
+						else
+							--3,11,19,27
+							if spot1 + 4 = spot2 or spot1 + 5 = spot2 then
+								isValid := True;
+							end if;
+						end if;
+					when 0 => 
+						if spot1 / 4 mod 2 = 1 or spot1 mod 4 = 0 then
+							--8,16,24,32
+							if spot1 + 3 = spot2 or spot1 + 4 = spot2 then
+								isValid := True;
+							end if;
+						else
+							--4,12,20,28
+							if spot1 + 4 = spot2 then
+								isValid := True;
+							end if;
+						end if;
+					when others => null;
+				end case;
+			end if;
+		elsif player = 2 then
+			if board(spot1).pieceValue = 3 or board(spot1).pieceValue = 4 then
+				case spot1 mod 4 is
+					when 0 => 
+						if spot1 / 4 mod 2 = 1 or spot1 mod 4 = 0 then
+							--8,16,24,32
+							if spot1 - 4 = spot2 or spot1 - 5 = spot2 then
+								isValid := True;
+							end if;
+						else
+							--4,12,20,28
+							if spot1 - 4 = spot2 then
+								isValid := True;
+							end if;
+						end if;
+					when 1 => 
+					-- 1,5,9,13,17..
+						if spot1 / 4 mod 2 = 1 then
+							--5,13,21,29
+							if spot1 - 4 = spot2 then
+								-- does not check if there is a piece there
+								isValid := True;
+							end if;
+						else
+							--1,9,17,25
+							if spot1 - 3 = spot2 or spot1 - 4 = spot2 then
+								isValid := True;
+							end if;
+						end if;
+					
+					when 2 => 
+						if spot1 / 4 mod 2 = 1 then
+							--6,14,22,30
+							if spot1 - 4 = spot2 or spot1 - 5 = spot2 then
+								-- does not check if there is a piece there
+								isValid := True;
+							end if;
+						else
+							--2,10,18,26
+							if spot1 - 3 = spot2 or spot1 - 4 = spot2 then
+								isValid := True;
+							end if;
+						end if;
+					when 3 => 
+						if spot1 / 4 mod 2 = 1 then
+							--7,15,23,31
+							if spot1 - 4 = spot2 or spot1 - 5 = spot2 then
+								-- does not check if there is a piece there
+								isValid := True;
+							end if;
+						else
+							--3,11,19,27
+							if spot1 - 3 = spot2 or spot1 - 4 = spot2 then
+								isValid := True;
+							end if;
+						end if;
+					when others => null;
+				end case;
 			end if;
 		end if;
 		return isValid;

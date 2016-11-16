@@ -24,12 +24,6 @@ package GameBoard is
 	MenuAbout					: Menu_Type 		:= Menu(AppFrame,"About");
 	File_End_Game				: Menuitem_Type 	:= Menuitem(MenuFile,"End Game",'E');
 	File_Exit					: Menuitem_Type 	:= Menuitem(MenuFile,"Exit Program",'Q');
-	--Declare labels to get moves from the player
-	PromptPieceToMove			: Label_Type 		:= Label(AppFrame,(50,700),200,25,"Choose a Piece to Move:",Right);
-	PromptLocation				: Label_Type 		:= Label(AppFrame,(50,750),200,25,"Choose a Location to Move to:",Right);
-	--Declare editboxes for text input
-	InputPieceToMove			: Editbox_Type 		:= Editbox(AppFrame,(255,700),100,25,"");
-	InputLocation				: Editbox_Type 		:= Editbox(AppFrame,(255,750),100,25,"");
 	-- Labels for Timer
 	Timer_Label_Sec    			: Label_Type	    := Label(AppFrame,(720,25),20,20,"0",Left);
 	Timer_Label_Min    			: Label_Type   		:= Label(AppFrame,(700,25),20,20,"0",Left);
@@ -66,6 +60,7 @@ package GameBoard is
 	board: array (1..32) of Spot;
 	--Set up game board procedure
 	procedure makeKing(newKing: Integer);
+	procedure isValidJump(spot1, spot2, player: in Integer);
 	function isValidMove(spot1, spot2, player: in Integer) return Boolean;
 	--procedure isValidJump
 	--function isValidKingMove
