@@ -18,7 +18,7 @@ RV SPARK_05
 RV MAX_SELECT_ALTERNATIVES=1
 RV MAX_TASK_ENTRIES=2
 
-U gameboard%b		gameboard.adb		43a3bd6d OO PK
+U gameboard%b		gameboard.adb		4dbae469 OO PK
 W ada%s			ada.ads			ada.ali
 W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
@@ -56,7 +56,7 @@ D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
 D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
 D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
 D gameboard.ads		20161116144828 3e9699c2 gameboard%s
-D gameboard.adb		20161116150314 4558d17b gameboard%b
+D gameboard.adb		20161116165538 4b41887f gameboard%b
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092926 5421119b interfaces.c%s
 D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
@@ -102,7 +102,7 @@ X 1 ada.ads
 X 10 a-textio.ads
 49K13*Text_IO 471e16 13|2w10 2r27
 X 12 gameboard.ads
-4K9*GameBoard 72l5 72e14 13|3b14 160l5 160t14
+4K9*GameBoard 72l5 72e14 13|3b14 156l5 156t14
 7r9*AppFrame{20|358R8[19|84]} 11r91 13r91 14r91 16r82 17r82 18r82 19r82 21r82
 . 23r89 24r89 28r82 29r82 31r84 32r84 34r78 35r82
 9r9*BoardLocation{20|141R11[19|84]} 11r100 13|31r40 41r61 41r82 44m13 44r31
@@ -139,18 +139,18 @@ X 12 gameboard.ads
 50Y23 stop 13|109b48
 56R14*Spot 64e19 66r33
 59i17*pieceValue{integer} 13|34m52 36m52 38m52 52r37 53r45 55r48 80r33 80r64
-. 82r36 82r67 96m31 96r59 97m31 127r35 128m40 129r38 130m40 141r59 150r59
+. 82r36 82r67 96m31 96r59 97m31 127r35 128m40 129r38 130m40
 61i17*location{integer} 13|40m44
 63r17*point{20|141R11[19|84]} 13|41m44 66r50 66r74 71r43
 66a9*board(56R14) 13|34m41 36m41 38m41 40m33 41m33 52r28 53r36 55r39 66r37
 . 66r61 71r30 80r20 80r51 82r23 82r54 96m17 96r45 97m17 127r20 128m25 129r23
-. 130m25 141r46 150r46
+. 130m25
 68U19*makeKing 68>28 13|125b19 132l13 132t21
 68i28 newKing{integer} 13|125b28 127r26 128r31 129r29 130r31
-69V18*isValidMove{boolean} 69>30 69>37 69>44 13|134b18 157l13 157t24
-69i30 spot1{integer} 13|134b30 138r20 138r41 141r52 147r20 147r41 150r52
-69i37 spot2{integer} 13|134b37 138r32 138r53 147r32 147r53
-69i44 player{integer} 13|134b44 139r28 141r31 148r28 150r31
+69V18*isValidMove{boolean} 69>30 69>37 69>44 13|134b18 153l13 153t24
+69i30 spot1{integer} 13|134b30 139r28 139r49 146r28 146r49
+69i37 spot2{integer} 13|134b37 139r40 139r61 146r40 146r61
+69i44 player{integer} 13|134b44 138r20 145r20
 X 13 gameboard.adb
 5i9 num{integer} 17m41 17r48 23m41 23r48 33r36 34r47 35r39 35r53 36r47 38r47
 . 40r39 40r56 41r39
@@ -163,7 +163,7 @@ X 13 gameboard.adb
 89i21 i{integer}
 103i17 min{integer} 115m57 115r64 120r89
 103i21 sec{integer} 112m49 112r56 113r52 114m57 119r89
-136b17 isValid{boolean} 140m33 142m33 144m33 149m33 151m33 153m33 156r24
+136b17 isValid{boolean} 140m33 142m33 147m33 149m33 152r24
 X 18 jewl.ads
 97K9*JEWL 12|1r6 1r31 18|238e9
 131i31*X{integer} 13|41r75 44r45 66r56 74m23 74r34

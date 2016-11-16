@@ -135,19 +135,15 @@ package body GameBoard is
 		--Function variables
 		isValid: Boolean; --Value that is returned at the end of the function to tell the prgm is the attempted move is valid
 	begin
-		if spot1 + 4 = spot2 OR spot1 + 5 = spot2 then
-			if player = 1 then
-				isValid := True;
-			elsif player = 2 AND board(spot1).pieceValue = 4 then
+		if player = 1 then
+			if spot1 + 4 = spot2 OR spot1 + 5 = spot2 then
 				isValid := True;
 			else
 				isValid := False;
 			end if;
 		end if;
-		if spot1 - 4 = spot2 OR spot1 - 5 = spot2 then
-			if player = 2 then
-				isValid := True;
-			elsif player = 1 AND board(spot1).pieceValue = 2 then
+		if player = 2 then
+			if spot1 - 4 = spot2 OR spot1 - 5 = spot2 then
 				isValid := True;
 			else
 				isValid := False;
