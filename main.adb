@@ -50,6 +50,8 @@ begin
 
 				
 				when 'C' =>
+					spotIndex1 := 0;
+					spotIndex2 := 0;
 					while spotIndex1 = 0 loop
 						xFinder   := 0;
 						yFinder   := 0;
@@ -64,13 +66,10 @@ begin
 								spotIndex1 := spotIndex1 + 8;
 							end if;
 						end loop;
-						if spotIndex1 mod 2 = 1 OR board(spotIndex1).pieceValue = 0 then
-							spotIndex1 := 0;
-						end if;
 					end loop; --spotIndex1 now holds the array index of the piece to move
 					if spotIndex2 = 0 then--This is the beginning of the second click(place to move to)
 						case Next_Command is
-							when 'C' =>
+							when 'C' => -- capture next click
 								while spotIndex2 = 0 loop
 									xFinder   := 0;
 									yFinder   := 0;
@@ -85,103 +84,29 @@ begin
 											spotIndex2 := spotIndex2 + 8;
 										end if;
 									end loop;
-									if spotIndex2 mod 2 = 1 OR board(spotIndex2).pieceValue = 0 then
-										spotIndex2 := 0;
-									end if;
 								end loop; --spotIndex1 now holds the array index of the piece to move	
-							when others =>
-								put("second click botched");
+							when others => null;
 						end case;
 					end if; -- spotIndex2 now holds the array index of the spot to attempt to move to
+					if spotIndex1 / 8 mod 2 > 1 then
+						spotIndex1 := spotIndex1 / 2 + 1;
+					else
+						spotIndex1 := spotIndex1 / 2;
+					end if;
+					if spotIndex2 / 8 mod 2 > 1 then
+						spotIndex2 := spotIndex2 / 2 + 1;
+					else
+						spotIndex2 := spotIndex2 / 2;
+					end if;
 					put(Integer'Image(spotIndex1));
 					put(Integer'Image(spotIndex2));
-				
-					-- when 'M' =>
-					-- if playerTurn = 1 then
-						-- if Next_Command = 'M' then
-							-- pieceToMove := Integer'Value(Get_Text(InputPieceToMove));
-							-- locationToMoveTo := Integer'Value(Get_Text(InputLocation));
-							-- if board(pieceToMove).pieceValue = 1 or board(pieceToMove).pieceValue = 3 then
-								-- if isValidMove(pieceToMove,locationToMoveTo) = True then
-									-- --Move piece
-									-- board(locationToMoveTo).pieceValue := board(pieceToMove).pieceValue;
-									-- --Draw piece in new location
-									-- Set_Fill(BoardCanvas,Red);
-									-- Draw_Circle(BoardCanvas,board(locationToMoveTo).point,25);
-									-- --Remove piece from old location
-									-- board(pieceToMove).pieceValue := 0;
-									-- --Remove piece from location on gui
-									-- Set_Fill(BoardCanvas,Black);
-									-- Draw_Rectangle(BoardCanvas,(board(pieceToMove).point.X - 40,board(pieceToMove).point.Y - 40),80,80);
-									-- --Check if a piece was jumped over
-									-- if returnRemovedValue > 0 then
-										-- --A piece was jumped over
-										-- Set_Fill(BoardCanvas,Black);
-										-- Draw_Rectangle(BoardCanvas,(board(returnRemovedValue).point.X - 40,board(returnRemovedValue).point.Y - 40),80,80);
-										-- --Increase player's score
-										-- playerScore := playerScore + 1;
-									-- end if;
-								-- else
-									-- Set_Text(WhosMoveLabel,"Invalid location choice.");
-									-- --Put_Line("Invalid location choice.");
-								-- end if;
-							-- elsif board(pieceToMove).pieceValue = 2 or board(pieceToMove).pieceValue = 4 then --Computer's piece
-								-- --Put_Line("That is not your piece.");
-								-- Set_Text(WhosMoveLabel,"That is not your piece.");
-							-- else
-								-- --Put_Line("There is no piece at that location.");
-								-- Set_Text(WhosMoveLabel,"There is no piece at that location.");
-							-- end if;
-						-- end if;
-						-- playerTurn := 2;
-					-- elsif playerTurn = 2 then
-						-- --Determine piece to move
-						-- --Determine location to move to
-						-- generateMove;
-						-- pieceToMove := generatePiece;
-						-- locationToMoveTo := generateLocation;
-						-- --Check team of piece to make sure it belongs to player
-						-- if board(pieceToMove).pieceValue = 2 then --correct piece
-							-- --Put("Enter Location to Move to: ");
-							-- --Get(locationToMoveTo);
-
-							-- if isValidMove(pieceToMove,locationToMoveTo) = True then
-								-- --Move piece
-								-- board(locationToMoveTo).pieceValue := board(pieceToMove).pieceValue;
-
-								-- --Draw piece in new location
-								-- Set_Fill(BoardCanvas,White);
-								-- Draw_Circle(BoardCanvas,board(locationToMoveTo).point,25);
-
-								-- --Remove piece from old location
-								-- board(pieceToMove).pieceValue := 0;
-
-								-- --Remove piece from location on GUI
-								-- Set_Fill(BoardCanvas,Black);
-								-- Draw_Rectangle(BoardCanvas,(board(pieceToMove).point.X - 40,board(pieceToMove).point.Y - 40),80,80);
-
-								-- --Check if a piece was jumped over
-								-- if returnRemovedValue > 0 then
-									-- --A piece was jumped over
-									-- Set_Fill(BoardCanvas,Black);
-									-- Draw_Rectangle(BoardCanvas,(board(returnRemovedValue).point.X - 40,board(returnRemovedValue).point.Y - 40),80,80);
-
-									-- --Increase computer's score
-									-- computerScore := computerScore + 1;
-								-- end if;
-							-- else
-							-- --Put_Line("Invalid location choice.");
-							-- Set_Text(WhosMoveLabel,"Invalid location choice.");
-							-- end if;
-						-- elsif board(pieceToMove).pieceValue = 1 or board(pieceToMove).pieceValue = 3 then --player's pieces
-							-- --Put_Line("That is not your piece.");
-							-- Set_Text(WhosMoveLabel,"That is not your piece.");
-						-- else --empty space
-							-- --Put_Line("There is no piece at that location.");
-							-- Set_Text(WhosMoveLabel,"There is no piece at that location.");
-						-- end if;
-						-- playerTurn := 1;
-					-- end if;
+					if board(spotIndex1).pieceValue /= 0 AND board(spotIndex2).pieceValue = 0 then
+						put("Valid");
+					else
+						put("Invalid");
+					end if;
+					
+					
 				when 'E' =>
 					gameOver := True;
 					timeKeeper.stop;
