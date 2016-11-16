@@ -1,0 +1,232 @@
+V "GNAT Lib v2016"
+P SS ZX
+
+RN
+RV NO_DISPATCH
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTION_PROPAGATION
+RV NO_EXCEPTIONS
+RV NO_FINALIZATION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+RV MAX_ENTRY_QUEUE_LENGTH=1+
+
+U jewl.window_implementation%b  jewl-window_implementation.adb  06fa490f NE OO PK IU
+W ada.tags%s		a-tags.adb		a-tags.ali
+W jewl%s		jewl.adb		jewl.ali
+W jewl.message_handling%s  jewl-message_handling.adb  jewl-message_handling.ali
+W system%s		system.ads		system.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
+
+U jewl.window_implementation%s  jewl-window_implementation.ads  e16d4c85 EE OO PF PK IU
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W jewl%s		jewl.adb		jewl.ali
+W jewl.canvas_implementation%s  jewl-canvas_implementation.adb  jewl-canvas_implementation.ali
+W jewl.win32_interface%s  jewl-win32_interface.adb  jewl-win32_interface.ali
+W system%s		system.ads		system.ali
+W system.finalization_masters%s  s-finmas.adb	s-finmas.ali
+W system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
+D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
+D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D a-uncdea.ads		20160516092930 f15a5ed1 ada.unchecked_deallocation%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092926 5421119b interfaces.c%s
+D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
+D jewl.ads		20161115012422 e853f5a4 jewl%s
+D jewl-canvas_implementation.ads  20161115012422 95a129a8 jewl.canvas_implementation%s
+D jewl-message_handling.ads  20161115012422 3eba9c73 jewl.message_handling%s
+D jewl-win32_interface.ads  20161115012422 825052c2 jewl.win32_interface%s
+D jewl-window_implementation.ads  20161115012422 336a5273 jewl.window_implementation%s
+D jewl-window_implementation.adb  20161115012422 0b2a870f jewl.window_implementation%b
+D system.ads		20160516092930 2da59038 system%s
+D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-finmas.ads		20160516092930 7811a767 system.finalization_masters%s
+D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
+D s-memory.ads		20160516092930 597d6634 system.memory%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20160516092930 2e5b26a9 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-pooglo.ads		20160516092926 ede33ef8 system.pool_global%s
+D s-secsta.ads		20160516092930 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+D s-stalib.adb		20160516092926 f2fe2716 system.standard_library%b
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
+D s-stposu.ads		20160516092926 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20160516092926 aedef97e system.stream_attributes%s
+D s-string.ads		20160516092930 8fe54fb7 system.strings%s
+D s-ststop.ads		20160516092928 e6693757 system.strings.stream_ops%s
+D s-tasinf.ads		20160516092930 601f6b72 system.task_info%s
+D s-taspri.ads		20160516092930 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20160516092928 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-taprob.ads		20160516092928 502249e3 system.tasking.protected_objects%s
+D s-tpoben.ads		20160516092932 b641f948 system.tasking.protected_objects.entries%s
+D s-tasren.ads		20160516092926 a67a9949 system.tasking.rendezvous%s
+D s-tassta.ads		20160516092928 70812003 system.tasking.stages%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-win32.ads		20160516092926 b7f96285 system.win32%s
+X 10 i-c.ads
+35I9*int<integer>
+37I9*long<integer>
+45M9*unsigned_long
+60M9*size_t
+72E9*char<character>
+79A9*char_array(72E9)<60M9>
+X 12 jewl.ads
+97K9*JEWL 238e9 16|97r6 97r39 98r6 98r39 101r17 309r5 17|94r6 96r14 98r7
+. 99r7 100r7 209r5
+116I11*Colour_Range{integer}
+117R11*Colour_Type 121e39 16|242r16
+118i31*Red{116I11} 17|169m21
+119i31*Green{116I11} 17|170m21
+120i31*Blue{116I11} 17|171m21
+205R8 Reference_Counted_Type 208e15 16|135r32 226r35
+214U13 Cleanup
+226R8 Controlled_Type<3|43R9> 229e15 16|139r21 140r21
+X 13 jewl-canvas_implementation.ads
+95K22*Canvas_Implementation 374e31 16|97w11 97r44 17|98r12
+160W18*Canvas_Monitor 190e21 16|207r18
+161U15 Clear 17|148s22
+205H8*Canvas_Object_Type
+X 14 jewl-message_handling.ads
+99K22*Message_Handling 247e26 17|94w11 99r12
+123t8*Message_Loop 17|132r7
+143Y11 Destroy_Window 17|132s20
+X 15 jewl-win32_interface.ads
+97K22*Win32_Interface 970e25 16|98w11 98r44 17|100r12
+269I11*Win32_BOOL{10|35I9} 17|103r12 163r9
+272M11*Win32_DWORD{10|45M9} 17|103r24
+275I11*Win32_LONG{10|37I9} 16|148r21
+280M11*Win32_COLORREF{10|45M9} 16|237r51
+281M11*Win32_SIZE{10|60M9} 16|274r35 282r19
+283A11*Win32_String{10|79A9}<10|60M9> 16|278r19 279r19 280r27 281r27
+289M11*Win32_HWND{18|67M9} 16|137r21 185r15
+294M11*Win32_HFONT{18|67M9} 16|143r21
+372R8*Win32_LOGFONT 388e15 16|260r24
+459R8*Win32_CHOOSEFONT 479e15 16|259r24
+462m7*hwndOwner{289M11} 17|183m19
+481R8*Win32_CHOOSECOLOR 492e15 16|241r24
+484m9*hwndOwner{289M11} 17|166m19
+486m9*rgbResult{280M11} 17|165m19 169r52 170r53 171r53
+494R8*Win32_OPENFILENAME 516e15 16|277r27
+497m7*hWndOwner{289M11} 17|194m19 205m19
+522i3*Bool_Dummy{269I11} 17|116m7
+576V13*RGB{280M11} 17|165s32
+600V12*ChooseColor{269I11} 17|167s10
+602V12*ChooseFont{269I11} 17|184s12
+651V12*DeleteObject{269I11} 17|116s21
+699V12*GetActiveWindow{289M11} 17|166s32 183s32 194s32 205s32
+728V12*GetOpenFileName{269I11} 17|195s12
+732V12*GetSaveFileName{269I11} 17|206s12
+754V12*IsWindow{269I11} 17|131s8 147s8
+X 16 jewl-window_implementation.ads
+101K22*Window_Implementation 12|97k9 16|309l10 309e31 17|96b19 209l10 209t31
+103R8*Window_Internals 104r33 135c8 151r38 166r35 205r32 17|113r38 134r14
+. 150r14
+104P8*Window_Ptr(135R8) 141r21
+106R8*Container_Internals 107r36 166c8 183r37
+107P8*Container_Ptr(106R8) 138r21
+135R8*Window_Internals<12|205R8> 149e15 151P13
+137m7*Handle{15|289M11} 17|131r24 132m43 147r24
+138p7*Parent{107P8}
+139r7*Next{12|226R8}
+140r7*First{12|226R8}
+141p7*Last{104P8}
+142i7*Action{integer}
+143m7*Font{15|294M11} 17|115r15 116r42
+144i7*Top{integer}
+145i7*Left{integer}
+146i7*Height{integer}
+147i7*Width{integer}
+148i7*WndProc{15|275I11}
+151U13*Cleanup<12|214p13> 151=22 17|113b13 118l7 118t14 134s5 150s5
+151r22 Object{135R8} 17|113b22 115r8 116r35
+166R8*Container_Internals<135R8> 151P13 169e15
+168b7*Group{boolean}
+183R8*Main_Window_Internals<166R8> 186e15 188r38 190P13 190r38 17|129r38
+185m7*Focus{15|289M11}
+188P8*Main_Window_Ptr(183R8)
+190U13*Cleanup<151p13> 190=22 17|129b13 135l7 135t14
+190r22 Object{183R8} 17|129b22 131r17 132r36 134m31 134r31
+205R8*Canvas_Internals<135R8> 209e15 211P13 211r38 213r33 17|145r38
+207w7*Monitor{13|160W18} 17|148m14
+208i7*Keypress{integer}
+211U13*Cleanup<151p13> 211=22 17|145b13 151l7 151t14
+211r22 Object{205R8} 17|145b22 147r17 148r7 150m31 150r31
+213P8*Canvas_Ptr(205R8)
+225H8*Common_Dialog_Internals<12|205R8> 12|214p13 16|226e74 227r40 228p12
+. 228r41 239r39 257r37 275r48
+227P8*Common_Dialog_Ptr(225R8)
+228y12*Show_Dialog{boolean} 228^25
+228p25 Dialog(225R8)
+237A8*Custom_Colours(15|280M11)<integer> 243r16
+239R8*Colour_Dialog_Internals<225R8> 12|214p13 16|244e15 246r40 248P12 248r41
+. 17|161r41
+241r7*Struct{15|481R8} 17|165m12 166m12 167m30 169r45 170r46 171r46
+242r7*Colour{12|117R11} 17|165r44 169m14 170m14 171m14
+243a7*Custom{237A8}
+246P8*Colour_Dialog_Ptr(239R8)
+248V12*Show_Dialog{boolean}<228p12> 248^25 17|161b12 174l7 174t18
+248p25 Dialog(239R8) 17|161b25 165r5 165r37 166r5 167r23 169r7 169r38 170r7
+. 170r39 171r7 171r39
+257R8*Font_Dialog_Internals<225R8> 12|214p13 16|261e15 263r38 265P12 265r41
+. 17|180r41
+259r7*Struct{15|459R8} 17|183m12 184m31
+260r7*Font{15|372R8}
+263P8*Font_Dialog_Ptr(257R8)
+265V12*Show_Dialog{boolean}<228p12> 265^25 17|180b12 185l7 185t18
+265p25 Dialog(257R8) 17|180b25 183r5 184r24
+274H8*File_Dialog_Internals<225R8> 12|214p13 16|228p12 274d31 283e15 285r38
+. 293r37 304r37
+274m31*N{15|281M11} 278r36
+277r7*Struct{15|494R8} 17|194m12 195m35 205m12 206m35
+278a7*Title{10|79A9}
+279a7*Buffer{10|79A9}
+280a7*Directory{10|79A9}
+281a7*Filter{10|79A9}
+282m7*Length{15|281M11}
+285P8*File_Dialog_Ptr(274R8)
+293R8*Open_Dialog_Internals<274R8> 12|214p13 16|293e75 295P12 295r41 17|191r41
+295V12*Show_Dialog{boolean}<228p12> 295^25 17|191b12 196l7 196t18
+295p25 Dialog(293R8) 17|191b25 194r5 195r28
+304R8*Save_Dialog_Internals<274R8> 12|214p13 16|304e75 306P12 306r41 17|202r41
+306V12*Show_Dialog{boolean}<228p12> 306^25 17|202b12 207l7 207t18
+306p25 Dialog(304R8) 17|202b25 205r5 206r28
+X 17 jewl-window_implementation.adb
+163i5 B{15|269I11} 167m5 168r8 173r12
+X 18 system.ads
+37K9*System 16|99w6 137r35 143r36 185r29 17|102r12 115r23 18|200e11
+67M9*Address 17|102r19
+69m4*Null_Address{67M9} 16|137r42 143r43 185r36 17|115r30
+81V14*"="{boolean} 17|115r20
+X 23 s-memory.ads
+53V13*Alloc{18|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{18|67M9} 105i<c,__gnat_realloc>22
+X 31 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 33 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+

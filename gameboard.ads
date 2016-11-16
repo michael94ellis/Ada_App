@@ -64,12 +64,9 @@ package GameBoard is
 	end record;
 	--Board Variable of 32 Spots
 	board: array (1..32) of Spot;
-	--Variable to hold the location of a jumped over piece to be removed
-	removeChecker: Integer := 0;
 	--Set up game board procedure
 	procedure makeKing(newKing: Integer);
-	function isValidMove(piece,location: Integer) return Boolean;
-	function returnRemovedValue return Integer;
+	function isValidMove(spot1, spot2: in Integer) return Boolean;
 	--procedure isValidJump
 	--function isValidKingMove
 end GameBoard;

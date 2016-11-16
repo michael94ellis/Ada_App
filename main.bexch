@@ -1,0 +1,35 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+C:\Users\candi\Documents\Programming\Ada\ada.gpr
+20161106235908
+[BOUND OBJECT FILES]
+C:\Users\candi\Documents\Programming\Ada\jewl.o
+C:\Users\candi\Documents\Programming\Ada\jewl-win32_interface.o
+C:\Users\candi\Documents\Programming\Ada\jewl-canvas_implementation.o
+C:\Users\candi\Documents\Programming\Ada\jewl-message_handling.o
+C:\Users\candi\Documents\Programming\Ada\jewl-window_implementation.o
+C:\Users\candi\Documents\Programming\Ada\jewl-windows.o
+C:\Users\candi\Documents\Programming\Ada\jewl-simple_windows.o
+C:\Users\candi\Documents\Programming\Ada\gameboard.o
+C:\Users\candi\Documents\Programming\Ada\computer.o
+C:\Users\candi\Documents\Programming\Ada\main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-LC:\Users\candi\Documents\Programming\Ada\
+-LC:\Users\candi\Documents\Programming\Ada\
+-LC:/gnat/2016/lib/gcc/i686-pc-mingw32/4.9.4/adalib/
+-static
+-static-libgcc
+-luser32
+-lgdi32
+-lcomdlg32
+-lwinmm
+C:/gnat/2016/lib/gcc/i686-pc-mingw32/4.9.4/adalib/libgnarl.a
+C:/gnat/2016/lib/gcc/i686-pc-mingw32/4.9.4/adalib/libgnat.a
+-Xlinker
+--stack=0x200000,0x1000
+-mthreads

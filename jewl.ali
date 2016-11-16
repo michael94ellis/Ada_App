@@ -1,0 +1,184 @@
+V "GNAT Lib v2016"
+P SS ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_DISPATCH
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FINALIZATION
+RV NO_FLOATING_POINT
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_NESTED_FINALIZATION
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_UNCHECKED_DEALLOCATION
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U jewl%b		jewl.adb		22120cd9 NE OO PK IU
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.unchecked_deallocation%s
+W system%s		system.ads		system.ali
+W system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.storage_pools%s  s-stopoo.adb		s-stopoo.ali
+W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+
+U jewl%s		jewl.ads		571c75cf EE OO PF PK IU
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.finalization%s	a-finali.ads		a-finali.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system%s		system.ads		system.ali
+W system.finalization_masters%s  s-finmas.adb	s-finmas.ali
+W system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+W system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
+D a-numeri.ads		20160516092928 bb51c45a ada.numerics%s
+D a-nuelfu.ads		20160516092928 03e83d1c ada.numerics.elementary_functions%s
+D a-ngelfu.ads		20160516092930 b8fdcb46 ada.numerics.generic_elementary_functions%s
+D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D a-uncdea.ads		20160516092930 f15a5ed1 ada.unchecked_deallocation%s
+D jewl.ads		20161115012422 e853f5a4 jewl%s
+D jewl.adb		20161115012422 38f39ab0 jewl%b
+D system.ads		20160516092930 2da59038 system%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-finmas.ads		20160516092930 7811a767 system.finalization_masters%s
+D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
+D s-memory.ads		20160516092930 597d6634 system.memory%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-pooglo.ads		20160516092926 ede33ef8 system.pool_global%s
+D s-secsta.ads		20160516092930 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+D s-stalib.adb		20160516092926 f2fe2716 system.standard_library%b
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
+D s-stposu.ads		20160516092926 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20160516092926 aedef97e system.stream_attributes%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+X 1 ada.ads
+16K9*Ada 19e8 11|95r6 226r31 12|95r6 96r6 96r45 237r25
+X 3 a-finali.ads
+40K13*Finalization 68e21 11|95w10 226r35
+43H9*Controlled<16|40R9> 59e72 11|226r48
+46U14*Initialize<16|44p14>
+X 4 a-numeri.ads
+16K13*Numerics 32e17 12|96r10 96r49
+X 5 a-nuelfu.ads
+18K22*Elementary_Functions[6|39] 12|96w19 96r58
+X 6 a-ngelfu.ads
+84V13*Sin{float} 12|191s44[5|18]
+92V13*Cos{float} 12|192s44[5|18]
+X 10 a-uncdea.ads
+20u15*Unchecked_Deallocation 12|95w10 237r29
+X 11 jewl.ads
+97K9*JEWL 205E8 238l5 238e9 12|98b14 283l5 283t9
+115M11*Angle_Type 176r31 12|189r31
+116I11*Colour_Range{integer} 118r40 119r40 120r40 188r26 12|111r34 112r36
+. 113r35
+117R11*Colour_Type 121e39 161r31 161r51 162r31 162r51 189r26 12|109r28 109r48
+. 121r27 121r47
+118i31*Red{116I11} 12|111m13 111r30 123m13 123r29
+119i31*Green{116I11} 12|112m13 112r30 124m13 124r29
+120i31*Blue{116I11} 12|113m13 113r30 125m13 125r29
+122R11*Font_Type 122d22 128e39 168r51 169r31 170r31 171r31 172r31 12|136r54
+. 137r9 150r25 159r25 168r25 177r27
+122i22*Length{natural} 124r51
+124a31*Name{string} 12|139m7 152r17
+125i31*Size{positive} 12|140m7 161r17
+126b31*Bold{boolean} 12|141m7 170r17
+127b31*Italic{boolean} 12|142m7 179r17
+130R11*Point_Type 132e39 133r58 174r31 176r51 177r31 178r31 179r31 180r31
+. 180r51 181r31 181r51 12|187r31 189r50 201r28 202r28 203r28 215r26 215r45
+. 224r26 224r45
+131i31*X{integer} 12|191r18 205r18 205r40 205r45 206r18 206r40 206r45 217m13
+. 217r21 217r26 226m13 226r21 226r26
+131i33*Y{integer} 12|192r18 207r18 207r40 207r45 208r18 208r40 208r45 217m29
+. 217r37 217r42 226m29 226r37 226r42
+133A11*Point_List(130R11)<integer>
+161V12*Light{117R11} 161>22 12|109b12 114l7 114t12
+161r22 Colour{117R11} 12|109b19 111r23 112r23 113r23
+162V12*Dark{117R11} 162>22 12|121b12 126l7 126t11
+162r22 Colour{117R11} 12|121b18 123r22 124r22 125r22
+164V12*Font{122R11} 164>22 165>22 166>22 167>22 12|133b12 144l7 144t11
+164a22 Name{string} 12|133b19 137r19 139r17
+165i22 Size{positive} 12|134b19 140r17
+166b22 Bold{boolean} 12|135b19 141r17
+167b22 Italic{boolean} 12|136b19 142r17
+169V12*Name{string} 169>22 12|150b12 153l7 153t11
+169r22 Font{122R11} 12|150b18 152r12
+170V12*Size{natural} 170>22 12|159b12 162l7 162t11
+170r22 Font{122R11} 12|159b18 161r12
+171V12*Bold{boolean} 171>22 12|168b12 171l7 171t11
+171r22 Font{122R11} 12|168b18 170r12
+172V12*Italic{boolean} 172>22 12|177b12 180l7 180t13
+172r22 Font{122R11} 12|177b20 179r12
+174V12*Endpoint{130R11} 174>22 175>22 176>22 12|187b12 193l7 193t15
+174r22 From{130R11} 12|187b22 191r13 192r13
+175i22 Length{positive} 12|188b22 191r36 192r36
+176m22 Angle{115M11} 12|189b22 191r54 192r54
+177V12*Inside{boolean} 177>22 178>22 179>22 12|201b12 209l7 209t13
+177r22 Point{130R11} 12|201b20 205r12 206r12 207r12 208r12
+178r22 From{130R11} 12|202b20 205r35 206r35 207r35 208r35
+179r22 To{130R11} 12|203b20 205r42 206r42 207r42 208r42
+180V13*"+"{130R11} 180>22 180>26 12|215b13 218l8 218t10
+180r22 P1{130R11} 12|215b17 217r18 217r34
+180r26 P2{130R11} 12|215b21 217r23 217r39
+181V13*"-"{130R11} 181>22 181>26 12|224b13 227l8 227t10
+181r22 P1{130R11} 12|224b17 226r18 226r34
+181r26 P2{130R11} 12|224b21 226r23 226r39
+188I11*Color_Range{116I11}
+189R11*Color_Type{117R11}
+205R8 Reference_Counted_Type 208e15 214p13 214r38 220r44 12|238r34 246r38
+207i7*Count{natural} 12|261r25 262m24 262r48 263r27 279m22 279r46
+214U13 Cleanup 214=22 12|246b13 249l7 249t14 264R11
+214r22 Object{205R8} 12|246b22
+220P8 Reference_Counted_Ptr(205R8) 228r17 12|239r34
+226R8 Controlled_Type<3|43R9> 3|46P14 11|229e15 235P13 235r39 236P13 236r39
+. 12|258r39 276r37
+228p7*Pointer{220P8} 12|260r15 261r17 262r16 262r40 263r19 264r27 265m24
+. 278r15 279r14 279r38
+235U13 Finalize<3|48p14> 235=23 12|258b13 269l7 269t15
+235r23 Object{226R8} 12|258b23 260r8 261r10 262r9 262r33 263r12 264r20 265m17
+. 265r17
+236U13 Adjust<3|47p14> 236=23 12|276b13 281l7 281t13
+236r23 Object{226R8} 12|276b21 278r8 279r7 279r31
+X 12 jewl.adb
+137r5 F{11|122R11} 139m5 140m5 141m5 142m5 143r12
+237U13 Free[10|20] 265s11
+X 13 system.ads
+67M9*Address
+X 17 s-memory.ads
+53V13*Alloc{13|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{13|67M9} 105i<c,__gnat_realloc>22
+X 24 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+

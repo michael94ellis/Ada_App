@@ -1,0 +1,84 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                  J E W L . S I M P L E _ W I N D O W S                   --
+--                                                                          --
+--   A predefined instantiation of JEWL.Windows for type Character.         --
+--                                                                          --
+--   Copyright (C) John English 2000. Contact address: je@brighton.ac.uk    --
+--   This software is released under the terms of the GNU General Public    --
+--   License and is intended primarily for educational use. Please contact  --
+--   the author to report bugs, suggestions and modifications.              --
+--                                                                          --
+------------------------------------------------------------------------------
+-- $Id: jewl-simple_windows.ads 1.7 2007/01/08 17:00:00 JE Exp $
+------------------------------------------------------------------------------
+--
+-- $Log: jewl-simple_windows.ads $
+-- Revision 1.7  2007/01/08 17:00:00  JE
+-- * Fixed linker options in JEWL.Win32_Interface to accommodate changes to GNAT
+--   GPL 2006 compiler (thanks to John McCormick for this)
+-- * Added delay in message loop to avoid the appearance of hogging 100% of CPU
+--   time
+--
+-- Revision 1.6  2001/11/02 16:00:00  JE
+-- * Fixed canvas bug when saving an empty canvas
+-- * Restore with no prior save now acts as erase
+-- * Removed redundant variable declaration in Image function
+--
+-- Revision 1.5  2001/08/22 15:00:00  JE
+-- * Minor bugfix to Get_Text for combo boxes
+-- * Minor changes to documentation (including new example involving dialogs)
+--
+-- Revision 1.4  2001/01/25 09:00:00  je
+-- Changes visible to the user:
+--
+-- * Added support for drawing bitmaps on canvases (Draw_Image operations
+--   and new type Image_Type)
+-- * Added Play_Sound
+-- * Added several new operations on all windows: Get_Origin, Get_Width,
+--   Get_Height, Set_Origin, Set_Size and Focus
+-- * Added several functions giving screen and window dimensions: Screen_Width,
+--   Screen_Height, Frame_Width, Frame_Height, Dialog_Width, Dialog_Height and
+--   Menu_Height
+-- * Canvases can now handle keyboard events: new constructor and Key_Code added
+-- * Added procedure Play_Sound
+-- * Operations "+" and "-" added for Point_Type
+-- * Pens can now be zero pixels wide
+-- * The absolute origin of a frame can now have be specified when the frame
+--   is created
+-- * Added new File_Dialog operations Add_Filter and Set_Directory
+-- * Added Get_Line renames to JEWL.IO for compatibility with Ada.Text_IO
+-- * Added all the Get(File,Item) operations mentioned in documentation but
+--   unaccountably missing :-(
+-- * Documentation updated to reflect the above changes
+-- * HTML versions of public package specifications added with links from
+--   main documentation pages
+--
+-- Other internal changes:
+--
+-- * Canvas fonts, pens etc. now use JEWL.Reference_Counted_Type rather than
+--   reinventing this particular wheel, as do images
+-- * Various minor code formatting changes: some code reordered for clarity,
+--   some comments added or amended,
+-- * Changes introduced in 1.2 to support GNAT 3.10 have been reversed, since
+--   GNAT 3.10 still couldn't compile this code correctly... ;-(
+--
+-- Outstanding issues:
+--
+-- * Optimisation breaks the code (workaround: don't optimise)
+--
+-- Revision 1.3  2000/07/07 12:00:00  je
+-- * JEWL.Simple_Windows added; JEWL.IO modified to use JEWL.Simple_Windows.
+-- * JEWL.IO bug fix: Put_Line to file wrote newline to standard output
+--   instead of to the file (thanks to Jeff Carter for pointing this out).
+-- * Panels fixed so that mouse clicks are passed on correctly to subwindows.
+-- * Memos fixed so that tabs are handled properly.
+-- * Password feature added to editboxes.
+-- * Minor typos fixed in comments within the package sources.
+-- * Documentation corrected and updated following comments from Moti Ben-Ari
+--   and Don Overheu.
+--
+------------------------------------------------------------------------------
+
+with JEWL.Windows;
+package JEWL.Simple_Windows is new JEWL.Windows (Command_Type => Character);

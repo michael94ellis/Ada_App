@@ -1,0 +1,126 @@
+V "GNAT Lib v2016"
+P SS ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTIONS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U computer%b		computer.adb		d5f43eb5 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.discrete_random%s
+W ada.tags%s		a-tags.adb		a-tags.ali
+W gameboard%s		gameboard.adb		gameboard.ali
+Z system%s		system.ads		system.ali
+Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
+
+U computer%s		computer.ads		7dea29d5 EE NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.discrete_random%s
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
+D a-numeri.ads		20160516092928 bb51c45a ada.numerics%s
+D a-nudira.ads		20160516092928 71e55def ada.numerics.discrete_random%s
+D a-nudira.adb		20160516092928 72908cdb ada.numerics.discrete_random%b
+D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
+D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D computer.ads		20161115012422 0c0f743a computer%s
+D computer.adb		20161115012422 3cd2aa29 computer%b
+D gameboard.ads		20161116015304 94ccbd49 gameboard%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092926 5421119b interfaces.c%s
+D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
+D jewl.ads		20161115012422 e853f5a4 jewl%s
+D jewl-simple_windows.ads  20161115012422 61a4afe3 jewl.simple_windows%s
+D jewl-windows.ads	20161115184400 4db40f6d jewl.windows%s
+D system.ads		20160516092930 2da59038 system%s
+D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-finmas.ads		20160516092930 7811a767 system.finalization_masters%s
+D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
+D s-imguns.ads		20160516092928 9ff43cf7 system.img_uns%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20160516092930 2e5b26a9 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-pooglo.ads		20160516092926 ede33ef8 system.pool_global%s
+D s-rannum.ads		20160516092928 99ade2f2 system.random_numbers%s
+D s-rannum.adb		20160516092932 20ba1217 system.random_numbers%b
+D s-ransee.ads		20160516092932 01a57b33 system.random_seed%s
+D s-secsta.ads		20160516092930 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
+D s-stposu.ads		20160516092926 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20160516092926 aedef97e system.stream_attributes%s
+D s-tasinf.ads		20160516092930 601f6b72 system.task_info%s
+D s-taspri.ads		20160516092930 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20160516092928 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-tassta.ads		20160516092928 70812003 system.tasking.stages%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-valuns.ads		20160516092932 10a8ed3b system.val_uns%s
+D s-win32.ads		20160516092926 b7f96285 system.win32%s
+X 1 ada.ads
+16K9*Ada 19e8 11|1r6 12|1r6 9r34
+X 4 a-numeri.ads
+16K13*Numerics 32e17 11|1r10 12|1r10 9r38
+X 5 a-nudira.ads
+44k22*Discrete_Random 75e33 11|1w19 12|1w19 9r47
+50R9 Generator<30|63R9> 12|11r10[9]
+52V13 Random{integer} 12|18s16[9]
+55U14 Reset<30|100p14> 12|17s7[9]
+X 6 a-nudira.adb
+53V16 Random[30|83]{integer} 31|392b13[12|9]
+X 11 computer.ads
+3K9*Computer 12l5 12e13 12|4b14 81l5 81t13
+5i4*piece{integer} 12|18m7 27r35 71r14
+6i4*location{integer} 12|77r14
+8U14*generateMove 12|6b14 66l8 66t20
+9V13*generatePiece{integer} 12|69b13 72l8 72t21
+10V13*generateLocation{integer} 12|75b13 78l8 78t24
+X 12 computer.adb
+7I15 pieces{integer} 9r63
+8I15 spots{integer}
+9K15 randomValue[5|44] 10r11
+11r7 G{5|50R9[9]} 17r13 18r23
+12a7 comPieces(integer) 23m13 27r25
+13i7 j{integer} 19m7 23r23
+13i9 location{integer} 38m16 47m19 51m19 56m19 59m19
+14r7 pieceGen{13|56R14} 27m7 30r10 32r13 32r38 32r64 33r12 33r38 33r64 34r12
+. 36r22 38r34 41r16 41r41 41r67 42r15 42r41 42r67 43r15 43r41 43r67 45r25
+. 47r37 49r28 51r37 55r25 56r37 58r28 59r37
+21i11 i{integer} 22r19 22r46 23r35
+X 13 gameboard.ads
+4K9*GameBoard 12|2w6 2r21 13|75e14
+56R14*Spot 12|14r17 13|64e19
+59i17*pieceValue{integer} 12|22r22 22r49 30r19
+61i17*location{integer} 12|23r38 32r22 32r47 32r73 33r21 33r47 33r73 34r21
+. 36r31 36r45 38r43 38r57 41r25 41r50 41r76 42r24 42r50 42r76 43r24 43r50
+. 43r76 45r34 45r48 47r46 47r60 49r37 49r51 51r46 51r60 55r34 55r48 56r46
+. 56r60 58r37 58r51 59r46 59r60
+66a9*board(56R14) 12|22r13 22r40 23r29 27r19 36r16 38r28 45r19 47r31 49r22
+. 51r31 55r19 56r31 58r22 59r31
+X 14 interfac.ads
+74M9*Unsigned_32
+77M9*Unsigned_64
+X 30 s-rannum.ads
+75V13*Random{14|74M9} 31|221i21
+76V13*Random{14|77M9} 31|221i21
+X 36 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+

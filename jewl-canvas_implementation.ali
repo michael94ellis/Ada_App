@@ -1,0 +1,380 @@
+V "GNAT Lib v2016"
+P SS ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_DISPATCH
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTION_PROPAGATION
+RV NO_EXCEPTIONS
+RV NO_FINALIZATION
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_NESTED_FINALIZATION
+RV NO_PROTECTED_TYPES
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_UNCHECKED_ACCESS
+RV NO_UNCHECKED_DEALLOCATION
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLICIT_LOOPS
+RV NO_ELABORATION_CODE
+RV NO_OBSOLESCENT_FEATURES
+RV SPARK_05
+
+U jewl.canvas_implementation%b  jewl-canvas_implementation.adb  3940adb4 NE OO PK IU
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W ada.unchecked_deallocation%s
+W jewl%s		jewl.adb		jewl.ali
+W system%s		system.ads		system.ali
+W system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.storage_pools%s  s-stopoo.adb		s-stopoo.ali
+W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+W system.tasking.protected_objects%s  s-taprob.adb  s-taprob.ali
+
+U jewl.canvas_implementation%s  jewl-canvas_implementation.ads  40ed0ea5 EE OO PF PK IU
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.finalization%s	a-finali.ads		a-finali.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W jewl%s		jewl.adb		jewl.ali
+W jewl.win32_interface%s  jewl-win32_interface.adb  jewl-win32_interface.ali
+W system%s		system.ads		system.ali
+W system.finalization_masters%s  s-finmas.adb	s-finmas.ali
+W system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+W system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+W system.strings.stream_ops%s  s-ststop.adb	s-ststop.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.protected_objects%s  s-taprob.adb  s-taprob.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
+D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D a-uncdea.ads		20160516092930 f15a5ed1 ada.unchecked_deallocation%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092926 5421119b interfaces.c%s
+D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
+D jewl.ads		20161115012422 e853f5a4 jewl%s
+D jewl-canvas_implementation.ads  20161115012422 95a129a8 jewl.canvas_implementation%s
+D jewl-canvas_implementation.adb  20161115012422 65d62f19 jewl.canvas_implementation%b
+D jewl-win32_interface.ads  20161115012422 825052c2 jewl.win32_interface%s
+D system.ads		20160516092930 2da59038 system%s
+D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
+D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-ficobl.ads		20160516092932 078245e4 system.file_control_block%s
+D s-finmas.ads		20160516092930 7811a767 system.finalization_masters%s
+D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
+D s-memory.ads		20160516092930 597d6634 system.memory%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20160516092930 2e5b26a9 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-pooglo.ads		20160516092926 ede33ef8 system.pool_global%s
+D s-secsta.ads		20160516092930 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+D s-stalib.adb		20160516092926 f2fe2716 system.standard_library%b
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
+D s-stposu.ads		20160516092926 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20160516092926 aedef97e system.stream_attributes%s
+D s-string.ads		20160516092930 8fe54fb7 system.strings%s
+D s-ststop.ads		20160516092928 e6693757 system.strings.stream_ops%s
+D s-tasinf.ads		20160516092930 601f6b72 system.task_info%s
+D s-taspri.ads		20160516092930 6c1d93d4 system.task_primitives%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-taprob.ads		20160516092928 502249e3 system.tasking.protected_objects%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
+D s-win32.ads		20160516092926 b7f96285 system.win32%s
+X 1 ada.ads
+16K9*Ada 19e8 15|92r6 16|92r6 93r6 99r25
+X 3 a-finali.ads
+40K13*Finalization 68e21 15|92w10
+X 7 a-textio.ads
+49K13*Text_IO 471e16 16|93w10
+X 9 a-uncdea.ads
+20u15*Unchecked_Deallocation 16|92w10 99r29
+X 11 i-c.ads
+35I9*int<integer>
+37I9*long<integer>
+43M9*unsigned
+47M9*unsigned_char
+72E9*char<character>
+79A9*char_array(72E9)<60M9>
+X 14 jewl.ads
+97K9*JEWL 238e9 15|93r6 95r17 97r7 220r18 233r18 246r18 275r18 314r16 326r16
+. 329r16 360r35 372r52 374r5 16|95r14 97r7 533r52 534r9 541r5
+130R11*Point_Type 132e39 15|220r23 233r23 246r23 261r26 275r23 326r21
+131i31*X{integer} 16|361r40 363r38 393r59 396r55 407r60 409r58 420r60 422r58
+. 424r62 435r58 437r56 486r53
+131i33*Y{integer} 16|362r40 364r38 394r59 397r55 408r60 410r58 421r60 423r58
+. 425r62 436r58 438r56 486r79
+205R8 Reference_Counted_Type 208e15 15|347r31 360r40
+220P8 Reference_Counted_Ptr(205R8)
+226R8 Controlled_Type<3|43R9> 229e15 15|314r21 329r21 372r57 16|533r57 534r14
+228p7*Pointer{220P8} 16|473r46 502r51 536m7 537r27
+X 15 jewl-canvas_implementation.ads
+95K22*Canvas_Implementation 14|97k9 15|374l10 374e31 16|95b19 541l10 541t31
+99A8*Point_List(17|345R8)<integer> 288r16 301r16
+105R8*Canvas_Object_Type 106r36 205c8 208e15 210r35 217r44 231r25 244r30
+. 259r38 273r28 286r48 299r47 312r27 324r27 16|100r30
+106P8*Canvas_Object_Ptr(205R8) 166r39 179r20 180r20 181r20 207r14 16|100r56
+. 140r13 164r11 201r32
+108R8*Image_Internals 109r32 347c8 354r38 16|515r38
+109P8*Image_Ptr(108R8) 16|473r9 473r22
+160W18*Canvas_Monitor 179E5 190l7 190e21 16|111b18 337l7 337t21
+161U15 Clear 16|118b15 122l9 122t14
+162U15 Save 16|128b15 131l9 131t13
+163U15 Restore 16|121s7 139b15 156l9 156t16
+164U15 Draw 164>27 165>27 16|162b15 195l9 195t13
+164m27 Handle{17|289M11} 16|162b21 178r24 193r31
+165m27 Font{17|294M11} 16|163b21 181r28
+166U15 Add 166>27 16|201b15 210l9 210t12
+166p27 Object{106P8} 16|201b20 204r25 206r29 208r22 209r7
+167U15 Set_Brush 167>27 16|216b15 220l9 220t18
+167m27 Brush{17|290M11} 16|216b26 219r19
+168V15 Background{17|290M11} 16|227b14 230l9 230t19
+169U15 Set_Start 169>27 169>30 16|239b15 246l9 246t18
+169i27 X{integer} 16|239b26 241r18 243r16
+169i30 Y{integer} 16|239b29 242r18 244r16
+170U15 Get_Start 170<27 170<30 16|252b15 256l9 256t18
+170i27 X{integer} 16|252b26 254m7
+170i30 Y{integer} 16|252b29 255m7
+171U15 Set_End 171>27 171>30 16|265b15 270l9 270t16
+171i27 X{integer} 16|265b24 267r16
+171i30 Y{integer} 16|265b27 268r16
+172U15 Get_End 172<27 172<30 16|278b15 283l9 283t16
+172i27 X{integer} 16|278b24 280m7
+172i30 Y{integer} 16|278b27 281m7
+173U15 Set_Button 173>27 16|291b15 294l9 294t19
+173b27 B{boolean} 16|291b27 293r17
+174V15 Mouse_Down{boolean} 16|300b14 303l9 303t19
+175V15 Mouse_Moved{boolean} 16|310b14 313l9 313t20
+176U15 Set_Key 176>27 16|321b15 324l9 324t16
+176e27 C{character} 16|321b24 323r18
+177U15 Get_Key 177<27 16|331b15 335l9 335t16
+177e27 C{character} 16|331b24 333m7
+179p5 First_Object{106P8} 16|143r14 144r9 164r32 204r9
+180p5 Last_Object{106P8} 16|130r23 145r9 147r9 148r14 149r9 203r10 206r9
+. 208r7
+181p5 Save_Pointer{106P8} 16|120r7 130r7 142r10 147r24
+182m5 BG_Brush{17|290M11} 16|218r34 219r7 229r14
+183i5 Start_X{integer} 16|241r7 254r12
+184i5 Start_Y{integer} 16|242r7 255r12
+185i5 End_X{integer} 16|243r7 267r7 280r12
+186i5 End_Y{integer} 16|244r7 268r7 281r12
+187b5 Button{boolean} 16|293r7 302r14
+188b5 Moved{boolean} 16|245r7 269r7 282r7 312r14
+189e5 Keycode{character} 16|323r7 333r12 334r7
+205H8*Canvas_Object_Type
+207p7*Next{106P8} 16|148r26 149m21 153r16 188r16 206m21 209m14
+210x13*Draw 210=19 211>19 16|187R9
+210r19 Object{205R8}
+211m19 Window{17|292M11}
+217R8*Text_Type<205R8> 217d19 222e15 224P13 224r35 16|352r35
+217i19*Length{natural} 219r29 16|382r59
+219a7*Text{string} 16|357r41
+220r7*From{14|130R11} 16|361r35 362r35
+220r13*To{14|130R11} 16|363r35 364r35
+221i7*Align{integer} 16|370r15 372r18 374r18
+224U13*Draw<210p13> 224=19 225>19 16|352b13 384l7 384t11
+224r19 Object{217R8} 16|352b19 357r34 361r28 362r28 363r28 364r28 370r8 372r11
+. 374r11 382r52
+225m19 Window{17|292M11} 16|353b19 382r20
+231R8*Line_Type<205R8> 234e15 236P13 236r35 16|390r35
+233r7*From{14|130R11} 16|393r54 394r54
+233r13*To{14|130R11} 16|396r52 397r52
+236U13*Draw<210p13> 236=19 237>19 16|390b13 398l7 398t11
+236r19 Object{231R8} 16|390b19 393r47 394r47 396r45 397r45
+237m19 Window{17|292M11} 16|391b19 393r29 396r27
+244R8*Rectangle_Type<205R8> 247e15 249P13 249r35 16|404r35
+246r7*From{14|130R11} 16|407r55 408r55
+246r13*To{14|130R11} 16|409r55 410r55
+249U13*Draw<210p13> 249=19 250>19 16|404b13 411l7 411t11
+249r19 Object{244R8} 16|404b19 407r48 408r48 409r48 410r48
+250m19 Window{17|292M11} 16|405b19 407r30
+259R8*Rounded_Rectangle_Type<205R8> 262e15 264P13 264r35 16|417r35
+261r7*From{14|130R11} 16|420r55 421r55
+261r13*To{14|130R11} 16|422r55 423r55
+261r17*Corner{14|130R11} 16|424r55 425r55
+264U13*Draw<210p13> 264=19 265>19 16|417b13 426l7 426t11
+264r19 Object{259R8} 16|417b19 420r48 421r48 422r48 423r48 424r48 425r48
+265m19 Window{17|292M11} 16|418b19 420r30
+273R8*Ellipse_Type<205R8> 276e15 278P13 278r35 16|432r35
+275r7*From{14|130R11} 16|435r53 436r53
+275r13*To{14|130R11} 16|437r53 438r53
+278U13*Draw<210p13> 278=19 279>19 16|432b13 439l7 439t11
+278r19 Object{273R8} 16|432b19 435r46 436r46 437r46 438r46
+279m19 Window{17|292M11} 16|433b19 435r28
+286R8*Polyline_Type<205R8> 286d23 289e15 291P13 291r35 16|445r35
+286i23*Count{positive} 288r30 16|449r54
+288a7*Points{99A8} 16|448m44
+291U13*Draw<210p13> 291=19 292>19 16|445b13 450l7 450t11
+291r19 Object{286R8} 16|445b19 448m37 448r37 449r47
+292m19 Window{17|292M11} 16|446b19 448r29
+299R8*Polygon_Type<205R8> 299d22 302e15 304P13 304r35 16|456r35
+299i22*Count{positive} 301r30 16|460r53
+301a7*Points{99A8} 16|459m43
+304U13*Draw<210p13> 304=19 305>19 16|456b13 461l7 461t11
+304r19 Object{299R8} 16|456b19 459m36 459r36 460r46
+305m19 Window{17|292M11} 16|457b19 459r28
+312R8*Handle_Type<205R8> 315e15 317P13 317r35 16|498r35
+314r7*Handle{14|226R8} 16|502r44
+317U13*Draw<210p13> 317=19 318>19 16|498b13 505l7 505t11
+317r19 Object{312R8} 16|498b19 502r37
+318m19 Window{17|292M11} 16|499b19 504r24
+324R8*Bitmap_Type<205R8> 330e15 332P13 332r35 16|467r35
+326r7*From{14|130R11} 16|486r48 486r74
+327i7*Width{natural} 16|487r48
+328i7*Height{natural} 16|487r73
+329r7*Bitmap{14|226R8} 16|473r39
+332U13*Draw<210p13> 332=19 333>19 16|467b13 492l7 492t11
+332r19 Object{324R8} 16|467b19 473r32 486r41 486r67 487r41 487r66
+333m19 Window{17|292M11} 16|468b19 469r42 478r36 482r27 485r31
+347R8*Image_Internals<14|205R8> 352e15 354P13
+349m7*Image{17|291M11} 16|474r28 517r40
+350i7*Width{natural} 16|490r43
+351i7*Height{natural} 16|490r63
+354U13*Cleanup<14|214p13> 354=22 16|515b13 518l7 518t14
+354r22 Object{347R8} 16|515b22 517r33
+360R8*Counted_Handle_Type<14|205R8> 363e15 365P13 365r38 16|502r17 524r38
+. 536r22 537r5
+362m7*Handle{17|293M11} 16|502r64 526r40 537m40
+365U13*Cleanup<14|214p13> 365=22 16|524b13 527l7 527t14
+365r22 Object{360R8} 16|524b22 526r33
+372V13*Handle{14|226R8} 372>21 16|533b13 539l7 539t13
+372m21 Object{17|293M11} 16|533b21 537r50
+X 16 jewl-canvas_implementation.adb
+99U13 Free[9|20] 154s9
+140p7 P{15|106P8} 143m9 148m9 151r13 152r14 153m9 153r14
+140p9 Q{15|106P8} 152m9 154m15 154r15
+164p7 P{15|106P8} 186r13 187r15 188m9 188r14
+165m7 D{17|292M11} 178m7 179r25 180r25 181r25 182r23 187r22
+166m7 H{17|288M11} 179m7 180m7 181m7
+167r7 S{17|355R8} 178m32 178r32 193m39 193r39
+168i7 I{17|274I11} 182m7
+169r7 L{17|365R8} 172m7 173m32 173r32
+170m7 B{17|290M11} 173m7 179r28 194r35
+354i5 I{17|274I11} 382m5
+355r5 R{17|321R8} 361m5 362m5 363m5 364m5 383m20 383r20
+356m5 W{17|277M11} 371m7 373m7 375m7 377m7 383r40
+357a5 S{17|283A11} 382r38
+469m5 H{17|292M11} 477r42 478r22 484r27 488r31 491r29
+470r5 B{17|438R8} 480m21 480r21 481r16 481r32
+471r5 P{17|345R8} 481m5 482m35 482r35
+472r5 Q{17|345R8} 483m5 484m30 484r30 489r41 489r57
+473p5 I{15|109P8} 474r26 490r41 490r61
+474m5 W{17|291M11} 477r45 479r21
+475i5 N{17|274I11} 478m5 479m5
+500m5 H{17|293M11} 504m5
+501m5 W{17|291M11} 504r32
+534r5 C{14|226R8} 536m5 537r25 538r12
+X 17 jewl-win32_interface.ads
+97K22*Win32_Interface 15|93w11 97r12 16|97r12 17|970e25
+108N3*BLACK_PEN 16|180r43
+115N3*BS_HOLLOW 16|172r20
+140N3*DT_CENTER 16|375r12
+141N3*DT_LEFT 16|373r12
+142N3*DT_NOCLIP 16|371r12
+143N3*DT_RIGHT 16|377r12
+226N3*TRANSPARENT 16|182r26
+269I11*Win32_BOOL{11|35I9}
+270M11*Win32_BYTE{11|47M9} 16|479r52
+274I11*Win32_INT{11|35I9} 16|168r11 354r9 382r42 393r37 394r37 396r35 397r35
+. 407r38 408r38 409r38 410r38 420r38 421r38 422r38 423r38 424r38 425r38 435r36
+. 436r36 437r36 438r36 449r37 460r36 475r9 479r24 486r31 486r57 487r31 487r56
+. 489r31 489r47 490r31 490r51
+275I11*Win32_LONG{11|37I9} 16|361r17 362r17 363r17 364r17
+277M11*Win32_UINT{11|43M9} 16|356r9
+283A11*Win32_String{11|79A9}<11|60M9> 16|357r9
+284P11*Win32_LPCSTR(11|72E9)
+288M11*Win32_HANDLE{18|67M9} 16|166r11
+289M11*Win32_HWND{18|67M9} 15|164r39 16|162r33
+290M11*Win32_HBRUSH{18|67M9} 15|167r38 168r34 182r20 16|170r11 216r37 227r32
+291M11*Win32_HBITMAP{18|67M9} 15|349r16 16|474r9 501r9
+292M11*Win32_HDC{18|67M9} 15|211r31 225r31 237r31 250r31 265r31 279r31 292r31
+. 305r31 318r31 333r31 16|165r11 353r31 391r31 405r31 418r31 433r31 446r31
+. 457r31 468r31 469r9 499r31
+293M11*Win32_HGDIOBJ{18|67M9} 15|362r16 372r30 16|500r9 533r30
+294M11*Win32_HFONT{18|67M9} 15|165r39 16|163r33
+321R8*Win32_RECT 16|355r17 17|327e15
+323i7*Left{275I11} 16|361m7
+324i7*Top{275I11} 16|362m7
+325i7*Right{275I11} 16|363m7
+326i7*Bottom{275I11} 16|364m7
+345R8*Win32_POINT 15|99r59 16|471r17 472r17 17|348e15
+347i7*X{275I11} 16|481m11 489r43
+347i9*Y{275I11} 16|481m27 489r59
+355R8*Win32_PAINTSTRUCT 16|167r19 17|363e15
+365R8*Win32_LOGBRUSH 16|169r19 17|370e15
+367m7*lbStyle{277M11} 16|172m9
+438R8*Win32_BITMAP 16|470r9 479r34 17|447e15
+441i7*bmWidth{275I11} 16|481r18
+442i7*bmHeight{275I11} 16|481r34
+522i3*Bool_Dummy{269I11} 16|193m7 194m7 218m7 393m5 396m5 407m5 420m5 435m5
+. 448m5 459m5 482m5 484m5 485m5 491m5 517m5 526m5
+523i3*Long_Dummy{275I11} 16|477m5
+545V12*To_LONG[8|20]{11|37I9} 16|477s19
+557V12*To_LPCSTR{284P11} 16|382s28
+560V12*To_Array{283A11} 16|357s25
+587V12*BeginPaint{292M11} 16|178s12
+604V12*CreateBrushIndirect{290M11} 16|173s12
+606V12*CreateCompatibleDC{292M11} 16|469s22
+649V12*DeleteDC{269I11} 16|491s19
+651V12*DeleteObject{269I11} 16|194s21 218s21 517s19 526s19
+657V12*DPTOLP{269I11} 16|482s19 484s19
+663V12*DrawText{274I11} 16|382s10
+669V12*Ellipse{269I11} 16|435s19
+682V12*EndPaint{269I11} 16|193s21
+710V12*GetMapMode{274I11} 16|478s25
+724V12*GetObject{274I11} 16|479s10
+734V12*GetStockObject{293M11} 16|180s28
+760V12*LineTo{269I11} 16|396s19
+781V12*MoveToEx{269I11} 16|393s19
+796V12*Polygon{269I11} 16|459s19
+800V12*Polyline{269I11} 16|448s19
+804V12*Rectangle{269I11} 16|407s19
+816V12*RoundRect{269I11} 16|420s19
+824V12*SelectObject{293M11} 16|179s12 180s12 181s12 477s28 504s10
+834V12*SetBkMode{274I11} 16|182s12
+843V12*SetMapMode{274I11} 16|478s10
+864V12*StretchBlt{269I11} 16|485s19
+X 18 system.ads
+67M9*Address
+X 25 s-memory.ads
+53V13*Alloc{18|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{18|67M9} 105i<c,__gnat_realloc>22
+X 33 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 35 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+

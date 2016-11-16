@@ -35,8 +35,8 @@ package body GameBoard is
 				else
 					board(num).pieceValue := 0;
 				end if;
-					board(num).location := num;
-					board(num).point := (BoardLocation.X + 40,BoardLocation.Y + 40);
+				board(num).location := num;
+				board(num).point 	:= (BoardLocation.X + 40,BoardLocation.Y + 40);
             end if;
             --Move along x-axis
             BoardLocation := (BoardLocation.X + 80,BoardLocation.Y);
@@ -52,7 +52,8 @@ package body GameBoard is
 			end if;
 		end loop;
 	end drawBoardGUI; -- Stop generating the initial game board
-
+	
+	
 	procedure erasePiece(BoardCanvas: in out Canvas_Type; index: in Integer) is
 	xFinder,yFinder: Integer := 0;
 	tempPoint: Point_Type := board(index).point;
@@ -110,215 +111,23 @@ package body GameBoard is
 				end select;
 			end loop;
 	end Timer;
-   procedure makeKing(newKing: Integer) is
-   begin
-      if board(newKing).pieceValue = 1 then
-         board(newKing).pieceValue := 3;
-      elsif board(newKing).pieceValue = 2 then
-         board(newKing).pieceValue := 4;
-      end if;
-   end makeKing;
+	
+	procedure makeKing(newKing: Integer) is
+	begin
+		if board(newKing).pieceValue = 1 then
+			board(newKing).pieceValue := 3;
+		elsif board(newKing).pieceValue = 2 then
+			board(newKing).pieceValue := 4;
+		end if;
+	end makeKing;
 
-   function isValidMove(piece, location: Integer) return Boolean is
-      --Function variables
-      isValid: Boolean; --Value that is returned at the end of the function to tell the prgm is the attempted move is valid
-   begin
-      --Set removeChecker to zero
-      removeChecker := 0;
+	function isValidMove(spot1, spot2, player: in Integer) return Boolean is
+		--Function variables
+		isValid: Boolean; --Value that is returned at the end of the function to tell the prgm is the attempted move is valid
+	begin
+		if spot1 
+		return isValid;
+	end isValidMove;
 
-      --Check if move location is empty
-      if board(location).pieceValue = 0 then
-         --Location is empty
-         --If player piece
-         if board(piece).pieceValue = 1 then --Player piece
-            if location <= board(piece).location then
-               isValid := False;
-            else
-               --Check for special cases (these are the spots along the side of the board)
-               if board(piece).location = 4 or board(piece).location = 5 or board(piece).location = 12
-                 or board(piece).location = 13 or board(piece).location = 20 or board(piece).location = 21
-                 or board(piece).location = 28 or board(piece).location = 29 then
-                  --Making a single move
-                  if location = board(piece).location + 4 then
-                     isValid := True;
-                     --Jumping over another piece from an edge piece
-                  elsif (location = board(piece).location + 7 and (board(piece + 4).pieceValue = 2 or board(piece + 4).pieceValue = 4)) or
-                    (location = board(piece).location + 9 and (board(piece + 4).pieceValue = 2 or board(piece + 4).pieceValue = 4)) then --Jump over piece
-                     --Remove jumped over piece
-                     board(piece + 4).pieceValue := 0;
 
-                     --Remove jumped over piece in GUI
-                     removeChecker := piece + 4;
-                     isValid := True;
-                  else
-                     isValid := False;
-                  end if;
-               else
-                  --Making a single move
-                  if location = board(piece).location + 3 or location = board(piece).location + 4 or
-                    location = board(piece).location + 5 or location = board(piece).location + 6 then
-                     isValid := True;
-                     --Jumping over another piece - left diagonal
-                  elsif location = board(piece).location + 7 then --Jump over piece
-                     if location = 9 or location = 10 or location = 11 or location = 12 or location = 17 or
-                       location = 18 or location = 19 or location = 20 or location = 25 or location = 26 or
-                       location = 27 or location = 28 then
-                        --Make sure the piece being jumped over is an enemy piece
-                        if board(location - 3).pieceValue = 2 or board(location - 3).pieceValue = 4 then
-                           --Remove jumped over piece
-                           board(location - 3).pieceValue := 0;
-
-                           --Remove jumped over piece in GUI
-                           removeChecker := location - 3;
-                           isValid := True;
-                        else
-                           isValid := False;
-                        end if;
-                     else
-                        --Make sure piece being jumped over is enemy piece
-                        if board(location - 4).pieceValue = 2 or board(location - 4).pieceValue = 4 then
-                           --Remove jumped over piece
-                           board(location - 4).pieceValue := 0;
-
-                           --Remove jumped over piece in GUI
-                           removeChecker := location - 4;
-                           isValid := True;
-                        else
-                           isValid := False;
-                        end if;
-                     end if;
-                     --Jumping over another piece - right diagonal
-                  elsif location = board(piece).location + 9 then --Jump over piece
-                     if location = 1 or location = 2 or location = 3 or location = 4 or location = 9 or
-                       location = 10 or location = 11 or location = 12 or location = 17 or location = 18 or
-                       location = 19 or location = 20 or location = 25 or location = 26 or location = 27 or
-                       location = 28 then
-                        --Make sure piece being jumped over is enemy piece
-                        if board(location - 4).pieceValue = 2 or board(location - 4).pieceValue = 4 then
-                           --Remove piece
-                           board(location - 4).pieceValue := 0;
-
-                           --Remove jumped over piece in GUI
-                           removeChecker := location - 4;
-                           isValid := True;
-                        else
-                           isValid := False;
-                        end if;
-                     else
-                        --Make sure it is enemy piece
-                        if board(location - 5).pieceValue = 2 or board(location - 5).pieceValue = 4 then
-                           --Remove piece
-                           board(location - 5).pieceValue := 0;
-
-                           --Remove jumped over piece in GUI
-                           removeChecker := location - 5;
-                           isValid := True;
-                        else
-                           isValid := False;
-                        end if;
-                     end if;
-                  end if;
-               end if;
-            end if;
-         else --Computer piece
-            --If location to move to is >= the piece's current location, return false
-            if location >= board(piece).location then
-               isValid := False;
-            else -- > piece's current location
-                 --Check for special cases (these are the spots along the side of the board)
-               if board(piece).location = 4 or board(piece).location = 5 or board(piece).location = 12
-                 or board(piece).location = 13 or board(piece).location = 20 or board(piece).location = 21
-                 or board(piece).location = 28 or board(piece).location = 29 then
-                  --Making a single move
-                  if location = board(piece).location - 4 then
-                     isValid := True;
-                     --Jumping over another piece from an edge piece
-                  elsif (location = board(piece).location - 7 and (board(piece - 4).pieceValue = 1 or board(piece - 4).pieceValue = 3)) or
-                    (location = board(piece).location - 9 and (board(piece - 4).pieceValue = 1 or board(piece - 4).pieceValue = 3)) then --Jump over piece
-                     --Remove jumped over piece
-                     board(piece - 4).pieceValue := 0;
-
-                     --Remove jumped over piece in GUI
-                     removeChecker := piece - 4;
-                     isValid := True;
-                  else
-                     isValid := False;
-                  end if;
-               else --Normal spots
-                    --Making a single move
-                  if location = board(piece).location - 3 or location = board(piece).location - 4 or
-                    location = board(piece).location - 5 or location = board(piece).location - 6 then
-                     isValid := True;
-                     --Jumping over another piece - right diagonal
-                  elsif location = board(piece).location - 7 then --Jump over piece
-                     if location = 9 or location = 10 or location = 11 or location = 12 or location = 17 or
-                       location = 18 or location = 19 or location = 20 or location = 25 or location = 26 or
-                       location = 27 or location = 28 then
-                        --Make sure the piece being jumped over is an enemy piece
-                        if board(location + 4).pieceValue = 1 or board(location + 4).pieceValue = 3 then
-                           --Remove jumped over piece
-                           board(location + 4).pieceValue := 0;
-
-                           --Remove jumped over piece in GUI
-                           removeChecker := location + 4;
-                           isValid := True;
-                        else
-                           isValid := False;
-                        end if;
-                     else
-                        if board(location + 3).pieceValue = 1 or board(location + 3).pieceValue = 3 then
-                           --Remove jumped over piece
-                           board(location + 3).pieceValue := 0;
-
-                           --Remove jumped over piece in GUI
-                           removeChecker := location + 3;
-                           isValid := True;
-                        else
-                           isValid := False;
-                        end if;
-                     end if;
-                  --Jumping over another piece - left diagonal
-                  elsif location = board(piece).location - 9 then --Jump over piece
-                     if location = 1 or location = 2 or location = 3 or location = 4 or location = 9 or
-                       location = 10 or location = 11 or location = 12 or location = 17 or location = 18 or
-                       location = 19 or location = 25 or location = 26 or location = 27 or location = 28 then
-
-                        if board(location + 5).pieceValue = 1 or board(location + 5).pieceValue = 3 then
-                           --Remove piece
-                           board(location + 5).pieceValue := 0;
-
-                           --Remove jumped over piece in GUI
-                           removeChecker := location + 5;
-                           isValid := True;
-                        else
-                           isValid := False;
-                        end if;
-                     else
-                        --Make sure piece being jumped over is enemy piece
-                        if board(location + 4).pieceValue = 1 or board(location + 4).pieceValue = 3 then
-                           --Remove piece
-                           board(location + 4).pieceValue := 0;
-
-                           --Remove jumped over piece in GUI
-                           removeChecker := location + 4;
-                           isValid := True;
-                        else
-                           isValid := False;
-                        end if;
-                     end if;
-                  end if;
-               end if;
-            end if;
-         end if;
-      else
-         isValid := False;
-      end if;
-
-      return isValid;
-   end isValidMove;
-
-   function returnRemovedValue return Integer is
-   begin
-      return removeChecker;
-   end returnRemovedValue;
 end GameBoard;

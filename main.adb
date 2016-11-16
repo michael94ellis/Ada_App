@@ -47,15 +47,15 @@ begin
 
 		while gameOver = False loop
 			case Next_Command is
-
-				
-				when 'C' =>
-					spotIndex1 := 0;
-					spotIndex2 := 0;
+				when 'C' => -- this will happen anytime that checkerboard image is clicked
+					-- initiaize these indexs
+					spotIndex1 := 0; -- first click
+					spotIndex2 := 0; -- second click
 					while spotIndex1 = 0 loop
-						xFinder   := 0;
+						xFinder   := 0; -- these two are just temp vars
 						yFinder   := 0;
-						firstClick := Start_Point(BoardCanvas);
+						firstClick := Start_Point(BoardCanvas); -- capture that stored data
+------------------------It just works--------------------------------------------------------------
 						while xFinder <= firstClick.x loop
 							xFinder := xFinder + 80;
 							spotIndex1 := spotIndex1 + 1;
@@ -65,7 +65,13 @@ begin
 							if yFinder > 80 then
 								spotIndex1 := spotIndex1 + 8;
 							end if;
-						end loop;
+						end loop;'
+---------------------------------------------------------------------------------------------------
+						if spotIndex1 / 8 mod 2 = 1 and spotIndex1 mod 2 = 0 then
+							spotIndex1 := 0;
+						elsif spotIndex1 / 8 mod 2 = 0 and spotIndex1 mod 2 = 1 then
+							spotIndex1 := 0;
+						end if;
 					end loop; --spotIndex1 now holds the array index of the piece to move
 					if spotIndex2 = 0 then--This is the beginning of the second click(place to move to)
 						case Next_Command is
@@ -87,13 +93,19 @@ begin
 								end loop; --spotIndex1 now holds the array index of the piece to move	
 							when others => null;
 						end case;
+						if (spotIndex2 / 8) mod 2 = 1 and spotIndex2 mod 2 = 0 then
+							spotIndex2 := 0;
+						elsif (spotIndex2 / 8) mod 2 = 0 and spotIndex2 mod 2 = 1 then
+							spotIndex2 := 0;
+						end if;
 					end if; -- spotIndex2 now holds the array index of the spot to attempt to move to
-					if spotIndex1 / 8 mod 2 > 1 then
+					
+					if spotIndex1 / 8 mod 2 = 1 then
 						spotIndex1 := spotIndex1 / 2 + 1;
 					else
 						spotIndex1 := spotIndex1 / 2;
 					end if;
-					if spotIndex2 / 8 mod 2 > 1 then
+					if spotIndex2 / 8 mod 2 = 1 then
 						spotIndex2 := spotIndex2 / 2 + 1;
 					else
 						spotIndex2 := spotIndex2 / 2;
@@ -101,9 +113,11 @@ begin
 					put(Integer'Image(spotIndex1));
 					put(Integer'Image(spotIndex2));
 					if board(spotIndex1).pieceValue /= 0 AND board(spotIndex2).pieceValue = 0 then
-						put("Valid");
+						if isValidMove(spotIndex1, spotIndex2, playerTurn) = True then 
+							--make the move
+						end if;
 					else
-						put("Invalid");
+						--put("Invalid Input");
 					end if;
 					
 					
@@ -111,19 +125,21 @@ begin
 					gameOver := True;
 					timeKeeper.stop;
 					Set_Text(WhosMoveLabel,"Game Over");
+					exit;
 				when others =>
 					--Display scores in labels
 					Set_Text(PlayerScoreResult,Integer'Image(playerScore));
 					Set_Text(ComputerScoreResult,Integer'Image(computerScore));
 					--Display whose turn it is
-					if playerTurn = 1 then
+					put("hi");
+					exit;
+			end case;
+			-- Change turns
+			if playerTurn = 1 then
 						Set_Text(WhosMoveLabel,"It's your Turn!");
 					elsif playerTurn = 2 then
 						Set_Text(WhosMoveLabel,"Computer's Turn!");
 					end if;
-			end case;
-			
-			
 			-- Check for end game conditions
 			if playerScore = 12 then
 				Put_Line("Player Wins!");
