@@ -46,6 +46,7 @@ begin
 		end loop;
 
 		while gameOver = False loop
+			playerTurn := 1;
 			case Next_Command is
 				when 'C' => -- this will happen anytime that checkerboard image is clicked
 					-- initiaize these indexs
@@ -65,7 +66,7 @@ begin
 							if yFinder > 80 then
 								spotIndex1 := spotIndex1 + 8;
 							end if;
-						end loop;'
+						end loop;
 ---------------------------------------------------------------------------------------------------
 						if spotIndex1 / 8 mod 2 = 1 and spotIndex1 mod 2 = 0 then
 							spotIndex1 := 0;
@@ -99,7 +100,6 @@ begin
 							spotIndex2 := 0;
 						end if;
 					end if; -- spotIndex2 now holds the array index of the spot to attempt to move to
-					
 					if spotIndex1 / 8 mod 2 = 1 then
 						spotIndex1 := spotIndex1 / 2 + 1;
 					else
@@ -113,11 +113,13 @@ begin
 					put(Integer'Image(spotIndex1));
 					put(Integer'Image(spotIndex2));
 					if board(spotIndex1).pieceValue /= 0 AND board(spotIndex2).pieceValue = 0 then
-						if isValidMove(spotIndex1, spotIndex2, playerTurn) = True then 
+						if isValidMove(spotIndex1, spotIndex2, 1) = True then 
 							--make the move
+							erasePiece(spotIndex1);
+							drawPiece(spotIndex2, 1);
 						end if;
 					else
-						--put("Invalid Input");
+						put("Invalid Input");
 					end if;
 					
 					

@@ -48,27 +48,27 @@ package body GameBoard is
 		for i in 1..32 loop
 			--Player pieces will be Red, Computer pieces will be White
 			if board(i).pieceValue /= 0 then
-				drawPiece(BoardCanvas,board(i).point,board(i).pieceValue);
+				if board(i).pieceValue = 1 then
+					drawPiece(i, 1);
+				elsif board(i).pieceValue = 3 then
+					drawPiece(i, 2);
+				end if;
 			end if;
 		end loop;
 	end drawBoardGUI; -- Stop generating the initial game board
 	
 	
-	procedure erasePiece(BoardCanvas: in out Canvas_Type; index: in Integer) is
-	xFinder,yFinder: Integer := 0;
-	tempPoint: Point_Type := board(index).point;
+	procedure erasePiece(index: in Integer) is
 	begin
 		if index mod 2 = 0 and board(index).pieceValue /= 0 then
 			Set_Fill(BoardCanvas,Black);
-			tempPoint.x := tempPoint.x - 40;
-			tempPoint.y := tempPoint.y - 40;
-            Draw_Rectangle(BoardCanvas,BoardLocation,80,80);
+            Draw_Rectangle(BoardCanvas,board(index).point,80,80);
 		end if;
 	end erasePiece;
 	
 	
-	procedure drawPiece(BoardCanvas: in out Canvas_Type; pointTemp: in Point_Type; player: in Integer) is
-	point: Point_Type := pointTemp;
+	procedure drawPiece(index: in Integer; player: in Integer) is
+	point: Point_Type := board(index).point;
 	procedure giveTexture is
 	begin
 		point.x := point.x - 1;
@@ -125,7 +125,13 @@ package body GameBoard is
 		--Function variables
 		isValid: Boolean; --Value that is returned at the end of the function to tell the prgm is the attempted move is valid
 	begin
-		if spot1 
+		if spot1 + 4 = spot2 OR spot1 + 5 = spot2 then
+			if player = 1 then
+				isValid := True;
+			else
+				isValid := False;
+			end if;
+		end if;
 		return isValid;
 	end isValidMove;
 

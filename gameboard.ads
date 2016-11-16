@@ -37,8 +37,8 @@ package GameBoard is
 
 	-- This will cause the board and pieces to be drawn on the GUI
 	procedure drawBoardGUI;
-	procedure erasePiece(BoardCanvas: in out Canvas_Type; index: in Integer);
-	procedure drawPiece(BoardCanvas: in out Canvas_Type; pointTemp: in Point_Type; player: in Integer);
+	procedure erasePiece(index: in Integer);
+	procedure drawPiece(index, player: in Integer);
 	----------------------------------------------------
 	----------------------------------------------------
 	--------- The non GUI board components  ------------
@@ -66,7 +66,7 @@ package GameBoard is
 	board: array (1..32) of Spot;
 	--Set up game board procedure
 	procedure makeKing(newKing: Integer);
-	function isValidMove(spot1, spot2: in Integer) return Boolean;
+	function isValidMove(spot1, spot2, player: in Integer) return Boolean;
 	--procedure isValidJump
 	--function isValidKingMove
 end GameBoard;

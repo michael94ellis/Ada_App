@@ -10,7 +10,7 @@ RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U computer%b		computer.adb		d5f43eb5 NE OO PK
+U computer%b		computer.adb		41874146 NE OO PK
 W ada%s			ada.ads			ada.ali
 W ada.numerics%s	a-numeri.ads		a-numeri.ali
 W ada.numerics.discrete_random%s
@@ -36,7 +36,7 @@ D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
 D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
 D computer.ads		20161115012422 0c0f743a computer%s
 D computer.adb		20161115012422 3cd2aa29 computer%b
-D gameboard.ads		20161116015304 94ccbd49 gameboard%s
+D gameboard.ads		20161116051146 00bfc2ba gameboard%s
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092926 5421119b interfaces.c%s
 D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
@@ -105,7 +105,7 @@ X 12 computer.adb
 . 47r37 49r28 51r37 55r25 56r37 58r28 59r37
 21i11 i{integer} 22r19 22r46 23r35
 X 13 gameboard.ads
-4K9*GameBoard 12|2w6 2r21 13|75e14
+4K9*GameBoard 12|2w6 2r21 13|72e14
 56R14*Spot 12|14r17 13|64e19
 59i17*pieceValue{integer} 12|22r22 22r49 30r19
 61i17*location{integer} 12|23r38 32r22 32r47 32r73 33r21 33r47 33r73 34r21
