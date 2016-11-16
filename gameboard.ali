@@ -7,6 +7,7 @@ RV NO_DIRECT_BOOLEAN_OPERATORS
 RV NO_EXCEPTION_HANDLERS
 RV NO_EXCEPTIONS
 RV NO_FIXED_POINT
+RV NO_IO
 RV NO_RELATIVE_DELAY
 RV NO_SECONDARY_STACK
 RV NO_SELECT_STATEMENTS
@@ -17,9 +18,11 @@ RV SPARK_05
 RV MAX_SELECT_ALTERNATIVES=1
 RV MAX_TASK_ENTRIES=2
 
-U gameboard%b		gameboard.adb		f23650bb OO PK
+U gameboard%b		gameboard.adb		43a3bd6d OO PK
+W ada%s			ada.ads			ada.ali
 W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
 W system%s		system.ads		system.ali
 W system.img_int%s	s-imgint.adb		s-imgint.ali
 W system.soft_links%s	s-soflin.adb		s-soflin.ali
@@ -27,7 +30,7 @@ W system.tasking%s	s-taskin.adb		s-taskin.ali
 W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
 W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
 
-U gameboard%s		gameboard.ads		10ca09fc EE OO PF PK
+U gameboard%s		gameboard.ads		5f323621 EE OO PF PK
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
@@ -46,21 +49,26 @@ D a-calend.ads		20160516092930 2d5f01d4 ada.calendar%s
 D a-caldel.ads		20160516092926 9f20b83d ada.calendar.delays%s
 D a-except.ads		20160516092928 291912d5 ada.exceptions%s
 D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
+D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
 D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
 D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
 D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
 D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
-D gameboard.ads		20161116052512 716ea61f gameboard%s
-D gameboard.adb		20161116053824 8358f6a4 gameboard%b
+D gameboard.ads		20161116144828 3e9699c2 gameboard%s
+D gameboard.adb		20161116150314 4558d17b gameboard%b
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092926 5421119b interfaces.c%s
 D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
 D jewl.ads		20161115012422 e853f5a4 jewl%s
 D jewl-simple_windows.ads  20161115012422 61a4afe3 jewl.simple_windows%s
 D jewl-windows.ads	20161115184400 4db40f6d jewl.windows%s
 D system.ads		20160516092930 2da59038 system%s
 D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
+D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
 D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-ficobl.ads		20160516092932 078245e4 system.file_control_block%s
 D s-finmas.ads		20160516092930 7811a767 system.finalization_masters%s
 D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
 D s-imgint.ads		20160516092928 02dbe0c2 system.img_int%s
@@ -87,110 +95,119 @@ D s-tasren.ads		20160516092926 a67a9949 system.tasking.rendezvous%s
 D s-tassta.ads		20160516092928 70812003 system.tasking.stages%s
 D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
 D s-win32.ads		20160516092926 b7f96285 system.win32%s
-X 10 gameboard.ads
-4K9*GameBoard 71l5 71e14 11|1b14 139l5 139t14
-7r9*AppFrame{17|358R8[16|84]} 11r91 13r91 14r91 16r82 17r82 18r82 19r82 21r82
+X 1 ada.ads
+16K9*Ada 19e8 13|2r6 2r23
+X 10 a-textio.ads
+49K13*Text_IO 471e16 13|2w10 2r27
+X 12 gameboard.ads
+4K9*GameBoard 72l5 72e14 13|3b14 160l5 160t14
+7r9*AppFrame{20|358R8[19|84]} 11r91 13r91 14r91 16r82 17r82 18r82 19r82 21r82
 . 23r89 24r89 28r82 29r82 31r84 32r84 34r78 35r82
-9r9*BoardLocation{17|141R11[16|84]} 11r100 11|29r40 39r61 39r82 42m13 42r31
-. 42r52 45m25 45r45
-11r9*BoardCanvas{17|545R8[16|84]} 11|11r50 14r50 20r50 24r50 29r28 64r34
-. 65r28 76r29 81r34 83r34 86r29
-13r9*startGame{17|589R8[16|84]}
-14r9*endGame{17|589R8[16|84]}
-16r9*PlayerScorePrompt{17|590R8[16|84]}
-17r9*PlayerScoreResult{17|590R8[16|84]}
-18r9*ComputerScorePrompt{17|590R8[16|84]}
-19r9*ComputerScoreResult{17|590R8[16|84]}
-21r9*WhosMoveLabel{17|590R8[16|84]}
-23r9*MenuFile{17|361R8[16|84]} 25r85 26r93
-24r9*MenuAbout{17|361R8[16|84]}
-25r9*File_End_Game{17|714R8[16|84]}
-26r9*File_Exit{17|714R8[16|84]}
-28r9*PromptPieceToMove{17|590R8[16|84]}
-29r9*PromptLocation{17|590R8[16|84]}
-31r9*InputPieceToMove{17|591R8[16|84]}
-32r9*InputLocation{17|591R8[16|84]}
-34r9*Timer_Label_Sec{17|590R8[16|84]} 11|109r58
-35r9*Timer_Label_Min{17|590R8[16|84]} 11|110r58
-38U19*drawBoardGUI 11|2b19 58l13 58t25
-39U19*erasePiece 39>30 11|61b19 67l13 67t23
-39i30 index{integer} 11|61b30 63r20 63r46 65r47 65r71
-40U19*drawPiece 40>29 40>36 11|52s41 54s41 70b19 90l13 90t22
-40i29 index{integer} 11|70b29 71r36
-40i36 player{integer} 11|70b48 80r20 80r34
-47T19*Timer 50l13 50e18 11|92b19 113l13 113t18
-48Y23 start 11|96b24
-49Y23 stop 11|99b48
-55R14*Spot 63e19 65r33
-58i17*pieceValue{integer} 11|32m52 34m52 36m52 50r37 51r45 53r48 63r53 117r35
-. 118m40 119r38 120m40
-60i17*location{integer} 11|38m44
-62r17*point{17|141R11[16|84]} 11|39m44 65r54 65r78 71r43
-65a9*board(55R14) 11|32m41 34m41 36m41 38m33 39m33 50r28 51r36 53r39 63r40
-. 65r41 65r65 71r30 117r20 118m25 119r23 120m25
-67U19*makeKing 67>28 11|115b19 122l13 122t21
-67i28 newKing{integer} 11|115b28 117r26 118r31 119r29 120r31
-68V18*isValidMove{boolean} 68>30 68>37 68>44 11|124b18 136l13 136t24
-68i30 spot1{integer} 11|124b30 128r20 128r41
-68i37 spot2{integer} 11|124b37 128r32 128r53
-68i44 player{integer} 11|124b44 129r28
-X 11 gameboard.adb
-3i9 num{integer} 15m41 15r48 21m41 21r48 31r36 32r47 33r39 33r53 34r47 36r47
-. 38r39 38r56 39r39
-4b9 isBlack{boolean} 12m41 16m41 22m41 25m41 30r16
-7i13 i{integer} 9r16
-8i21 j{integer} 10r36 19r36
-48i21 i{integer} 50r34 51r42 52r51 53r45 54r51
-71r9 point{17|141R11[16|84]} 74m17 74r28 75m17 75r28 76r41 86r41
-72U19 giveTexture 72b19 77l13 77t24 88s25
-87i21 i{integer}
-93i17 min{integer} 105m57 105r64 110r89
-93i21 sec{integer} 102m49 102r56 103r52 104m57 109r89
-126b17 isValid{boolean} 130m33 132m33 135r24
-X 15 jewl.ads
-97K9*JEWL 10|1r6 1r31 15|238e9
-131i31*X{integer} 11|39r75 42r45 65r60 74m23 74r34
-131i33*Y{integer} 11|39r96 42r66 45r59 65r84 75m23 75r34
-X 16 jewl-simple_windows.ads
-84K14*Simple_Windows[17|97] 10|1w11 1r36
-X 17 jewl-windows.ads
+9r9*BoardLocation{20|141R11[19|84]} 11r100 13|31r40 41r61 41r82 44m13 44r31
+. 44r52 47m25 47r45
+11r9*BoardCanvas{20|545R8[19|84]} 13|13r50 16r50 22r50 26r50 31r28 65r26
+. 66r24 76r29 81r34 83r34 85r34 88r29
+13r9*startGame{20|589R8[19|84]}
+14r9*endGame{20|589R8[19|84]}
+16r9*PlayerScorePrompt{20|590R8[19|84]}
+17r9*PlayerScoreResult{20|590R8[19|84]}
+18r9*ComputerScorePrompt{20|590R8[19|84]}
+19r9*ComputerScoreResult{20|590R8[19|84]}
+21r9*WhosMoveLabel{20|590R8[19|84]}
+23r9*MenuFile{20|361R8[19|84]} 25r85 26r93
+24r9*MenuAbout{20|361R8[19|84]}
+25r9*File_End_Game{20|714R8[19|84]}
+26r9*File_Exit{20|714R8[19|84]}
+28r9*PromptPieceToMove{20|590R8[19|84]}
+29r9*PromptLocation{20|590R8[19|84]}
+31r9*InputPieceToMove{20|591R8[19|84]}
+32r9*InputLocation{20|591R8[19|84]}
+34r9*Timer_Label_Sec{20|590R8[19|84]} 13|119r58
+35r9*Timer_Label_Min{20|590R8[19|84]} 13|120r58
+38U19*drawBoardGUI 13|4b19 60l13 60t25
+39U19*erasePiece 39>30 13|63b19 67l13 67t23 98s17
+39i30 index{integer} 13|63b30 66r43 66r67
+40U19*drawPiece 40>29 13|54s41 56s41 70b19 92l13 92t22 99s17
+40i29 index{integer} 13|70b29 71r36 80r26 80r57 82r29 82r60
+41U19*movePiece 41>29 41>37 13|94b19 100l13 100t22
+41i29 index1{integer} 13|94b29 96r51 97r23 98r28
+41i37 index2{integer} 13|94b37 96r23 99r27
+48T19*Timer 51l13 51e18 13|102b19 123l13 123t18
+49Y23 start 13|106b24
+50Y23 stop 13|109b48
+56R14*Spot 64e19 66r33
+59i17*pieceValue{integer} 13|34m52 36m52 38m52 52r37 53r45 55r48 80r33 80r64
+. 82r36 82r67 96m31 96r59 97m31 127r35 128m40 129r38 130m40 141r59 150r59
+61i17*location{integer} 13|40m44
+63r17*point{20|141R11[19|84]} 13|41m44 66r50 66r74 71r43
+66a9*board(56R14) 13|34m41 36m41 38m41 40m33 41m33 52r28 53r36 55r39 66r37
+. 66r61 71r30 80r20 80r51 82r23 82r54 96m17 96r45 97m17 127r20 128m25 129r23
+. 130m25 141r46 150r46
+68U19*makeKing 68>28 13|125b19 132l13 132t21
+68i28 newKing{integer} 13|125b28 127r26 128r31 129r29 130r31
+69V18*isValidMove{boolean} 69>30 69>37 69>44 13|134b18 157l13 157t24
+69i30 spot1{integer} 13|134b30 138r20 138r41 141r52 147r20 147r41 150r52
+69i37 spot2{integer} 13|134b37 138r32 138r53 147r32 147r53
+69i44 player{integer} 13|134b44 139r28 141r31 148r28 150r31
+X 13 gameboard.adb
+5i9 num{integer} 17m41 17r48 23m41 23r48 33r36 34r47 35r39 35r53 36r47 38r47
+. 40r39 40r56 41r39
+6b9 isBlack{boolean} 14m41 18m41 24m41 27m41 32r16
+9i13 i{integer} 11r16
+10i21 j{integer} 12r36 21r36
+50i21 i{integer} 52r34 53r42 54r51 55r45 56r51
+71r9 point{20|141R11[19|84]} 74m17 74r28 75m17 75r28 76r41 88r41
+72U19 giveTexture 72b19 77l13 77t24 90s25
+89i21 i{integer}
+103i17 min{integer} 115m57 115r64 120r89
+103i21 sec{integer} 112m49 112r56 113r52 114m57 119r89
+136b17 isValid{boolean} 140m33 142m33 144m33 149m33 151m33 153m33 156r24
+X 18 jewl.ads
+97K9*JEWL 12|1r6 1r31 18|238e9
+131i31*X{integer} 13|41r75 44r45 66r56 74m23 74r34
+131i33*Y{integer} 13|41r96 44r66 47r59 66r80 75m23 75r34
+X 19 jewl-simple_windows.ads
+84K14*Simple_Windows[20|97] 12|1w11 1r36
+X 20 jewl-windows.ads
 135E11*Alignment_Type
-135n30*Left{135E11[16|84]} 10|16r124[16|84] 17r124[16|84] 18r126[16|84] 19r126[16|84]
-. 34r106[16|84] 35r110[16|84]
-135n44*Right{135E11[16|84]} 10|28r133[16|84] 29r139[16|84]
-141R11*Point_Type{15|130R11} 10|9r51[16|84] 62r24[16|84] 11|71r16[16|84]
-151V12*Center=151:54{135E11[16|84]} 10|21s134[16|84]
-241r3*Black{138R11[16|84]} 11|14r62[16|84] 20r62[16|84] 64r46[16|84]
-242r3*White{138R11[16|84]} 11|83r46[16|84]
-243r3*Red{138R11[16|84]} 11|11r62[16|84] 24r62[16|84] 81r46[16|84]
+135n30*Left{135E11[19|84]} 12|16r124[19|84] 17r124[19|84] 18r126[19|84] 19r126[19|84]
+. 34r106[19|84] 35r110[19|84]
+135n44*Right{135E11[19|84]} 12|28r133[19|84] 29r139[19|84]
+141R11*Point_Type{18|130R11} 12|9r51[19|84] 63r24[19|84] 13|71r16[19|84]
+151V12*Center=151:54{135E11[19|84]} 12|21s134[19|84]
+241r3*Black{138R11[19|84]} 13|16r62[19|84] 22r62[19|84] 65r38[19|84]
+242r3*White{138R11[19|84]} 13|83r46[19|84]
+243r3*Red{138R11[19|84]} 13|13r62[19|84] 26r62[19|84] 81r46[19|84]
+245r3*Blue{138R11[19|84]} 13|85r46[19|84]
 262H8*Window_Type
-324H8*Container_Type<262R8[16|84]>
-325H8*Control_Type<262R8[16|84]>
-358R8*Frame_Type<324R8[16|84]> 10|7r59[16|84]
-361R8*Menu_Type<324R8[16|84]> 10|23r59[16|84] 24r59[16|84]
-404V13*Frame{358R8[16|84]} 10|7s84[16|84]
-503V12*Menu{361R8[16|84]} 10|23s84[16|84] 24s84[16|84]
-543H8*Text_Control_Type<325R8[16|84]>
-545R8*Canvas_Type<325R8[16|84]> 10|11r59[16|84]
-572U13*Set_Text 11|109s49[16|84] 110s49[16|84]
-589R8*Button_Type<543R8[16|84]> 10|13r59[16|84] 14r59[16|84]
-590R8*Label_Type<543R8[16|84]> 10|16r51[16|84] 17r51[16|84] 18r51[16|84]
-. 19r51[16|84] 21r51[16|84] 28r51[16|84] 29r51[16|84] 34r51[16|84] 35r51[16|84]
-591R8*Editbox_Type<543R8[16|84]> 10|31r51[16|84] 32r51[16|84]
-593H8*Boolean_Control_Type<543R8[16|84]>
-616V12*Button{589R8[16|84]} 10|13s84[16|84] 14s84[16|84]
-646V12*Label{590R8[16|84]} 10|16s76[16|84] 17s76[16|84] 18s76[16|84] 19s76[16|84]
-. 21s76[16|84] 28s76[16|84] 29s76[16|84] 34s72[16|84] 35s76[16|84]
-676V12*Editbox{591R8[16|84]} 10|31s76[16|84] 32s76[16|84]
-714R8*Menuitem_Type<593R8[16|84]> 10|25r51[16|84] 26r59[16|84]
-742V12*Menuitem{714R8[16|84]} 10|25s76[16|84] 26s84[16|84]
-1256V12*Canvas{545R8[16|84]} 10|11s84[16|84]
-1283U13*Set_Fill 11|11s41[16|84] 14s41[16|84] 20s41[16|84] 24s41[16|84] 64s25[16|84]
-. 81s25[16|84] 83s25[16|84]
-1319U13*Draw_Rectangle 11|29s13[16|84] 65s13[16|84]
-1335U13*Draw_Circle 11|76s17[16|84] 86s17[16|84]
-X 31 s-stausa.ads
+324H8*Container_Type<262R8[19|84]>
+325H8*Control_Type<262R8[19|84]>
+358R8*Frame_Type<324R8[19|84]> 12|7r59[19|84]
+361R8*Menu_Type<324R8[19|84]> 12|23r59[19|84] 24r59[19|84]
+404V13*Frame{358R8[19|84]} 12|7s84[19|84]
+503V12*Menu{361R8[19|84]} 12|23s84[19|84] 24s84[19|84]
+543H8*Text_Control_Type<325R8[19|84]>
+545R8*Canvas_Type<325R8[19|84]> 12|11r59[19|84]
+572U13*Set_Text 13|119s49[19|84] 120s49[19|84]
+589R8*Button_Type<543R8[19|84]> 12|13r59[19|84] 14r59[19|84]
+590R8*Label_Type<543R8[19|84]> 12|16r51[19|84] 17r51[19|84] 18r51[19|84]
+. 19r51[19|84] 21r51[19|84] 28r51[19|84] 29r51[19|84] 34r51[19|84] 35r51[19|84]
+591R8*Editbox_Type<543R8[19|84]> 12|31r51[19|84] 32r51[19|84]
+593H8*Boolean_Control_Type<543R8[19|84]>
+616V12*Button{589R8[19|84]} 12|13s84[19|84] 14s84[19|84]
+646V12*Label{590R8[19|84]} 12|16s76[19|84] 17s76[19|84] 18s76[19|84] 19s76[19|84]
+. 21s76[19|84] 28s76[19|84] 29s76[19|84] 34s72[19|84] 35s76[19|84]
+676V12*Editbox{591R8[19|84]} 12|31s76[19|84] 32s76[19|84]
+714R8*Menuitem_Type<593R8[19|84]> 12|25r51[19|84] 26r59[19|84]
+742V12*Menuitem{714R8[19|84]} 12|25s76[19|84] 26s84[19|84]
+1256V12*Canvas{545R8[19|84]} 12|11s84[19|84]
+1283U13*Set_Fill 13|13s41[19|84] 16s41[19|84] 22s41[19|84] 26s41[19|84] 65s17[19|84]
+. 81s25[19|84] 83s25[19|84] 85s25[19|84]
+1319U13*Draw_Rectangle 13|31s13[19|84] 66s9[19|84]
+1335U13*Draw_Circle 13|76s17[19|84] 88s17[19|84]
+X 36 s-stausa.ads
 203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
 268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
 

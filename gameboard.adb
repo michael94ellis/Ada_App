@@ -1,3 +1,5 @@
+--Checkers Board package func/procedure definitions
+with Ada.Text_IO; use Ada.Text_IO;
 package body GameBoard is
 	procedure drawBoardGUI is 
 	num							: Integer			:= 0;
@@ -49,9 +51,9 @@ package body GameBoard is
 			--Player pieces will be Red, Computer pieces will be White
 			if board(i).pieceValue /= 0 then
 				if board(i).pieceValue = 1 then
-					drawPiece(i, 1);
+					drawPiece(i);
 				elsif board(i).pieceValue = 3 then
-					drawPiece(i, 2);
+					drawPiece(i);
 				end if;
 			end if;
 		end loop;
@@ -60,14 +62,12 @@ package body GameBoard is
 	
 	procedure erasePiece(index: in Integer) is
 	begin
-		if index mod 2 = 0 and board(index).pieceValue /= 0 then
-			Set_Fill(BoardCanvas,Black);
-            Draw_Rectangle(BoardCanvas,(board(index).point.x-40,board(index).point.y-40),80,80);
-		end if;
+		Set_Fill(BoardCanvas,Black);
+        Draw_Rectangle(BoardCanvas,(board(index).point.x-40,board(index).point.y-40),80,80,(0,0));
 	end erasePiece;
 	
 	
-	procedure drawPiece(index: in Integer; player: in Integer) is
+	procedure drawPiece(index: in Integer) is
 	point: Point_Type := board(index).point;
 	procedure giveTexture is
 	begin
@@ -77,10 +77,12 @@ package body GameBoard is
 	end giveTexture;
 	begin
 		--Choose which player, set the correct color: red or white
-		if player = 1 or player = 2 then
+		if board(index).pieceValue = 1 OR board(index).pieceValue = 2 then
 			Set_Fill(BoardCanvas,Red);
-		else
+		elsif board(index).pieceValue = 3 OR board(index).pieceValue = 4 then
 			Set_Fill(BoardCanvas,White);
+		else
+			Set_Fill(BoardCanvas,Blue);
 		end if;
 		--Draw the actual circle
 		Draw_Circle(BoardCanvas,point,25);
@@ -88,7 +90,15 @@ package body GameBoard is
 			giveTexture;
 		end loop;
 	end drawPiece;
-   
+	
+	procedure movePiece(index1, index2: in Integer) is
+	begin
+		board(index2).pieceValue := board(index1).pieceValue;
+		board(index1).pieceValue := 0;
+		erasePiece(index1);
+		drawPiece(index2);
+	end movePiece;
+	
 	task body Timer is
 		min,sec: Integer := 0;
 	begin -- this begins running at run time on a separate thread for each instance of this task type
@@ -127,6 +137,17 @@ package body GameBoard is
 	begin
 		if spot1 + 4 = spot2 OR spot1 + 5 = spot2 then
 			if player = 1 then
+				isValid := True;
+			elsif player = 2 AND board(spot1).pieceValue = 4 then
+				isValid := True;
+			else
+				isValid := False;
+			end if;
+		end if;
+		if spot1 - 4 = spot2 OR spot1 - 5 = spot2 then
+			if player = 2 then
+				isValid := True;
+			elsif player = 1 AND board(spot1).pieceValue = 2 then
 				isValid := True;
 			else
 				isValid := False;

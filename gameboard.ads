@@ -37,7 +37,8 @@ package GameBoard is
 	-- This will cause the board and pieces to be drawn on the GUI
 	procedure drawBoardGUI;
 	procedure erasePiece(index: in Integer);
-	procedure drawPiece(index, player: in Integer);
+	procedure drawPiece(index:in Integer);
+	procedure movePiece(index1, index2:in Integer);
 	----------------------------------------------------
 	----------------------------------------------------
 	--------- The non GUI board components  ------------
