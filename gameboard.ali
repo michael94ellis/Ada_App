@@ -17,7 +17,7 @@ RV SPARK_05
 RV MAX_SELECT_ALTERNATIVES=1
 RV MAX_TASK_ENTRIES=2
 
-U gameboard%b		gameboard.adb		705cdc23 OO PK
+U gameboard%b		gameboard.adb		f23650bb OO PK
 W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W system%s		system.ads		system.ali
@@ -27,7 +27,7 @@ W system.tasking%s	s-taskin.adb		s-taskin.ali
 W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
 W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
 
-U gameboard%s		gameboard.ads		611b6d59 EE OO PF PK
+U gameboard%s		gameboard.ads		10ca09fc EE OO PF PK
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
@@ -50,8 +50,8 @@ D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
 D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
 D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
 D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
-D gameboard.ads		20161116051146 00bfc2ba gameboard%s
-D gameboard.adb		20161116051040 70e31e99 gameboard%b
+D gameboard.ads		20161116052512 716ea61f gameboard%s
+D gameboard.adb		20161116053824 8358f6a4 gameboard%b
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092926 5421119b interfaces.c%s
 D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
@@ -89,53 +89,52 @@ D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
 D s-win32.ads		20160516092926 b7f96285 system.win32%s
 X 10 gameboard.ads
-4K9*GameBoard 72l5 72e14 11|1b14 139l5 139t14
-7r9*AppFrame{17|358R8[16|84]} 11r91 13r91 14r91 15r91 17r82 18r82 19r82 20r82
-. 22r82 24r89 25r89 29r82 30r82 32r84 33r84 35r78 36r82
+4K9*GameBoard 71l5 71e14 11|1b14 139l5 139t14
+7r9*AppFrame{17|358R8[16|84]} 11r91 13r91 14r91 16r82 17r82 18r82 19r82 21r82
+. 23r89 24r89 28r82 29r82 31r84 32r84 34r78 35r82
 9r9*BoardLocation{17|141R11[16|84]} 11r100 11|29r40 39r61 39r82 42m13 42r31
 . 42r52 45m25 45r45
 11r9*BoardCanvas{17|545R8[16|84]} 11|11r50 14r50 20r50 24r50 29r28 64r34
 . 65r28 76r29 81r34 83r34 86r29
 13r9*startGame{17|589R8[16|84]}
 14r9*endGame{17|589R8[16|84]}
-15r9*submitMove{17|589R8[16|84]}
-17r9*PlayerScorePrompt{17|590R8[16|84]}
-18r9*PlayerScoreResult{17|590R8[16|84]}
-19r9*ComputerScorePrompt{17|590R8[16|84]}
-20r9*ComputerScoreResult{17|590R8[16|84]}
-22r9*WhosMoveLabel{17|590R8[16|84]}
-24r9*MenuFile{17|361R8[16|84]} 26r85 27r93
-25r9*MenuAbout{17|361R8[16|84]}
-26r9*File_End_Game{17|714R8[16|84]}
-27r9*File_Exit{17|714R8[16|84]}
-29r9*PromptPieceToMove{17|590R8[16|84]}
-30r9*PromptLocation{17|590R8[16|84]}
-32r9*InputPieceToMove{17|591R8[16|84]}
-33r9*InputLocation{17|591R8[16|84]}
-35r9*Timer_Label_Sec{17|590R8[16|84]} 11|109r58
-36r9*Timer_Label_Min{17|590R8[16|84]} 11|110r58
-39U19*drawBoardGUI 11|2b19 58l13 58t25
-40U19*erasePiece 40>30 11|61b19 67l13 67t23
-40i30 index{integer} 11|61b30 63r20 63r46 65r46
-41U19*drawPiece 41>29 41>36 11|52s41 54s41 70b19 90l13 90t22
-41i29 index{integer} 11|70b29 71r36
-41i36 player{integer} 11|70b48 80r20 80r34
-48T19*Timer 51l13 51e18 11|92b19 113l13 113t18
-49Y23 start 11|96b24
-50Y23 stop 11|99b48
-56R14*Spot 64e19 66r33
-59i17*pieceValue{integer} 11|32m52 34m52 36m52 50r37 51r45 53r48 63r53 117r35
+16r9*PlayerScorePrompt{17|590R8[16|84]}
+17r9*PlayerScoreResult{17|590R8[16|84]}
+18r9*ComputerScorePrompt{17|590R8[16|84]}
+19r9*ComputerScoreResult{17|590R8[16|84]}
+21r9*WhosMoveLabel{17|590R8[16|84]}
+23r9*MenuFile{17|361R8[16|84]} 25r85 26r93
+24r9*MenuAbout{17|361R8[16|84]}
+25r9*File_End_Game{17|714R8[16|84]}
+26r9*File_Exit{17|714R8[16|84]}
+28r9*PromptPieceToMove{17|590R8[16|84]}
+29r9*PromptLocation{17|590R8[16|84]}
+31r9*InputPieceToMove{17|591R8[16|84]}
+32r9*InputLocation{17|591R8[16|84]}
+34r9*Timer_Label_Sec{17|590R8[16|84]} 11|109r58
+35r9*Timer_Label_Min{17|590R8[16|84]} 11|110r58
+38U19*drawBoardGUI 11|2b19 58l13 58t25
+39U19*erasePiece 39>30 11|61b19 67l13 67t23
+39i30 index{integer} 11|61b30 63r20 63r46 65r47 65r71
+40U19*drawPiece 40>29 40>36 11|52s41 54s41 70b19 90l13 90t22
+40i29 index{integer} 11|70b29 71r36
+40i36 player{integer} 11|70b48 80r20 80r34
+47T19*Timer 50l13 50e18 11|92b19 113l13 113t18
+48Y23 start 11|96b24
+49Y23 stop 11|99b48
+55R14*Spot 63e19 65r33
+58i17*pieceValue{integer} 11|32m52 34m52 36m52 50r37 51r45 53r48 63r53 117r35
 . 118m40 119r38 120m40
-61i17*location{integer} 11|38m44
-63r17*point{17|141R11[16|84]} 11|39m44 65r53 71r43
-66a9*board(56R14) 11|32m41 34m41 36m41 38m33 39m33 50r28 51r36 53r39 63r40
-. 65r40 71r30 117r20 118m25 119r23 120m25
-68U19*makeKing 68>28 11|115b19 122l13 122t21
-68i28 newKing{integer} 11|115b28 117r26 118r31 119r29 120r31
-69V18*isValidMove{boolean} 69>30 69>37 69>44 11|124b18 136l13 136t24
-69i30 spot1{integer} 11|124b30 128r20 128r41
-69i37 spot2{integer} 11|124b37 128r32 128r53
-69i44 player{integer} 11|124b44 129r28
+60i17*location{integer} 11|38m44
+62r17*point{17|141R11[16|84]} 11|39m44 65r54 65r78 71r43
+65a9*board(55R14) 11|32m41 34m41 36m41 38m33 39m33 50r28 51r36 53r39 63r40
+. 65r41 65r65 71r30 117r20 118m25 119r23 120m25
+67U19*makeKing 67>28 11|115b19 122l13 122t21
+67i28 newKing{integer} 11|115b28 117r26 118r31 119r29 120r31
+68V18*isValidMove{boolean} 68>30 68>37 68>44 11|124b18 136l13 136t24
+68i30 spot1{integer} 11|124b30 128r20 128r41
+68i37 spot2{integer} 11|124b37 128r32 128r53
+68i44 player{integer} 11|124b44 129r28
 X 11 gameboard.adb
 3i9 num{integer} 15m41 15r48 21m41 21r48 31r36 32r47 33r39 33r53 34r47 36r47
 . 38r39 38r56 39r39
@@ -151,17 +150,17 @@ X 11 gameboard.adb
 126b17 isValid{boolean} 130m33 132m33 135r24
 X 15 jewl.ads
 97K9*JEWL 10|1r6 1r31 15|238e9
-131i31*X{integer} 11|39r75 42r45 74m23 74r34
-131i33*Y{integer} 11|39r96 42r66 45r59 75m23 75r34
+131i31*X{integer} 11|39r75 42r45 65r60 74m23 74r34
+131i33*Y{integer} 11|39r96 42r66 45r59 65r84 75m23 75r34
 X 16 jewl-simple_windows.ads
 84K14*Simple_Windows[17|97] 10|1w11 1r36
 X 17 jewl-windows.ads
 135E11*Alignment_Type
-135n30*Left{135E11[16|84]} 10|17r124[16|84] 18r124[16|84] 19r126[16|84] 20r126[16|84]
-. 35r106[16|84] 36r110[16|84]
-135n44*Right{135E11[16|84]} 10|29r133[16|84] 30r139[16|84]
-141R11*Point_Type{15|130R11} 10|9r51[16|84] 63r24[16|84] 11|71r16[16|84]
-151V12*Center=151:54{135E11[16|84]} 10|22s134[16|84]
+135n30*Left{135E11[16|84]} 10|16r124[16|84] 17r124[16|84] 18r126[16|84] 19r126[16|84]
+. 34r106[16|84] 35r110[16|84]
+135n44*Right{135E11[16|84]} 10|28r133[16|84] 29r139[16|84]
+141R11*Point_Type{15|130R11} 10|9r51[16|84] 62r24[16|84] 11|71r16[16|84]
+151V12*Center=151:54{135E11[16|84]} 10|21s134[16|84]
 241r3*Black{138R11[16|84]} 11|14r62[16|84] 20r62[16|84] 64r46[16|84]
 242r3*White{138R11[16|84]} 11|83r46[16|84]
 243r3*Red{138R11[16|84]} 11|11r62[16|84] 24r62[16|84] 81r46[16|84]
@@ -169,23 +168,23 @@ X 17 jewl-windows.ads
 324H8*Container_Type<262R8[16|84]>
 325H8*Control_Type<262R8[16|84]>
 358R8*Frame_Type<324R8[16|84]> 10|7r59[16|84]
-361R8*Menu_Type<324R8[16|84]> 10|24r59[16|84] 25r59[16|84]
+361R8*Menu_Type<324R8[16|84]> 10|23r59[16|84] 24r59[16|84]
 404V13*Frame{358R8[16|84]} 10|7s84[16|84]
-503V12*Menu{361R8[16|84]} 10|24s84[16|84] 25s84[16|84]
+503V12*Menu{361R8[16|84]} 10|23s84[16|84] 24s84[16|84]
 543H8*Text_Control_Type<325R8[16|84]>
 545R8*Canvas_Type<325R8[16|84]> 10|11r59[16|84]
 572U13*Set_Text 11|109s49[16|84] 110s49[16|84]
-589R8*Button_Type<543R8[16|84]> 10|13r59[16|84] 14r59[16|84] 15r59[16|84]
-590R8*Label_Type<543R8[16|84]> 10|17r51[16|84] 18r51[16|84] 19r51[16|84]
-. 20r51[16|84] 22r51[16|84] 29r51[16|84] 30r51[16|84] 35r51[16|84] 36r51[16|84]
-591R8*Editbox_Type<543R8[16|84]> 10|32r51[16|84] 33r51[16|84]
+589R8*Button_Type<543R8[16|84]> 10|13r59[16|84] 14r59[16|84]
+590R8*Label_Type<543R8[16|84]> 10|16r51[16|84] 17r51[16|84] 18r51[16|84]
+. 19r51[16|84] 21r51[16|84] 28r51[16|84] 29r51[16|84] 34r51[16|84] 35r51[16|84]
+591R8*Editbox_Type<543R8[16|84]> 10|31r51[16|84] 32r51[16|84]
 593H8*Boolean_Control_Type<543R8[16|84]>
-616V12*Button{589R8[16|84]} 10|13s84[16|84] 14s84[16|84] 15s84[16|84]
-646V12*Label{590R8[16|84]} 10|17s76[16|84] 18s76[16|84] 19s76[16|84] 20s76[16|84]
-. 22s76[16|84] 29s76[16|84] 30s76[16|84] 35s72[16|84] 36s76[16|84]
-676V12*Editbox{591R8[16|84]} 10|32s76[16|84] 33s76[16|84]
-714R8*Menuitem_Type<593R8[16|84]> 10|26r51[16|84] 27r59[16|84]
-742V12*Menuitem{714R8[16|84]} 10|26s76[16|84] 27s84[16|84]
+616V12*Button{589R8[16|84]} 10|13s84[16|84] 14s84[16|84]
+646V12*Label{590R8[16|84]} 10|16s76[16|84] 17s76[16|84] 18s76[16|84] 19s76[16|84]
+. 21s76[16|84] 28s76[16|84] 29s76[16|84] 34s72[16|84] 35s76[16|84]
+676V12*Editbox{591R8[16|84]} 10|31s76[16|84] 32s76[16|84]
+714R8*Menuitem_Type<593R8[16|84]> 10|25r51[16|84] 26r59[16|84]
+742V12*Menuitem{714R8[16|84]} 10|25s76[16|84] 26s84[16|84]
 1256V12*Canvas{545R8[16|84]} 10|11s84[16|84]
 1283U13*Set_Fill 11|11s41[16|84] 14s41[16|84] 20s41[16|84] 24s41[16|84] 64s25[16|84]
 . 81s25[16|84] 83s25[16|84]

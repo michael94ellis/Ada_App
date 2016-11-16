@@ -62,7 +62,7 @@ package body GameBoard is
 	begin
 		if index mod 2 = 0 and board(index).pieceValue /= 0 then
 			Set_Fill(BoardCanvas,Black);
-            Draw_Rectangle(BoardCanvas,board(index).point,80,80);
+            Draw_Rectangle(BoardCanvas,(board(index).point.x-40,board(index).point.y-40),80,80);
 		end if;
 	end erasePiece;
 	

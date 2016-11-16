@@ -12,7 +12,6 @@ package GameBoard is
 	--Declare buttons
 	startGame					: Button_Type		:= Button(AppFrame,(750,60),100,50,"Start Game",'S');
 	endGame						: Button_Type 		:= Button(AppFrame,(750,60),100,50,"End Game",'E');
-	submitMove					: Button_Type 		:= Button(AppFrame,(400,710),100,50,"Submit Move",'M');
 	--Declare labels for player/computer scores
 	PlayerScorePrompt			: Label_Type 		:= Label(AppFrame,(700,200),100,50,"Player Score:",Left);
 	PlayerScoreResult			: Label_Type 		:= Label(AppFrame,(800,200),100,50,"Player Result",Left);

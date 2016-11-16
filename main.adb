@@ -21,11 +21,11 @@ begin
 		--End game button is not visible
 		endGame.Hide;
 		startGame.Show; --Start button is visible
-		--Submit button is not visible until the game has actually started
-		submitMove.Hide;
 		--calls JEWL functions from the gameboard package to init the GUI
 		-- game wont start until S button is pressed
 		loop 
+			
+					drawBoardGUI;
 			case Next_Command is
 				-- begin playing
 				
@@ -35,8 +35,6 @@ begin
 					--Remove start button and display end button
 					startGame.Hide;
 					endGame.Show;
-					submitMove.Show;
-					drawBoardGUI;
 					exit;
 				when 'Q' =>
 					Close(AppFrame);
@@ -56,18 +54,17 @@ begin
 						xFinder   := 0; -- these two are just temp vars
 						yFinder   := 0;
 						firstClick := Start_Point(BoardCanvas); -- capture that stored data
-------------------------It just works--------------------------------------------------------------
-						while xFinder <= firstClick.x loop
+						while xFinder <= firstClick.x loop --this will find the x value of the 1..64 grid coordinate
 							xFinder := xFinder + 80;
 							spotIndex1 := spotIndex1 + 1;
 						end loop;
-						while yFinder <= firstClick.y loop
+						while yFinder <= firstClick.y loop --this will find the y value of the 1..64 grid coordinate
 							yFinder := yFinder + 80;
 							if yFinder > 80 then
 								spotIndex1 := spotIndex1 + 8;
 							end if;
 						end loop;
----------------------------------------------------------------------------------------------------
+						-- Validation of location choice
 						if spotIndex1 / 8 mod 2 = 1 and spotIndex1 mod 2 = 0 then
 							spotIndex1 := 0;
 						elsif spotIndex1 / 8 mod 2 = 0 and spotIndex1 mod 2 = 1 then
@@ -81,11 +78,11 @@ begin
 									xFinder   := 0;
 									yFinder   := 0;
 									secondClick := Start_Point(BoardCanvas);
-									while xFinder <= secondClick.x loop
+									while xFinder <= secondClick.x loop --this will find the x value of the 1..64 grid coordinate
 										xFinder := xFinder + 80;
 										spotIndex2 := spotIndex2 + 1;
 									end loop;
-									while yFinder <= secondClick.y loop
+									while yFinder <= secondClick.y loop --this will find the y value of the 1..64 grid coordinate
 										yFinder := yFinder + 80;
 										if yFinder > 80 then
 											spotIndex2 := spotIndex2 + 8;
@@ -94,6 +91,7 @@ begin
 								end loop; --spotIndex1 now holds the array index of the piece to move	
 							when others => null;
 						end case;
+						-- validation of location choice
 						if (spotIndex2 / 8) mod 2 = 1 and spotIndex2 mod 2 = 0 then
 							spotIndex2 := 0;
 						elsif (spotIndex2 / 8) mod 2 = 0 and spotIndex2 mod 2 = 1 then
@@ -101,14 +99,14 @@ begin
 						end if;
 					end if; -- spotIndex2 now holds the array index of the spot to attempt to move to
 					if spotIndex1 / 8 mod 2 = 1 then
-						spotIndex1 := spotIndex1 / 2 + 1;
+						spotIndex1 := spotIndex1 / 2 + 1; -- odd row
 					else
-						spotIndex1 := spotIndex1 / 2;
+						spotIndex1 := spotIndex1 / 2; -- even row
 					end if;
 					if spotIndex2 / 8 mod 2 = 1 then
-						spotIndex2 := spotIndex2 / 2 + 1;
+						spotIndex2 := spotIndex2 / 2 + 1; -- odd row
 					else
-						spotIndex2 := spotIndex2 / 2;
+						spotIndex2 := spotIndex2 / 2; -- even row
 					end if;
 					put(Integer'Image(spotIndex1));
 					put(Integer'Image(spotIndex2));
