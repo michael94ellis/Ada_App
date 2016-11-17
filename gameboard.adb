@@ -62,6 +62,7 @@ package body GameBoard is
 	procedure erasePiece(index: in Integer) is
 	begin
 		Set_Fill(BoardCanvas,Black);
+		board(index).pieceValue := 0;
         Draw_Rectangle(BoardCanvas,(board(index).point.x-40,board(index).point.y-40),80,80,(0,0));
 	end erasePiece;
 	
@@ -83,8 +84,7 @@ package body GameBoard is
 		else
 			Set_Fill(BoardCanvas,Blue);
 		end if;
-		--Draw the actual circle
-		Draw_Circle(BoardCanvas,point,25);
+		Draw_Circle(BoardCanvas,point,25);	--Draw the actual circle
 		for i in 1..4 loop	
 			if board(index).pieceValue = 2 OR board(index).pieceValue = 4 then
 				giveTexture(2);
@@ -93,7 +93,7 @@ package body GameBoard is
 			end if;
 		end loop;
 		--Differentiate between king pieces and regular pieces
-		if board(index).pieceValue = 2 or board(index).pieceValue = 4 then --Player 1 King
+		if board(index).pieceValue = 2 or board(index).pieceValue = 4 then -- A nice crown drawing
 			Draw_Line_List(BoardCanvas,((point.x,point.y+10),(point.x-10,point.y+10),(point.x-10,point.y-10),
 			(point.x-5,point.y-5),(point.x,point.y-10),(point.x+5,point.y-5),(point.x+10,point.y-10),
 			(point.x+10,point.y+10),(point.x,point.y+10)));
@@ -101,15 +101,21 @@ package body GameBoard is
 		save(BoardCanvas);
 		restore(BoardCanvas);
 	end drawPiece;
------------------------------------- MOVE PIECE METHOD -------------------------------------
+------------------------------------ MOVE PIECE METHOD ------------------- UNSAFE MOVE --------------------
 	procedure movePiece(index1, index2: in Integer) is
 	begin
 		board(index2).pieceValue := board(index1).pieceValue;
-		board(index1).pieceValue := 0;
 		erasePiece(index1);
 		drawPiece(index2);
 	end movePiece;
 	
+------------------------------------ JUMP PIECE METHOD ------------- THIS ONE DOES THE UNSAFE JUMP ---------------
+	procedure jumpPiece(index1, index2, indexErase:in Integer) is
+	begin
+		movePiece(index1,index2);
+		drawPiece(Index2);
+		erasePiece(indexErase);
+	end jumpPiece;
 	
 -------------- TIMER TASK ------------------------------------ TIMER TASK ------------------------------------ TIMER TASK ----------------------
 	task body Timer is
@@ -154,8 +160,7 @@ package body GameBoard is
 -------------- JUMP METHOD ------------------------------------ JUMP METHOD ------------------------------------- JUMP METHOD ----------------------
 	function isValidJump(spot1, spot2, player: in Integer) return Integer is
 		indexErase: Integer := 0;
-	begin
-	----------------------------------------- Jumping downwards, top to bottom -----------------------------------
+	begin ----------------------------------------- Jumping downwards, top to bottom -----------------------------------
 		if  (spot2 > spot1) and
 			((player = 1 and (board(spot1).pieceValue = 1 or board(spot1).pieceValue = 2)) or
 			(player = 2 and board(spot1).pieceValue = 4)) then
@@ -164,6 +169,7 @@ package body GameBoard is
 					if spot1 / 4 mod 2 = 1 then
 						--5,13,21,29 jump FROM these spots for this statement
 						if spot1 + 9 = spot2 then
+							-- jump left
 							if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
 								(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
 								indexErase := spot1+4;
@@ -172,6 +178,7 @@ package body GameBoard is
 					else
 						--1,9,17,25
 						if spot1 + 9 = spot2 then
+							-- jump right
 							if (player = 1 and (board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4)) or
 								(player = 2 and (board(spot1+5).pieceValue = 1 or board(spot1+5).pieceValue = 2)) then		-- 5
 								indexErase := spot1+5;
@@ -348,7 +355,6 @@ package body GameBoard is
 							if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
 								(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
 								indexErase := spot1-4;
-								put("111");
 							end if;
 						elsif spot1 - 7 = spot2 then
 							if	(player = 2 and (board(spot1-3).pieceValue = 1 or board(spot1-3).pieceValue = 2)) or
@@ -374,7 +380,6 @@ package body GameBoard is
 			((player = 1 and (board(spot1).pieceValue = 1 or board(spot1).pieceValue = 2)) or
 			(player = 2 and board(spot1).pieceValue = 4)) then
 			
-			if spot mod 4 = 1 or spot 4 mod 4 = 
 			case spot1 mod 4 is
 				when 1 => 
 				-- 1,5,9,13,17..
@@ -499,6 +504,6 @@ package body GameBoard is
 	function getP2Score return Integer is
 	begin
 		return player2Score;
-end getP2Score;
+	end getP2Score;
 
 end GameBoard;

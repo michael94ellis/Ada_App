@@ -33,6 +33,7 @@ package GameBoard is
 	procedure erasePiece(index: in Integer);
 	procedure drawPiece(index:in Integer);
 	procedure movePiece(index1, index2:in Integer);
+	procedure jumpPiece(index1, index2, indexErase:in Integer);
 	----------------------------------------------------
 	----------------------------------------------------
 	--------- The non GUI board components  ------------
@@ -45,7 +46,7 @@ package GameBoard is
 	end Timer;
 	-- need to add entry points for like the individual player's total move time clock/counts
 	-- need to add entry to start and stop the main/only timer
-		
+
 	--Create record type
 	type Spot is record
 		--Player 1 -> User -> Black Team -> 1/2 (2 for king)

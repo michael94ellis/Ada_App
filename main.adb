@@ -10,7 +10,8 @@ procedure main is
 	gameOver					: Boolean  		:= False;  -- Set to true when game is over
 	playerTurn					: Integer 		:= 1;      -- 1 or 2 represents which player's turn it is (1-User, 2-Computer)
 	spotIndex1, spotIndex2		: Integer		:= 0;
-	indexErase					: Integer		:= 0;
+	indexErase, canJump			: Integer		:= 0;
+	
 	procedure nextTurn is	
 	begin
 		if playerTurn = 1 then
@@ -22,7 +23,7 @@ procedure main is
 		end if;
 	end nextTurn;
 	
-	function getClick return Integer is
+	function getClick return Integer is -- Gets a super clean 1..32 integer click
 		spotIndex				: Integer 		:= 0;
 		xFinder, yFinder		: Integer  		:= 0;
 		lastClick				: Point_Type;
@@ -59,16 +60,11 @@ procedure main is
 	end getClick;
 	
 begin
-   --Loop through frame
+   --Loop through frame I.E. while a window that the program opens is still open
 	while Valid(AppFrame) loop
-		--End game button is not visible
-		endGame.Hide;
-		startGame.Show; --Start button is visible
-		--calls JEWL functions from the gameboard package to init the GUI
-		-- game wont start until S button is pressed
-		drawBoardGUI;
-		-- begin playing
-		--Begin timer
+		drawBoardGUI; -- Draw the game
+
+		--Begin timer because the game has started
 		timeKeeper.start;
 		endGame.Show;
 		while gameOver = False loop
@@ -83,26 +79,28 @@ begin
 					elsif spotIndex2 = 0 then 
 						spotIndex2 := getClick;					 -- second click
 						put(Integer'Image(spotIndex2));
-						if board(spotIndex1).pieceValue /= 0 AND board(spotIndex2).pieceValue = 0 then
-							--make the move
-							if spotIndex1 = 0 or spotIndex2 = 0 then
-								exit;
-							end if;
+						if board(spotIndex1).pieceValue /= 0 AND board(spotIndex2).pieceValue = 0 then  -- make the simple move
 							if isValidMove(spotIndex1,spotIndex2, playerTurn) = True then
-								movePiece(spotIndex1, spotIndex2);			
-								if spotIndex2 < 5 OR spotIndex2 > 28 then
-									makeKing(spotIndex2);
+								canJump := 0;
+								for i in 1..32 loop
+									for j in 1..32 loop
+										if isValidJump(i,j,playerTurn) /= 0 then
+											-- A MOVE IS POSSIBLE AND NOT BEING MADE IF THIS IS EXECUTED
+											canJump := isValidJump(i,j,playerTurn);
+										end if;
+									end loop;
+								end loop;
+								if canJump = 0 then	
+									movePiece(spotIndex1, spotIndex2);			
+									if spotIndex2 < 5 OR spotIndex2 > 28 then
+										makeKing(spotIndex2);
+									end if;
+									nextTurn;
 								end if;
-								nextTurn; 
-							else
-								indexErase := isValidJump(spotIndex1,spotIndex2,playerTurn);
+							else  											--jump area
+								indexErase := isValidJump(spotIndex1,spotIndex2,playerTurn); -- 0 if cant jump, otherwise it's the index of the piece that is jumped(to erase it)
 								if indexErase /= 0 then -- then a jump is possible
-									board(spotIndex2).pieceValue := board(spotIndex1).pieceValue;
-									board(spotIndex1).pieceValue := 0;
-									board(indexErase).pieceValue := 0;
-									erasePiece(spotIndex1);
-									erasePiece(indexErase);
-									drawPiece(spotIndex2);
+									jumpPiece(spotIndex1,spotIndex2,indexErase);
 									if playerTurn = 1 then --player 1 score ++
 										player1Score := player1Score + 1;
 										Set_Text(PlayerScoreResult,Integer'Image(player1Score));
@@ -117,12 +115,6 @@ begin
 								end if;
 							end if;
 							Put_Line("----------");
-							for i in 1..32 loop
-								put(board(i).pieceValue);
-								if i mod 4 = 0 then
-									New_Line;
-								end if;
-							end loop;
 						else
 							put("Invalid Input");
 						end if;
@@ -135,7 +127,7 @@ begin
 					timeKeeper.stop;
 					Set_Text(WhosMoveLabel,"Game Over");
 					exit;
-				when others => null; -- does not but is required
+				when others => null; -- does nothing but is required
 			end case;
 			-- Check for end game conditions
 			if getP1Score = 12 then
@@ -146,5 +138,6 @@ begin
 				gameOver := True;
 			end if;
 		end loop; -- main game loop
+		timeKeeper.stop;
 	end loop; -- frame loop
 end main;
