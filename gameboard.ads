@@ -62,7 +62,7 @@ package GameBoard is
 	player1Score, player2Score: Integer := 0;
 	--Set up game board procedure
 	procedure makeKing(newKing: Integer);
-	procedure isValidJump(spot1, spot2, player: in Integer);
+	function isValidJump(spot1, spot2, player: in Integer) return Integer;
 	function isValidMove(spot1, spot2, player: in Integer) return Boolean;
 	--procedure isValidJump
 	--function isValidKingMove
