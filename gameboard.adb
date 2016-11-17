@@ -50,6 +50,7 @@ package body GameBoard is
 		for i in 1..32 loop
 			--Player pieces will be Red, Computer pieces will be White
 			if board(i).pieceValue /= 0 then
+				put("hi");
 				if board(i).pieceValue = 1 then
 					drawPiece(i);
 				elsif board(i).pieceValue = 3 then
@@ -59,20 +60,20 @@ package body GameBoard is
 		end loop;
 	end drawBoardGUI; -- Stop generating the initial game board
 	
-	
+------------------------------------ ERASE PIECE ------------------------------------
 	procedure erasePiece(index: in Integer) is
 	begin
 		Set_Fill(BoardCanvas,Black);
         Draw_Rectangle(BoardCanvas,(board(index).point.x-40,board(index).point.y-40),80,80,(0,0));
 	end erasePiece;
 	
-	
+------------------------------------ DRAW PIECE ------------------------------------ DRAW PIECE ------------------------------------
 	procedure drawPiece(index: in Integer) is
 	point: Point_Type := board(index).point;
-	procedure giveTexture is
+	procedure giveTexture(size: in Integer) is
 	begin
-		point.x := point.x - 1;
-		point.y := point.y - 1;
+		point.x := point.x - size;
+		point.y := point.y - size;
 		Draw_Circle(BoardCanvas,point,25);
 	end giveTexture;
 	begin
@@ -87,10 +88,23 @@ package body GameBoard is
 		--Draw the actual circle
 		Draw_Circle(BoardCanvas,point,25);
 		for i in 1..4 loop
-			giveTexture;
+			put("texturized");	
+			if board(index).pieceValue = 2 OR board(index).pieceValue = 4 then
+				giveTexture(2);
+			else
+				giveTexture(1);
+			end if;
 		end loop;
+		--Differentiate between king pieces and regular pieces
+		if board(index).pieceValue = 2 or board(index).pieceValue = 4 then --Player 1 King
+			Draw_Line_List(BoardCanvas,((point.x,point.y+10),(point.x-10,point.y+10),(point.x-10,point.y-10),
+			(point.x-5,point.y-5),(point.x,point.y-10),(point.x+5,point.y-5),(point.x+10,point.y-10),
+			(point.x+10,point.y+10),(point.x,point.y+10)));
+		end if;
+		save(BoardCanvas);
+		restore(BoardCanvas);
 	end drawPiece;
-	
+------------------------------------ MOVE PIECE METHOD -------------------------------------
 	procedure movePiece(index1, index2: in Integer) is
 	begin
 		board(index2).pieceValue := board(index1).pieceValue;
@@ -100,6 +114,7 @@ package body GameBoard is
 	end movePiece;
 	
 	
+-------------- TIMER TASK ------------------------------------ TIMER TASK ------------------------------------ TIMER TASK ----------------------
 	task body Timer is
 		min,sec: Integer := 0;
 	begin -- this begins running at run time on a separate thread for each instance of this task type
@@ -122,15 +137,22 @@ package body GameBoard is
 			end loop;
 	end Timer;
 	
+-------------- MAKE KING METHOD ------------------------------------ MAKE KING METHOD -------------------------
 	procedure makeKing(newKing: Integer) is
 	begin
 		if board(newKing).pieceValue = 1 then
-			board(newKing).pieceValue := 3;
-		elsif board(newKing).pieceValue = 2 then
+			board(newKing).pieceValue := 2;
+		elsif board(newKing).pieceValue = 3 then
 			board(newKing).pieceValue := 4;
 		end if;
+		put("King");
+		put(Integer'Image(newKing));
+		--Draw new piece as king
+		
+		drawPiece(newKing);
 	end makeKing;
 	
+-------------- JUMP METHOD ------------------------------------ JUMP METHOD ------------------------------------- JUMP METHOD ----------------------
 	procedure isValidJump(spot1, spot2, player: in Integer) is
 		isValid: Boolean := False;
 		indexErase: Integer := 0;
@@ -178,7 +200,7 @@ package body GameBoard is
 								-- jump left
 								if board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4 then
 									isValid := True;
-									indexErase := spot1+4;
+									indexErase := spot1+5;
 								end if;
 							elsif spot1 + 7 = spot2 then
 								-- jump right
@@ -242,15 +264,15 @@ package body GameBoard is
 				case spot1 mod 4 is
 					when 0 => 
 						if spot1 / 4 mod 2 = 1 then
-							--8,16,24,32
+							--4,12,20,28
 							if spot1 - 9 = spot2 then
-								if board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2 then
+								if board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2 then
 									isValid := True;
-									indexErase := spot1-5;
+									indexErase := spot1-4;
 								end if;
 							end if;
 						else
-							--4,12,20,28
+							--8,16,24,32
 							if spot1 - 9 = spot2 then
 								if board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2 then
 									isValid := True;
@@ -264,7 +286,6 @@ package body GameBoard is
 							--5,13,21,29
 							if spot1 - 7 = spot2 then
 								if board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2 then
-								put("17");
 									isValid := True;
 									indexErase := spot1-4;
 								end if;
@@ -345,137 +366,154 @@ package body GameBoard is
 			erasePiece(spot1);
 			erasePiece(indexErase);
 			drawPiece(spot2);
+			if player = 1 then --player 1 score ++
+				player1Score := player1Score + 1;
+			elsif player = 2 then --player 2 score ++
+				player2Score := player2Score + 1;
+			end if;
+			if  spot2 < 5 OR spot2 > 28 then
+				makeKing(spot2);
+			end if;
 		end if;
 	end isValidJump;
 	
-	
+-------------- MOVE METHOD ------------------------------------ MOVE METHOD ------------------------------------- MOVE METHOD ----------------------
 	function isValidMove(spot1, spot2, player: in Integer) return Boolean is
 		--Function variables
 		isValid: Boolean := False; --Value that is returned at the end of the function to tell the prgm is the attempted move is valid
 	begin
-		if player = 1 then		
-			if board(spot1).pieceValue = 1 or board(spot1).pieceValue = 2 then
-				case spot1 mod 4 is
-					when 1 => 
-					-- 1,5,9,13,17..
-						if spot1 / 4 mod 2 = 1 then
-							--5,13,21,29
-							if spot1 + 4 = spot2 then
-								-- does not check if there is a piece there
-								isValid := True;
-							end if;
-						else
-							--1,9,17,25
-							if spot1 + 4 = spot2 or spot1 + 5 = spot2 then
-								isValid := True;
-							end if;
+---------------------------------------------- PLAYER 1 MOVE ---------------------------------------
+		if player = 1 or board(spot1).pieceValue = 4 then
+			case spot1 mod 4 is
+				when 1 => 
+				-- 1,5,9,13,17..
+					if spot1 / 4 mod 2 = 1 then
+						--5,13,21,29
+						if spot1 + 4 = spot2 then
+							isValid := True;
 						end if;
-					when 2 => 
-						if spot1 / 4 mod 2 = 1 then
-							--6,14,22,30
-							if spot1 + 3 = spot2 or spot1 + 4 = spot2 then
-								-- does not check if there is a piece there
-								isValid := True;
-							end if;
-						else
-							--2,10,18,26
-							if spot1 + 4 = spot2 or spot1 + 5 = spot2 then
-								isValid := True;
-							end if;
+					else
+						--1,9,17,25
+						if spot1 + 4 = spot2 or spot1 + 5 = spot2 then
+							isValid := True;
 						end if;
-					when 3 => 
-						if spot1 / 4 mod 2 = 1 then
-							--7,15,23,31
-							if spot1 + 3 = spot2 or spot1 + 4 = spot2 then
-								-- does not check if there is a piece there
-								isValid := True;
-							end if;
-						else
-							--3,11,19,27
-							if spot1 + 4 = spot2 or spot1 + 5 = spot2 then
-								isValid := True;
-							end if;
+					end if;
+				when 2 => 
+					if spot1 / 4 mod 2 = 1 then
+						--6,14,22,30
+						if spot1 + 3 = spot2 or spot1 + 4 = spot2 then
+							isValid := True;
 						end if;
-					when 0 => 
-						if spot1 / 4 mod 2 = 1 or spot1 mod 4 = 0 then
-							--8,16,24,32
-							if spot1 + 3 = spot2 or spot1 + 4 = spot2 then
-								isValid := True;
-							end if;
-						else
-							--4,12,20,28
-							if spot1 + 4 = spot2 then
-								isValid := True;
-							end if;
+					else
+						--2,10,18,26
+						if spot1 + 4 = spot2 or spot1 + 5 = spot2 then
+							isValid := True;
 						end if;
-					when others => null;
-				end case;
-			end if;
-		elsif player = 2 then
-			if board(spot1).pieceValue = 3 or board(spot1).pieceValue = 4 then
-				case spot1 mod 4 is
-					when 0 => 
-						if spot1 / 4 mod 2 = 1 or spot1 mod 4 = 0 then
-							--8,16,24,32
-							if spot1 - 4 = spot2 or spot1 - 5 = spot2 then
-								isValid := True;
-							end if;
-						else
-							--4,12,20,28
-							if spot1 - 4 = spot2 then
-								isValid := True;
-							end if;
+					end if;
+				when 3 => 
+					if spot1 / 4 mod 2 = 1 then
+						--7,15,23,31
+						if spot1 + 3 = spot2 or spot1 + 4 = spot2 then
+							isValid := True;
 						end if;
-					when 1 => 
-					-- 1,5,9,13,17..
-						if spot1 / 4 mod 2 = 1 then
-							--5,13,21,29
-							if spot1 - 4 = spot2 then
-								-- does not check if there is a piece there
-								isValid := True;
-							end if;
-						else
-							--1,9,17,25
-							if spot1 - 3 = spot2 or spot1 - 4 = spot2 then
-								isValid := True;
-							end if;
+					else
+						--3,11,19,27
+						if spot1 + 4 = spot2 or spot1 + 5 = spot2 then
+							isValid := True;
 						end if;
-					
-					when 2 => 
-						if spot1 / 4 mod 2 = 1 then
-							--6,14,22,30
-							if spot1 - 4 = spot2 or spot1 - 5 = spot2 then
-								-- does not check if there is a piece there
-								isValid := True;
-							end if;
-						else
-							--2,10,18,26
-							if spot1 - 3 = spot2 or spot1 - 4 = spot2 then
-								isValid := True;
-							end if;
+					end if;
+				when 0 => 
+					if spot1 / 4 mod 2 = 1 or spot1 mod 4 = 0 then
+						--8,16,24,32
+						if spot1 + 3 = spot2 or spot1 + 4 = spot2 then
+							isValid := True;
 						end if;
-					when 3 => 
-						if spot1 / 4 mod 2 = 1 then
-							--7,15,23,31
-							if spot1 - 4 = spot2 or spot1 - 5 = spot2 then
-								-- does not check if there is a piece there
-								isValid := True;
-							end if;
-						else
-							--3,11,19,27
-							if spot1 - 3 = spot2 or spot1 - 4 = spot2 then
-								isValid := True;
-							end if;
+					else
+						--4,12,20,28
+						if spot1 + 4 = spot2 then
+							isValid := True;
 						end if;
-					when others => null;
-				end case;
-			end if;
+					end if;
+				when others => null;
+			end case;
+--------------------------------------------------PLAYER 2 MOVE-------------------------------------------------------
+		elsif player = 2 or board(spot1).pieceValue = 2 then -- IF player 2 OR player 1 king
+			case spot1 mod 4 is
+				when 0 => 
+					if spot1 / 4 mod 2 = 1 or spot1 mod 4 = 0 then
+						--8,16,24,32
+						if spot1 - 4 = spot2 or spot1 - 5 = spot2 then
+							isValid := True;
+						end if;
+					else
+						--4,12,20,28
+						if spot1 - 4 = spot2 then
+							isValid := True;
+						end if;
+					end if;
+				when 1 => 
+				-- 1,5,9,13,17..
+					if spot1 / 4 mod 2 = 1 then
+						--5,13,21,29
+						if spot1 - 4 = spot2 then
+							-- does not check if there is a piece there
+							isValid := True;
+						end if;
+					else
+						--1,9,17,25
+						if spot1 - 3 = spot2 or spot1 - 4 = spot2 then
+							isValid := True;
+						end if;
+					end if;
+				
+				when 2 => 
+					if spot1 / 4 mod 2 = 1 then
+						--6,14,22,30
+						if spot1 - 4 = spot2 or spot1 - 5 = spot2 then
+							-- does not check if there is a piece there
+							isValid := True;
+						end if;
+					else
+						--2,10,18,26
+						if spot1 - 3 = spot2 or spot1 - 4 = spot2 then
+							isValid := True;
+						end if;
+					end if;
+				when 3 => 
+					if spot1 / 4 mod 2 = 1 then
+						--7,15,23,31
+						if spot1 - 4 = spot2 or spot1 - 5 = spot2 then
+							-- does not check if there is a piece there
+							isValid := True;
+						end if;
+					else
+						--3,11,19,27
+						if spot1 - 3 = spot2 or spot1 - 4 = spot2 then
+							isValid := True;
+						end if;
+					end if;
+				when others => null;
+			end case;
 		end if;
 		if board(spot2).pieceValue /= 0 then
 			isValid := False;
 		end if;
+		if isValid = True then
+			if spot2 < 5 OR spot2 > 28 then
+				makeKing(spot2);
+			end if;
+		end if;
 		return isValid;
 	end isValidMove;
-
+	
+	function getP1Score return Integer is
+	begin
+		return player1Score;
+	end getP1Score;
+	
+	function getP2Score return Integer is
+	begin
+		return player2Score;
+end getP2Score;
 
 end GameBoard;

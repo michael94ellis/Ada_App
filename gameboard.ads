@@ -58,10 +58,14 @@ package GameBoard is
 	end record;
 	--Board Variable of 32 Spots
 	board: array (1..32) of Spot;
+	--Declare player scores
+	player1Score, player2Score: Integer := 0;
 	--Set up game board procedure
 	procedure makeKing(newKing: Integer);
 	procedure isValidJump(spot1, spot2, player: in Integer);
 	function isValidMove(spot1, spot2, player: in Integer) return Boolean;
 	--procedure isValidJump
 	--function isValidKingMove
+	function getP1Score return Integer;
+	function getP2Score return Integer;
 end GameBoard;

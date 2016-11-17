@@ -11,12 +11,11 @@ RV NO_DEFAULT_INITIALIZATION
 RV SPARK_05
 RV MAX_TASKS=1+
 
-U main%b		main.adb		a9e1c4d8 NE OO SU IL
+U main%b		main.adb		a3750db0 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
-W computer%s		computer.adb		computer.ali
 W gameboard%s		gameboard.adb		gameboard.ali
 W jewl%s		jewl.adb		jewl.ali
 W jewl.simple_windows%s	jewl-simple_windows.ads	jewl-simple_windows.ali
@@ -32,16 +31,13 @@ D a-except.ads		20160516092928 291912d5 ada.exceptions%s
 D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
 D a-inteio.ads		20160516092932 f64b89a4 ada.integer_text_io%s
 D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
-D a-numeri.ads		20160516092928 bb51c45a ada.numerics%s
-D a-nudira.ads		20160516092928 71e55def ada.numerics.discrete_random%s
 D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
 D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
 D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
 D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
 D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
-D computer.ads		20161115012422 0c0f743a computer%s
-D gameboard.ads		20161116210950 42cdf5f0 gameboard%s
+D gameboard.ads		20161117132644 c226fb77 gameboard%s
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092926 5421119b interfaces.c%s
 D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
@@ -49,7 +45,7 @@ D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
 D jewl.ads		20161115012422 e853f5a4 jewl%s
 D jewl-simple_windows.ads  20161115012422 61a4afe3 jewl.simple_windows%s
 D jewl-windows.ads	20161115184400 4db40f6d jewl.windows%s
-D main.adb		20161116211428 48a19681 main%b
+D main.adb		20161117155616 ced12554 main%b
 D system.ads		20160516092930 2da59038 system%s
 D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
 D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
@@ -62,7 +58,6 @@ D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
 D s-osinte.ads		20160516092930 2e5b26a9 system.os_interface%s
 D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
 D s-pooglo.ads		20160516092926 ede33ef8 system.pool_global%s
-D s-rannum.ads		20160516092928 99ade2f2 system.random_numbers%s
 D s-secsta.ads		20160516092930 86a2856d system.secondary_stack%s
 D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
 D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
@@ -85,83 +80,79 @@ D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
 D s-win32.ads		20160516092926 b7f96285 system.win32%s
 X 1 ada.ads
-16K9*Ada 19e8 23|2r6 2r23 4r6 4r31
+16K9*Ada 19e8 20|2r6 2r23 4r6 4r31
 X 4 a-inteio.ads
-18K13*Integer_Text_IO[12|46] 23|4w10 4r35
-X 11 a-textio.ads
-49K13*Text_IO 471e16 23|2w10 2r27
-166U14*New_Line 23|142s73
-208U14*Put 23|161s49
-242U14*Put 23|124s49 125s49 146s57
-263U14*Put_Line 23|138s57 171s33 174s33
-X 12 a-tiinio.ads
-66U14*Put 23|140s65[4|18]
-X 14 computer.ads
-3K9*Computer 12e13 23|6w6 6r20
-X 15 gameboard.ads
-4K9*GameBoard 67e14 23|3w6 3r21
-7r9*AppFrame{22|358R8[21|84]} 23|29r21 47r47
-11r9*BoardCanvas{22|545R8[21|84]} 23|64r83 90r108
-13r9*startGame{22|589R8[21|84]} 23|32r17 43r41
-14r9*endGame{22|589R8[21|84]} 23|31r17 44r41
-17r9*PlayerScoreResult{22|590R8[21|84]} 23|158r58
-19r9*ComputerScoreResult{22|590R8[21|84]} 23|159r58
-21r9*WhosMoveLabel{22|590R8[21|84]} 23|20r34 23r34 154r58
-32U19*drawBoardGUI 23|36s25
-35U19*movePiece 23|130s65
-42T19*Timer 45e18 23|9r59
-43Y23 start 23|41s52
-44Y23 stop 23|153s60
-53i17*pieceValue{integer} 23|127r70 127r108 140r78
-60a9*board(50R14) 23|127r52 127r90 140r69
-63U19*isValidJump 23|135s65
-64V18*isValidMove{boolean} 23|129s60
-X 20 jewl.ads
-97K9*JEWL 238e9 23|5r6 5r31
-131i31*X{integer} 23|65r85 91r110
-131i33*Y{integer} 23|69r85 95r110
-X 21 jewl-simple_windows.ads
-84K14*Simple_Windows[22|97] 23|5w11 5r36
-X 22 jewl-windows.ads
-141R11*Point_Type{20|130R11} 23|16r43[21|84]
+18K13*Integer_Text_IO[10|46] 20|4w10 4r35
+X 9 a-textio.ads
+49K13*Text_IO 471e16 20|2w10 2r27
+166U14*New_Line 20|127s73
+208U14*Put 20|146s49
+242U14*Put 20|111s49 112s49 131s57
+263U14*Put_Line 20|123s57 156s33 159s33
+X 10 a-tiinio.ads
+66U14*Put 20|125s65[4|18]
+X 12 gameboard.ads
+4K9*GameBoard 71e14 20|3w6 3r21
+7r9*AppFrame{19|358R8[18|84]} 20|28r21
+11r9*BoardCanvas{19|545R8[18|84]} 20|51r83 77r108
+13r9*startGame{19|589R8[18|84]} 20|31r17
+14r9*endGame{19|589R8[18|84]} 20|30r17 38r17
+17r9*PlayerScoreResult{19|590R8[18|84]} 20|143r58
+19r9*ComputerScoreResult{19|590R8[18|84]} 20|144r58
+21r9*WhosMoveLabel{19|590R8[18|84]} 20|19r34 22r34 139r58
+32U19*drawBoardGUI 20|34s17
+35U19*movePiece 20|117s65
+42T19*Timer 45e18 20|8r59
+43Y23 start 20|37s28
+44Y23 stop 20|138s60
+53i17*pieceValue{integer} 20|114r70 114r108 125r78
+60a9*board(50R14) 20|114r52 114r90 125r69
+65U19*isValidJump 20|120s65
+66V18*isValidMove{boolean} 20|116s60
+X 17 jewl.ads
+97K9*JEWL 238e9 20|5r6 5r31
+131i31*X{integer} 20|52r85 78r110
+131i33*Y{integer} 20|56r85 82r110
+X 18 jewl-simple_windows.ads
+84K14*Simple_Windows[19|97] 20|5w11 5r36
+X 19 jewl-windows.ads
+141R11*Point_Type{17|130R11} 20|15r43[18|84]
 262H8*Window_Type
-291U13*Show 23|32s27[21|84] 44s49[21|84]
-293U13*Hide 23|31s25[21|84] 43s51[21|84]
-324H8*Container_Type<262R8[21|84]>
-325H8*Control_Type<262R8[21|84]>
-358R8*Frame_Type<324R8[21|84]>
-410U13*Close 23|47s41[21|84]
-411V13*Valid{boolean} 23|29s15[21|84]
-416V13*Next_Command{character} 23|37s30[21|84] 56s38[21|84] 85s62[21|84]
-. 161s53[21|84]
-543H8*Text_Control_Type<325R8[21|84]>
-545R8*Canvas_Type<325R8[21|84]>
-572U13*Set_Text 23|20s25[21|84] 23s25[21|84] 154s49[21|84] 158s49[21|84]
-. 159s49[21|84]
-589R8*Button_Type<543R8[21|84]>
-590R8*Label_Type<543R8[21|84]>
-1357V12*Start_Point{141R11[21|84]} 23|64s71[21|84] 90s96[21|84]
-X 23 main.adb
-8U11*main 8b11 179l5 179t9
-9t9 timeKeeper{15|42T19} 41r41 153r49
-11b9 gameOver{boolean} 53r23 152m49 172m33 175m33
-12i9 xFinder{integer} 62m57 65r63 66m65 66r76 88m81 91r87 92m89 92r100
-12i18 yFinder{integer} 63m57 69r63 70m65 70r76 71r68 89m81 95r87 96m89 96r100
-. 97r92
-13i9 playerTurn{integer} 19r20 21m25 22r23 24m25 129r95 135r99
-14i9 playerScore{integer} 158r90 170r28
-14i22 computerScore{integer} 159r92 173r31
-15i9 spotIndex1{integer} 59m49 61r55 67m65 67r79 72m73 72r87 76r60 76r89
-. 77r68 78m73 80r63 80r92 81m65 114r52 114r81 115m57 115r71 117m57 117r71
-. 124r67 127r58 129r72 130r75 135r77
-15i21 spotIndex2{integer} 60m49 84r52 87r79 93m89 93r103 98m97 98r111 105r61
-. 105r91 106r68 107m73 109r64 109r94 110m65 119r52 119r81 120m57 120r71 122m57
-. 122r71 125r67 127r96 129r83 130r87 135r88
-16r9 firstClick{22|141R11[21|84]} 64m57 65r74 69r74
-16r21 secondClick{22|141R11[21|84]} 90m81 91r98 95r98
-17U19 nextTurn 17b19 26l13 26t21 131s65 136s65
-139i61 i{integer} 140r75 141r68
-X 40 s-stausa.ads
+291U13*Show 20|31s27[18|84] 38s25[18|84]
+293U13*Hide 20|30s25[18|84]
+324H8*Container_Type<262R8[18|84]>
+325H8*Control_Type<262R8[18|84]>
+358R8*Frame_Type<324R8[18|84]>
+411V13*Valid{boolean} 20|28s15[18|84]
+416V13*Next_Command{character} 20|43s38[18|84] 72s62[18|84] 146s53[18|84]
+543H8*Text_Control_Type<325R8[18|84]>
+545R8*Canvas_Type<325R8[18|84]>
+572U13*Set_Text 20|19s25[18|84] 22s25[18|84] 139s49[18|84] 143s49[18|84]
+. 144s49[18|84]
+589R8*Button_Type<543R8[18|84]>
+590R8*Label_Type<543R8[18|84]>
+1357V12*Start_Point{141R11[18|84]} 20|51s71[18|84] 77s96[18|84]
+X 20 main.adb
+7U11*main 7b11 164l5 164t9
+8t9 timeKeeper{12|42T19} 37r17 138r49
+10b9 gameOver{boolean} 40r23 137m49 157m33 160m33
+11i9 xFinder{integer} 49m57 52r63 53m65 53r76 75m81 78r87 79m89 79r100
+11i18 yFinder{integer} 50m57 56r63 57m65 57r76 58r68 76m81 82r87 83m89 83r100
+. 84r92
+12i9 playerTurn{integer} 18r20 20m25 21r23 23m25 116r95 120r99
+13i9 playerScore{integer} 143r90 155r28
+13i22 computerScore{integer} 144r92 158r31
+14i9 spotIndex1{integer} 46m49 48r55 54m65 54r79 59m73 59r87 63r60 63r89
+. 64r68 65m73 67r63 67r92 68m65 101r52 101r81 102m57 102r71 104m57 104r71
+. 111r67 114r58 116r72 117r75 120r77
+14i21 spotIndex2{integer} 47m49 71r52 74r79 80m89 80r103 85m97 85r111 92r61
+. 92r91 93r68 94m73 96r64 96r94 97m65 106r52 106r81 107m57 107r71 109m57
+. 109r71 112r67 114r96 116r83 117r87 120r88
+15r9 firstClick{19|141R11[18|84]} 51m57 52r74 56r74
+15r21 secondClick{19|141R11[18|84]} 77m81 78r98 82r98
+16U19 nextTurn 16b19 25l13 25t21 118s65 121s65
+124i61 i{integer} 125r75 126r68
+X 36 s-stausa.ads
 203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
 268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
 

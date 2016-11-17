@@ -3,7 +3,6 @@ with Ada.Text_IO; use Ada.Text_IO;
 with GameBoard; use GameBoard;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with JEWL.Simple_Windows; use JEWL.Simple_Windows;
-with Computer; use Computer;
 
 procedure main is
 	timeKeeper					: Timer;    	           -- will cause an instance of the timer task to exist, do not make more than one
@@ -17,10 +16,10 @@ procedure main is
 	procedure nextTurn is
 	begin
 		if playerTurn = 1 then
-			Set_Text(WhosMoveLabel,"Turn: Player 1!");
+			Set_Text(WhosMoveLabel,"Turn: Player 2!");
 			playerTurn := 2;
 		elsif playerTurn = 2 then
-			Set_Text(WhosMoveLabel,"Turn: Player 2!");
+			Set_Text(WhosMoveLabel,"Turn: Player 1!");
 			playerTurn := 1;
 		end if;
 	end nextTurn;
@@ -32,23 +31,11 @@ begin
 		startGame.Show; --Start button is visible
 		--calls JEWL functions from the gameboard package to init the GUI
 		-- game wont start until S button is pressed
-		loop 
-			drawBoardGUI;
-			case Next_Command is
-				-- begin playing
-				when 'S' =>
-					--Begin timer
-					timeKeeper.start;
-					--Remove start button and display end button
-					startGame.Hide;
-					endGame.Show;
-					exit;
-				when 'Q' =>
-					Close(AppFrame);
-					exit;
-				when others => null;
-			end case;
-		end loop;
+		drawBoardGUI;
+		-- begin playing
+		--Begin timer
+		timeKeeper.start;
+		endGame.Show;
 
 		while gameOver = False loop
 		--	if playerTurn = 1 then
@@ -123,14 +110,12 @@ begin
 						end if;
 						put(Integer'Image(spotIndex1));
 						put(Integer'Image(spotIndex2));
-	-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
 						if board(spotIndex1).pieceValue /= 0 AND board(spotIndex2).pieceValue = 0 then
 							--make the move
 							if isValidMove(spotIndex1,spotIndex2, playerTurn) = True then
 								movePiece(spotIndex1, spotIndex2);
 								nextTurn; -- changes playerTurn to 1 if 2, and 2 if 1
-							--end if;
-							--if isValidJump(spotIndex1,spotIndex2,playerTurn) = True then
 							else
 								isValidJump(spotIndex1,spotIndex2,playerTurn);
 								nextTurn;
@@ -147,7 +132,7 @@ begin
 						end if;
 						
 	-----------------------------------------------------------------------------------------------------------------------------------------
-					
+					-- add Set_Text(scoreLabel, Integer'Image(intvar));
 					when 'E' =>
 						gameOver := True;
 						timeKeeper.stop;
