@@ -135,7 +135,6 @@ package body GameBoard is
 		isValid: Boolean := False;
 		indexErase: Integer := 0;
 	begin
-		
 		if player = 1 then		
 			if board(spot1).pieceValue = 1 or board(spot1).pieceValue = 2 then
 				case spot1 mod 4 is
@@ -265,6 +264,7 @@ package body GameBoard is
 							--5,13,21,29
 							if spot1 - 7 = spot2 then
 								if board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2 then
+								put("17");
 									isValid := True;
 									indexErase := spot1-4;
 								end if;
@@ -272,9 +272,9 @@ package body GameBoard is
 						else
 							--1,9,17,25
 							if spot1 - 7 = spot2 then
-								if board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2 then
+								if board(spot1-3).pieceValue = 1 or board(spot1-3).pieceValue = 2 then
 									isValid := True;
-									indexErase := spot1-4;
+									indexErase := spot1-3;
 								end if;
 							end if;
 						end if;
@@ -470,6 +470,9 @@ package body GameBoard is
 					when others => null;
 				end case;
 			end if;
+		end if;
+		if board(spot2).pieceValue /= 0 then
+			isValid := False;
 		end if;
 		return isValid;
 	end isValidMove;
