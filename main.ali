@@ -11,7 +11,7 @@ RV NO_DEFAULT_INITIALIZATION
 RV SPARK_05
 RV MAX_TASKS=1+
 
-U main%b		main.adb		993e8bfd NE OO SU IL
+U main%b		main.adb		3dab978a NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
@@ -37,7 +37,7 @@ D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
 D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
 D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
-D gameboard.ads		20161117223018 6623e545 gameboard%s
+D gameboard.ads		20161117234404 71a96ea6 gameboard%s
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092926 5421119b interfaces.c%s
 D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
@@ -45,7 +45,7 @@ D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
 D jewl.ads		20161115012422 e853f5a4 jewl%s
 D jewl-simple_windows.ads  20161115012422 61a4afe3 jewl.simple_windows%s
 D jewl-windows.ads	20161115184400 4db40f6d jewl.windows%s
-D main.adb		20161117232818 509fbd2b main%b
+D main.adb		20161118165820 e3802abf main%b
 D system.ads		20160516092930 2da59038 system%s
 D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
 D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
@@ -85,74 +85,80 @@ X 4 a-inteio.ads
 18K13*Integer_Text_IO[10|46] 20|4w10 4r35
 X 9 a-textio.ads
 49K13*Text_IO 471e16 20|2w10 2r27
-242U14*Put 20|78s49 81s49 119s57
-263U14*Put_Line 20|117s57 134s33 137s33
+242U14*Put 20|148s57
+263U14*Put_Line 20|162s33 165s33
 X 12 gameboard.ads
 4K9*GameBoard 72e14 20|3w6 3r21
-7r9*AppFrame{19|358R8[18|84]} 20|64r21
-11r9*BoardCanvas{19|545R8[18|84]} 20|34r50
-14r9*endGame{19|589R8[18|84]} 20|69r17
-17r9*PlayerScoreResult{19|590R8[18|84]} 20|106r90
-19r9*ComputerScoreResult{19|590R8[18|84]} 20|109r90
-21r9*WhosMoveLabel{19|590R8[18|84]} 20|18r34 21r34 128r50
-32U19*drawBoardGUI 20|65s17
-35U19*movePiece 20|94s73
-36U19*jumpPiece 20|103s73
+7r9*AppFrame{19|358R8[18|84]} 20|89r21
+11r9*BoardCanvas{19|545R8[18|84]} 20|45r50
+14r9*endGame{19|589R8[18|84]} 20|94r17
+17r9*PlayerScoreResult{19|590R8[18|84]} 20|30r34
+19r9*ComputerScoreResult{19|590R8[18|84]} 20|33r34
+21r9*WhosMoveLabel{19|590R8[18|84]} 20|18r34 21r34 156r50
+32U19*drawBoardGUI 20|90s17
+35U19*movePiece 20|121s73
+36U19*jumpPiece 20|130s73 135s89
 43T19*Timer 46e18 20|8r59
-44Y23 start 20|68s28
-45Y23 stop 20|127s52 141s28
-54i17*pieceValue{integer} 20|82r70 82r108
-61a9*board(51R14) 20|82r52 82r90
-63i9*player1Score{integer} 20|105m81 105r97 106r122
-63i23*player2Score{integer} 20|108m81 108r97 109r124
-65U19*makeKing 20|96s81 112s81
-66V18*isValidJump{integer} 20|87s84 89s100 101s79
-67V18*isValidMove{boolean} 20|83s60
-70V18*getP1Score{integer} 20|133s28
-71V18*getP2Score{integer} 20|136s31
+44Y23 start 20|93s28
+45Y23 stop 20|155s52 169s28
+54i17*pieceValue{integer} 20|109r70 109r108 133r93
+61a9*board(51R14) 20|109r52 109r90 133r84
+63i9*player1Score{integer} 20|29m25 29r41 30r66
+63i23*player2Score{integer} 20|32m25 32r41 33r68
+65U19*makeKing 20|123s81 142s81
+66V18*isValidJump{integer} 20|78s36 114s84 116s100 128s79 133s112 134s100
+67V18*isValidMove{boolean} 20|78s72 110s60
+70V18*getP1Score{integer} 20|161s28
+71V18*getP2Score{integer} 20|164s31
 X 17 jewl.ads
 97K9*JEWL 238e9 20|5r6 5r31
-131i31*X{integer} 20|35r52
-131i33*Y{integer} 20|39r52
+131i31*X{integer} 20|46r52
+131i33*Y{integer} 20|50r52
 X 18 jewl-simple_windows.ads
 84K14*Simple_Windows[19|97] 20|5w11 5r36
 X 19 jewl-windows.ads
-141R11*Point_Type{17|130R11} 20|29r59[18|84]
+141R11*Point_Type{17|130R11} 20|40r59[18|84]
 262H8*Window_Type
-291U13*Show 20|69s25[18|84]
+291U13*Show 20|94s25[18|84]
 324H8*Container_Type<262R8[18|84]>
 325H8*Control_Type<262R8[18|84]>
 358R8*Frame_Type<324R8[18|84]>
-411V13*Valid{boolean} 20|64s15[18|84]
-416V13*Next_Command{character} 20|72s30[18|84]
+411V13*Valid{boolean} 20|89s15[18|84]
+416V13*Next_Command{character} 20|101s30[18|84]
 543H8*Text_Control_Type<325R8[18|84]>
 545R8*Canvas_Type<325R8[18|84]>
-572U13*Set_Text 20|18s25[18|84] 21s25[18|84] 106s81[18|84] 109s81[18|84]
-. 128s41[18|84]
+572U13*Set_Text 20|18s25[18|84] 21s25[18|84] 30s25[18|84] 33s25[18|84] 156s41[18|84]
 589R8*Button_Type<543R8[18|84]>
 590R8*Label_Type<543R8[18|84]>
-1357V12*Start_Point{141R11[18|84]} 20|34s38[18|84]
+1357V12*Start_Point{141R11[18|84]} 20|45s38[18|84]
 X 20 main.adb
-7U11*main 7b11 143l5 143t9
-8t9 timeKeeper{12|43T19} 68r17 127r41 141r17
-10b9 gameOver{boolean} 70r23 126m41 135m33 138m33
-11i9 playerTurn{integer} 17r20 19m25 20r23 22m25 83r95 87r100 89r116 101r113
-. 104r76 107r79
-12i9 spotIndex1{integer} 75r44 76m49 78r67 82r58 83r72 94r83 101r91 103r83
-. 121m49
-12i21 spotIndex2{integer} 77m49 79r47 80m49 81r67 82r96 83r83 94r95 95r76
-. 95r94 96r90 101r102 103r94 111r77 111r95 112r90
-13i9 indexErase{integer} 101m65 102r68 103r105
-13i21 canJump{integer} 84m65 89m89 93r68
-15U19 nextTurn 15b19 24l13 24t21 98s73 114s73
-26V18 getClick{integer} 26b18 60l13 60t21 76s63 80s63
-27i17 spotIndex{integer} 31r23 37m33 37r46 42m41 42r54 46r28 46r56 47r36
-. 48m41 50r31 50r59 51m33 54r20 54r48 55m25 55r38 57m25 57r38 59r24
-28i17 xFinder{integer} 32m25 35r31 36m33 36r44
-28i26 yFinder{integer} 33m25 39r31 40m33 40r44 41r36
-29r17 lastClick{19|141R11[18|84]} 34m25 35r42 39r42
-85i69 i{integer} 87r96 89r112
-86i77 j{integer} 87r98 89r114
+7U11*main 7b11 171l5 171t9
+8t9 timeKeeper{12|43T19} 93r17 155r41 169r17
+10b9 gameOver{boolean} 95r23 98m33 154m41 163m33 166m33
+11i9 playerTurn{integer} 17r20 19m25 20r23 22m25 28r20 31r23 78r52 78r88
+. 110r95 114r100 116r116 128r113 133r137 134r125
+12i9 spotIndex1{integer} 104r44 105m49 109r58 110r72 121r83 128r91 130r83
+. 137m89 150m49
+12i21 spotIndex2{integer} 106m49 107r47 108m49 109r96 110r83 121r95 122r76
+. 122r94 123r90 128r102 130r94 133r124 134r112 135r99 137r103 138m89 141r77
+. 141r95 142r90
+13i9 indexErase{integer} 128m65 129r68 130r105
+13i21 canJump{integer} 111m65 116m89 120r68 134m89 135r112
+15U19 nextTurn 15b19 24l13 24t21 125s73 144s73
+26U19 givePoint 26b19 35l13 35t22 131s73 136s89
+37V18 getClick{integer} 37b18 71l13 71t21 105s63 108s63
+38i17 spotIndex{integer} 42r23 48m33 48r46 53m41 53r54 57r28 57r56 58r36
+. 59m41 61r31 61r59 62m33 65r20 65r48 66m25 66r38 68m25 68r38 70r24
+39i17 xFinder{integer} 43m25 46r31 47m33 47r44
+39i26 yFinder{integer} 44m25 50r31 51m33 51r44 52r36
+40r17 lastClick{19|141R11[18|84]} 45m25 46r42 50r42
+73V18 staleMateCheck{boolean} 73b18 85l13 85t27 97s28
+74b17 canMove{boolean} 80m41 84r24
+76i21 i{integer} 78r48 78r84
+77i29 j{integer} 78r50 78r86
+112i69 i{integer} 114r96 116r112
+113i77 j{integer} 114r98 116r114
+132i77 j{integer} 133r90 133r135 134r123 135r110 138r103
 X 36 s-stausa.ads
 203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
 268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22

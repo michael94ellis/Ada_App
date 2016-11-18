@@ -145,15 +145,10 @@ package body GameBoard is
 	begin
 		if board(newKing).pieceValue = 1 then
 			board(newKing).pieceValue := 2;
-			put("KingMe2");
 		elsif board(newKing).pieceValue = 3 then
 			board(newKing).pieceValue := 4;
-			put("KingMe4");
 		end if;
-		put("KingMe");
-		put(Integer'Image(newKing));
 		--Draw new piece as king
-		
 		drawPiece(newKing);
 	end makeKing;
 	
@@ -161,210 +156,212 @@ package body GameBoard is
 	function isValidJump(spot1, spot2, player: in Integer) return Integer is
 		indexErase: Integer := 0;
 	begin ----------------------------------------- Jumping downwards, top to bottom -----------------------------------
-		if  (spot2 > spot1) and
-			((player = 1 and (board(spot1).pieceValue = 1 or board(spot1).pieceValue = 2)) or
-			(player = 2 and board(spot1).pieceValue = 4)) then
-			case spot1 mod 4 is
-				when 1 => 						
-					if spot1 / 4 mod 2 = 1 then
-						--5,13,21,29 jump FROM these spots for this statement
-						if spot1 + 9 = spot2 then
-							-- jump left
-							if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
-								(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
-								indexErase := spot1+4;
+		if board(spot2).pieceValue = 0 then
+			if  (spot2 > spot1) and
+				((player = 1 and (board(spot1).pieceValue = 1 or board(spot1).pieceValue = 2)) or
+				(player = 2 and board(spot1).pieceValue = 4)) then
+				case spot1 mod 4 is
+					when 1 => 						
+						if spot1 / 4 mod 2 = 1 then
+							--5,13,21,29 jump FROM these spots for this statement
+							if spot1 + 9 = spot2 then
+								-- jump left
+								if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
+									(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
+									indexErase := spot1+4;
+								end if;
+							end if;
+						else
+							--1,9,17,25
+							if spot1 + 9 = spot2 then
+								-- jump right
+								if (player = 1 and (board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4)) or
+									(player = 2 and (board(spot1+5).pieceValue = 1 or board(spot1+5).pieceValue = 2)) then		-- 5
+									indexErase := spot1+5;
+								end if;
 							end if;
 						end if;
-					else
-						--1,9,17,25
-						if spot1 + 9 = spot2 then
-							-- jump right
-							if (player = 1 and (board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4)) or
-								(player = 2 and (board(spot1+5).pieceValue = 1 or board(spot1+5).pieceValue = 2)) then		-- 5
-								indexErase := spot1+5;
+					when 2 => 
+						if spot1 / 4 mod 2 = 1 then
+							--6,14,22,30
+							if spot1 + 9 = spot2 then
+								-- jump left
+								if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
+									(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
+									indexErase := spot1+4;
+								end if;
+							elsif spot1 + 7 = spot2 then
+								-- jump right
+								if (player = 1 and (board(spot1+3).pieceValue = 3 or board(spot1+3).pieceValue = 4)) or
+									(player = 2 and (board(spot1+3).pieceValue = 1 or board(spot1+3).pieceValue = 2)) then		-- 3
+									indexErase := spot1+3;
+								end if;
+							end if;
+						else
+							--2,10,18,26
+							if spot1 + 9 = spot2 then
+								-- jump left
+								if (player = 1 and (board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4)) or
+									(player = 2 and (board(spot1+5).pieceValue = 1 or board(spot1+5).pieceValue = 2)) then		-- 5
+									indexErase := spot1+5;
+								end if;
+							elsif spot1 + 7 = spot2 then
+								-- jump right
+								if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
+									(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
+									indexErase := spot1+4;
+								end if;
 							end if;
 						end if;
-					end if;
-				when 2 => 
-					if spot1 / 4 mod 2 = 1 then
-						--6,14,22,30
-						if spot1 + 9 = spot2 then
-							-- jump left
-							if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
-								(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
-								indexErase := spot1+4;
+					when 3 => 
+						if spot1 / 4 mod 2 = 1 then
+							--7,15,23,31
+							if spot1 + 9 = spot2 then
+								if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
+									(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
+									indexErase := spot1+4;
+								end if;
+							elsif spot1 + 7 = spot2 then
+								if (player = 1 and (board(spot1+3).pieceValue = 3 or board(spot1+3).pieceValue = 4)) or
+									(player = 2 and (board(spot1+3).pieceValue = 1 or board(spot1+3).pieceValue = 2)) then		-- 3
+									indexErase := spot1+3;
+								end if;
 							end if;
-						elsif spot1 + 7 = spot2 then
-							-- jump right
-							if (player = 1 and (board(spot1+3).pieceValue = 3 or board(spot1+3).pieceValue = 4)) or
-								(player = 2 and (board(spot1+3).pieceValue = 1 or board(spot1+3).pieceValue = 2)) then		-- 3
-								indexErase := spot1+3;
-							end if;
-						end if;
-					else
-						--2,10,18,26
-						if spot1 + 9 = spot2 then
-							-- jump left
-							if (player = 1 and (board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4)) or
-								(player = 2 and (board(spot1+5).pieceValue = 1 or board(spot1+5).pieceValue = 2)) then		-- 5
-								indexErase := spot1+5;
-							end if;
-						elsif spot1 + 7 = spot2 then
-							-- jump right
-							if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
-								(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
-								indexErase := spot1+4;
+						else
+							--3,11,19,27
+							if spot1 + 9 = spot2 then
+								if (player = 1 and (board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4)) or
+									(player = 2 and (board(spot1+5).pieceValue = 1 or board(spot1+5).pieceValue = 2)) then		-- 5
+									indexErase := spot1+5;
+								end if;
+							elsif spot1 + 7 = spot2 then
+								if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
+									(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
+									indexErase := spot1+4;
+								end if;
 							end if;
 						end if;
-					end if;
-				when 3 => 
-					if spot1 / 4 mod 2 = 1 then
-						--7,15,23,31
-						if spot1 + 9 = spot2 then
-							if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
-								(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
-								indexErase := spot1+4;
+					when 0 => 
+						if spot1 / 4 mod 2 = 1 then
+							--4,12,20,28
+							if spot1 + 7 = spot2 then
+								if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
+									(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
+									indexErase := spot1+4;
+								end if;
 							end if;
-						elsif spot1 + 7 = spot2 then
-							if (player = 1 and (board(spot1+3).pieceValue = 3 or board(spot1+3).pieceValue = 4)) or
-								(player = 2 and (board(spot1+3).pieceValue = 1 or board(spot1+3).pieceValue = 2)) then		-- 3
-								indexErase := spot1+3;
-							end if;
-						end if;
-					else
-						--3,11,19,27
-						if spot1 + 9 = spot2 then
-							if (player = 1 and (board(spot1+5).pieceValue = 3 or board(spot1+5).pieceValue = 4)) or
-								(player = 2 and (board(spot1+5).pieceValue = 1 or board(spot1+5).pieceValue = 2)) then		-- 5
-								indexErase := spot1+5;
-							end if;
-						elsif spot1 + 7 = spot2 then
-							if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
-								(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
-								indexErase := spot1+4;
+						else
+							--8,16,24,32
+							if spot1 + 7 = spot2 then
+								if (player = 1 and (board(spot1+3).pieceValue = 3 or board(spot1+3).pieceValue = 4)) or
+									(player = 2 and (board(spot1+3).pieceValue = 1 or board(spot1+3).pieceValue = 2)) then		-- 3
+									indexErase := spot1+3;
+								end if;
 							end if;
 						end if;
-					end if;
-				when 0 => 
-					if spot1 / 4 mod 2 = 1 then
-						--4,12,20,28
-						if spot1 + 7 = spot2 then
-							if (player = 1 and (board(spot1+4).pieceValue = 3 or board(spot1+4).pieceValue = 4)) or
-								(player = 2 and (board(spot1+4).pieceValue = 1 or board(spot1+4).pieceValue = 2)) then		-- 4
-								indexErase := spot1+4;
+					when others => null;
+				end case;
+				---------------------------------------------- Jumping upwards, bottom to top -------------------------------------------
+			elsif(spot2 < spot1) and
+				((player = 2 and (board(spot1).pieceValue = 3 or board(spot1).pieceValue = 4)) or
+				(player = 1 and board(spot1).pieceValue = 2)) then
+				case spot1 mod 4 is
+					when 0 => 
+						if spot1 / 4 mod 2 = 1 then
+							--4,12,20,28  jump FROM these spots for this statement
+							if spot1 - 9 = spot2 then
+								if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
+									(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
+									indexErase := spot1-4;
+								end if;
+							end if;
+						else
+							--8,16,24,32
+							if spot1 - 9 = spot2 then
+								if	(player = 2 and (board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2)) or
+									(player = 1 and (board(spot1-5).pieceValue = 3 or board(spot1-5).pieceValue = 4)) then
+									indexErase := spot1-5;
+								end if;
 							end if;
 						end if;
-					else
-						--8,16,24,32
-						if spot1 + 7 = spot2 then
-							if (player = 1 and (board(spot1+3).pieceValue = 3 or board(spot1+3).pieceValue = 4)) or
-								(player = 2 and (board(spot1+3).pieceValue = 1 or board(spot1+3).pieceValue = 2)) then		-- 3
-								indexErase := spot1+3;
+					when 1 => 
+						
+						if spot1 / 4 mod 2 = 1 then
+							--5,13,21,29
+							if spot1 - 7 = spot2 then
+								if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
+									(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
+									indexErase := spot1-4;
+								end if;
+							end if;
+						else
+							--1,9,17,25
+							if spot1 - 7 = spot2 then
+								if	(player = 2 and (board(spot1-3).pieceValue = 1 or board(spot1-3).pieceValue = 2)) or
+									(player = 1 and (board(spot1-3).pieceValue = 3 or board(spot1-3).pieceValue = 4)) then
+									indexErase := spot1-3;
+								end if;
 							end if;
 						end if;
-					end if;
-				when others => null;
-			end case;
-			---------------------------------------------- Jumping upwards, bottom to top -------------------------------------------
-		elsif(spot2 < spot1) and
-			((player = 2 and (board(spot1).pieceValue = 3 or board(spot1).pieceValue = 4)) or
-			(player = 1 and board(spot1).pieceValue = 2)) then
-			case spot1 mod 4 is
-				when 0 => 
-					if spot1 / 4 mod 2 = 1 then
-						--4,12,20,28  jump FROM these spots for this statement
-						if spot1 - 9 = spot2 then
-							if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
-								(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
-								indexErase := spot1-4;
+					when 2 => 
+						if spot1 / 4 mod 2 = 1 then
+							--6,14,22,30
+							if spot1 - 9 = spot2 then
+								if	(player = 2 and (board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2)) or
+									(player = 1 and (board(spot1-5).pieceValue = 3 or board(spot1-5).pieceValue = 4)) then
+									indexErase := spot1-5;
+								end if;
+							elsif spot1 - 7 = spot2 then
+								if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
+									(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
+									indexErase := spot1-4;
+								end if;
+							end if;
+						else
+							--2,10,18,26
+							if spot1 - 9 = spot2 then
+								if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
+									(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
+									indexErase := spot1-4;
+								end if;
+							elsif spot1 - 7 = spot2 then
+								if	(player = 2 and (board(spot1-3).pieceValue = 1 or board(spot1-3).pieceValue = 2)) or
+									(player = 1 and (board(spot1-3).pieceValue = 3 or board(spot1-3).pieceValue = 4)) then
+									indexErase := spot1-3;
+								end if;
 							end if;
 						end if;
-					else
-						--8,16,24,32
-						if spot1 - 9 = spot2 then
-							if	(player = 2 and (board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2)) or
-								(player = 1 and (board(spot1-5).pieceValue = 3 or board(spot1-5).pieceValue = 4)) then
-								indexErase := spot1-5;
+					when 3 => 
+						if spot1 / 4 mod 2 = 1 then
+							--7,15,23,31
+							if spot1 - 9 = spot2 then
+								if	(player = 2 and (board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2)) or
+									(player = 1 and (board(spot1-5).pieceValue = 3 or board(spot1-5).pieceValue = 4)) then
+									indexErase := spot1-5;
+								end if;
+							elsif spot1 - 7 = spot2 then
+								if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
+									(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
+									indexErase := spot1-4;
+								end if;
+							end if;
+						else
+							--3,11,19,27
+							if spot1 - 9 = spot2 then
+								if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
+									(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
+									indexErase := spot1-4;
+								end if;
+							elsif spot1 - 7 = spot2 then
+								if	(player = 2 and (board(spot1-3).pieceValue = 1 or board(spot1-3).pieceValue = 2)) or
+									(player = 1 and (board(spot1-3).pieceValue = 3 or board(spot1-3).pieceValue = 4)) then
+									indexErase := spot1-3;
+								end if;
 							end if;
 						end if;
-					end if;
-				when 1 => 
-					
-					if spot1 / 4 mod 2 = 1 then
-						--5,13,21,29
-						if spot1 - 7 = spot2 then
-							if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
-								(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
-								indexErase := spot1-4;
-							end if;
-						end if;
-					else
-						--1,9,17,25
-						if spot1 - 7 = spot2 then
-							if	(player = 2 and (board(spot1-3).pieceValue = 1 or board(spot1-3).pieceValue = 2)) or
-								(player = 1 and (board(spot1-3).pieceValue = 3 or board(spot1-3).pieceValue = 4)) then
-								indexErase := spot1-3;
-							end if;
-						end if;
-					end if;
-				when 2 => 
-					if spot1 / 4 mod 2 = 1 then
-						--6,14,22,30
-						if spot1 - 9 = spot2 then
-							if	(player = 2 and (board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2)) or
-								(player = 1 and (board(spot1-5).pieceValue = 3 or board(spot1-5).pieceValue = 4)) then
-								indexErase := spot1-5;
-							end if;
-						elsif spot1 - 7 = spot2 then
-							if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
-								(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
-								indexErase := spot1-4;
-							end if;
-						end if;
-					else
-						--2,10,18,26
-						if spot1 - 9 = spot2 then
-							if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
-								(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
-								indexErase := spot1-4;
-							end if;
-						elsif spot1 - 7 = spot2 then
-							if	(player = 2 and (board(spot1-3).pieceValue = 1 or board(spot1-3).pieceValue = 2)) or
-								(player = 1 and (board(spot1-3).pieceValue = 3 or board(spot1-3).pieceValue = 4)) then
-								indexErase := spot1-3;
-							end if;
-						end if;
-					end if;
-				when 3 => 
-					if spot1 / 4 mod 2 = 1 then
-						--7,15,23,31
-						if spot1 - 9 = spot2 then
-							if	(player = 2 and (board(spot1-5).pieceValue = 1 or board(spot1-5).pieceValue = 2)) or
-								(player = 1 and (board(spot1-5).pieceValue = 3 or board(spot1-5).pieceValue = 4)) then
-								indexErase := spot1-5;
-							end if;
-						elsif spot1 - 7 = spot2 then
-							if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
-								(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
-								indexErase := spot1-4;
-							end if;
-						end if;
-					else
-						--3,11,19,27
-						if spot1 - 9 = spot2 then
-							if	(player = 2 and (board(spot1-4).pieceValue = 1 or board(spot1-4).pieceValue = 2)) or
-								(player = 1 and (board(spot1-4).pieceValue = 3 or board(spot1-4).pieceValue = 4)) then
-								indexErase := spot1-4;
-							end if;
-						elsif spot1 - 7 = spot2 then
-							if	(player = 2 and (board(spot1-3).pieceValue = 1 or board(spot1-3).pieceValue = 2)) or
-								(player = 1 and (board(spot1-3).pieceValue = 3 or board(spot1-3).pieceValue = 4)) then
-								indexErase := spot1-3;
-							end if;
-						end if;
-					end if;
-				when others => null;
-			end case;
+					when others => null;
+				end case;
+			end if;
 		end if;
 		return indexErase;
 	end isValidJump;
@@ -375,7 +372,6 @@ package body GameBoard is
 		isValid: Boolean := False; --Value that is returned at the end of the function to tell the prgm is the attempted move is valid
 	begin
 ---------------------------------------------- PLAYER 1 MOVE ---------------------------------------
-	put(Integer'Image(player));
 		if  (spot2 > spot1) and
 			((player = 1 and (board(spot1).pieceValue = 1 or board(spot1).pieceValue = 2)) or
 			(player = 2 and board(spot1).pieceValue = 4)) then

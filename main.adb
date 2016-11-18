@@ -23,6 +23,17 @@ procedure main is
 		end if;
 	end nextTurn;
 	
+	procedure givePoint is
+	begin
+		if playerTurn = 1 then --player 1 score ++
+			player1Score := player1Score + 1;
+			Set_Text(PlayerScoreResult,Integer'Image(player1Score));
+		elsif playerTurn = 2 then --player 2 score ++
+			player2Score := player2Score + 1;
+			Set_Text(ComputerScoreResult,Integer'Image(player2Score));
+		end if;
+	end givePoint;
+	
 	function getClick return Integer is -- Gets a super clean 1..32 integer click
 		spotIndex				: Integer 		:= 0;
 		xFinder, yFinder		: Integer  		:= 0;
@@ -59,6 +70,20 @@ procedure main is
 		return spotIndex;
 	end getClick;
 	
+	function staleMateCheck return Boolean is
+		canMove: Boolean := False;
+	begin
+		for i in 1..32 loop -- Strongest algorithm known to man, Brute Force
+			for j in 1..32 loop
+				if isValidJump(i,j,playerTurn) /= 0 or isValidMove(i,j,playerTurn) = True then
+					-- A MOVE IS POSSIBLE AND NOT BEING MADE IF THIS IS EXECUTED
+					canMove := True;
+				end if;
+			end loop;
+		end loop;
+		return canMove;
+	end staleMateCheck;
+	
 begin
    --Loop through frame I.E. while a window that the program opens is still open
 	while Valid(AppFrame) loop
@@ -69,16 +94,18 @@ begin
 		endGame.Show;
 		while gameOver = False loop
 		--	if playerTurn = 1 then
+			if staleMateCheck = False then
+				gameOver := True;
+			end if;
+			
 			case Next_Command is
 				when 'C' => -- this will happen anytime that checkerboard image is clicked
 					-- initiaize these indexs
 					if spotIndex1 = 0 then
 						spotIndex1 := getClick;			 -- first click
 						spotIndex2 := 0;
-						put(Integer'Image(spotIndex1));
 					elsif spotIndex2 = 0 then 
 						spotIndex2 := getClick;					 -- second click
-						put(Integer'Image(spotIndex2));
 						if board(spotIndex1).pieceValue /= 0 AND board(spotIndex2).pieceValue = 0 then  -- make the simple move
 							if isValidMove(spotIndex1,spotIndex2, playerTurn) = True then
 								canJump := 0;
@@ -101,26 +128,27 @@ begin
 								indexErase := isValidJump(spotIndex1,spotIndex2,playerTurn); -- 0 if cant jump, otherwise it's the index of the piece that is jumped(to erase it)
 								if indexErase /= 0 then -- then a jump is possible
 									jumpPiece(spotIndex1,spotIndex2,indexErase);
-									if playerTurn = 1 then --player 1 score ++
-										player1Score := player1Score + 1;
-										Set_Text(PlayerScoreResult,Integer'Image(player1Score));
-									elsif playerTurn = 2 then --player 2 score ++
-										player2Score := player2Score + 1;
-										Set_Text(ComputerScoreResult,Integer'Image(player2Score));
-									end if;
+									givePoint;
+									for j in 1..32 loop
+										if board(j).pieceValue = 0 and isValidJump(spotIndex2,j,playerTurn) /= 0 then
+											canJump := isValidJump(spotIndex2,j,playerTurn);
+											jumpPiece(spotIndex2,j,canJump);
+											givePoint;
+											spotIndex1 := spotIndex2;
+											spotIndex2 := j;
+										end if;
+									end loop;
 									if  spotIndex2 < 5 OR spotIndex2 > 28 then
 										makeKing(spotIndex2);
 									end if;
 									nextTurn;
 								end if;
 							end if;
-							Put_Line("----------");
 						else
 							put("Invalid Input");
 						end if;
 						spotIndex1 := 0; -- reset the clicks for next player's turn
 					end if;						
------------------------------------------------------------------------------------------------------------------------------------------
 				-- add Set_Text(scoreLabel, Integer'Image(intvar));
 				when 'E' =>
 					gameOver := True;
@@ -131,10 +159,10 @@ begin
 			end case;
 			-- Check for end game conditions
 			if getP1Score = 12 then
-				Put_Line("Player Wins!");
+				Put_Line("Player 1 Wins!");
 				gameOver := True;
 			elsif getP2Score = 12 then
-				Put_Line("Computer Wins!");
+				Put_Line("Player 2 Wins!");
 				gameOver := True;
 			end if;
 		end loop; -- main game loop

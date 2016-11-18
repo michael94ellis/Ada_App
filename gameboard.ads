@@ -10,13 +10,13 @@ package GameBoard is
 	--Declare a canvas
 	BoardCanvas					: Canvas_Type 		:= Canvas(AppFrame,BoardLocation,640,640,'C');
 	--Declare buttons
-	startGame					: Button_Type		:= Button(AppFrame,(750,60),100,50,"Start Game",'S');
+--	startGame					: Button_Type		:= Button(AppFrame,(750,60),100,50,"Start Game",'S');
 	endGame						: Button_Type 		:= Button(AppFrame,(750,60),100,50,"End Game",'E');
 	--Declare labels for player/computer scores
 	PlayerScorePrompt			: Label_Type 		:= Label(AppFrame,(700,200),100,50,"Player Score:",Left);
-	PlayerScoreResult			: Label_Type 		:= Label(AppFrame,(800,200),100,50,"Player Result",Left);
-	ComputerScorePrompt			: Label_Type 		:= Label(AppFrame,(700,400),150,50,"Computer Score:",Left);
-	ComputerScoreResult			: Label_Type 		:= Label(AppFrame,(825,400),150,50,"Computer Result",Left);
+	PlayerScoreResult			: Label_Type 		:= Label(AppFrame,(800,200),100,50,"0",Left);
+	ComputerScorePrompt			: Label_Type 		:= Label(AppFrame,(700,400),150,50,"Player 2 Score:",Left);
+	ComputerScoreResult			: Label_Type 		:= Label(AppFrame,(825,400),150,50,"0",Left);
 	--Declare labels for who's move it is
 	WhosMoveLabel				: Label_Type 		:= Label(AppFrame,(650,600),200,50,"Player starts the game.",Center);
 	--Declare a basic menu
