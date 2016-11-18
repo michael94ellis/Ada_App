@@ -1,5 +1,5 @@
 # ada_checkers_official
-ITCS 4102 - Term Project
+------You can download the main.exe file and it will run the app!------
 
 FILES:
 
