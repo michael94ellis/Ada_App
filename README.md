@@ -8,8 +8,7 @@ main.adb
 
 gameboard.ads
 gameboard.adb
-- These files contain information relevant to the gameboard. It defines the Spot data type, a function to make a piece into a King (King Moves are NOT WORKING YET), and a function to test if a specified piece to move and the location to move that piece to are valid.
-
+- These files contain information relevant to the gameboard and other methods necessary for the game
 
 Prereq: You must have GNAT or Ada installed on your machine, google it. libre.adacore.com There is a free download license for educational purposes such as this, on their site
 
