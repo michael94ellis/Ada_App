@@ -1,19 +1,16 @@
-# ada_checkers_official
-------You can download the main.exe file and it will run the app!------
+# Ada-Checkers-GUI-Application
 
-FILES:
+!!!IMPORTANT!!!
+The canvas(or board) may not display properly at times. Please either minimize, maximize, or otherwise force the board to be redrawn by your computer. We believe this is a symptom of either the Canvas or JEWL library, however it is beyond the scope of the project.
 
-main.adb 
-- This is the main file, compile this and run this to run the game
+This project creates and runs a two-player Checkers game in the programming language Ada, specifically Ada 2012. The program uses an extension called JEWL to create a simple GUI. Credits are linked below. 
+ 
+* GUI was made using the John English Windows Library (JEWL) which can be found here: http://archive.adaic.com/tools/bindings/JEWL/jewl.html 
+* This project was a group effort. See the credits below. Credits are also listed within the program itself (located within the main.adb file).
 
-gameboard.ads
-gameboard.adb
-- These files contain information relevant to the gameboard and other methods necessary for the game
+Ada is an interesting language and we designed this project to show its flexibility. There are other GUI packages out there such as GTKada.
 
-Prereq: You must have GNAT or Ada installed on your machine, google it. libre.adacore.com There is a free download license for educational purposes such as this, on their site
 
-The objects we use for this game are made from interfaces, which are Ada Spec Files(.ads) The objects are defined by packages, there should be a corresponding Ada Body File(.adb)
-
-To clarify, an object like a set of numbers NumberSet.ads, must have a NumberSet.adb
-
-.ads - holds var definitions, function, and procedure defintions meanwhile the .adb file must use all the exact same variables, functions, and procedures as the .ads
+# Credits
+* Michael Ellis
+* Candace Allison
